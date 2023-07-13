@@ -6,4 +6,7 @@ from app.routes.aws_helpers import ALLOWED_EXTENSIONS
 
 class ImageForm(FlaskForm):
     image = FileField("Image File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
-    submit = SubmitField("Choose photo to upload")
+    title = TextField()
+    description = TextField()
+    taken_at = DateField()
+    submit = SubmitField("Submit")
