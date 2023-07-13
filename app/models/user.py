@@ -18,8 +18,6 @@ class User(db.Model, UserMixin):
     bio = db.Column(db.String(2000))
     profile_photo = db.Column(db.String(500), nullable=False)
     cover_photo = db.Column(db.String(500), nullable=False)
-    profile_photo = db.Column(db.String(500), nullable=False)
-    cover_photo = db.Column(db.String(500), nullable=False)
 
     #relationship attributes
 
