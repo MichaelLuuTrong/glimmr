@@ -72,7 +72,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('album_id', 'photo_id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE albums_tables SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE albums_photos SET SCHEMA {SCHEMA};")
 
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
