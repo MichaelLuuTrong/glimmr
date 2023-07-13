@@ -24,13 +24,13 @@ class User(db.Model, UserMixin):
     #relationship attributes
 
     #user to many
-    photos = db.relationship("Photo", back_populates = "owner",
+    photos = db.relationship("Photo", back_populates = "user",
                           cascade="delete, delete-orphan")
-    comments = db.relationship("Comment", back_populates = "owner",
+    comments = db.relationship("Comment", back_populates = "user",
                           cascade="delete, delete-orphan")
-    favorites = db.relationship("Favorite", back_populates = "owner",
+    favorites = db.relationship("Favorite", back_populates = "user",
                           cascade="delete, delete-orphan")
-    albums = db.relationship("Album", back_populates = "owner",
+    albums = db.relationship("Album", back_populates = "user",
                         cascade="delete, delete-orphan")
 
 
