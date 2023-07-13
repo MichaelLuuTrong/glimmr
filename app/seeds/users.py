@@ -1,21 +1,35 @@
 from app.models import db, User, environment, SCHEMA
 from sqlalchemy.sql import text
 
-
-# Adds a demo user, you can add other users here if you want
 def seed_users():
-    Trevor = User(
+    trevor = User(
         username='Trevor Dobson',
         email='tdobson938@gmail.com',
-        hashed_password='password',
+        hashed_password='trevorpassword',
         first_name = 'Trevor',
         last_name = 'Dobson',
         bio = 'I mostly photograph the night sky in and around my home city of Perth in Western Australia. Occasionally I venture out to Japan and try my hand at other types of photography :-)',
         profile_photo = 'https://live.staticflickr.com/2918/buddyicons/23409752@N08_r.jpg?1400500599#23409752@N08',
         cover_photo = 'https://live.staticflickr.com/5708/coverphoto/23409752@N08_h.jpg?1480672429#23409752@N08'
         )
+    klaus = User(
+        username='Aerial Photohraphy',
+        email='klausl509@gmail.com',
+        hashed_password='klauspassword',
+        first_name='Klaus',
+        last_name='Leidorf',
+        bio="""Klaus Leidorf: A german aerial archaeologist that likes to observe the human artifacts from a bird's eye view.
+        If you want to know a little bit more about me, read this:
+        www.popphoto.com/Features/Sky-s-the-Limit
+        The content of these images CANNOT BE COPIED, DISTRIBUITED or PUBLISHED for any media, electronic or otherwise.
+        The utilization in other web pages without the express written consent of the author is PROHIBITED. But for private purposes it will be no problem to get the permission.""",
+        profile_photo='https://live.staticflickr.com/55/buddyicons/62448022@N00_r.jpg?1148663931#62448022@N00)',
+        cover_photo='https://live.staticflickr.com/5443/coverphoto/62448022@N00_h.jpg?1401996965#62448022@N00)'
+        )
 
-    db.session.add(Trevor)
+    all_users = [trevor, klaus]
+
+    _ = [db.session.add(user) for user in all_users]
     db.session.commit()
 
 
