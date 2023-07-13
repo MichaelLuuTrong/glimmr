@@ -8,4 +8,4 @@ albums_photos= Table(
     db.Column("photo_id", db.ForeignKey(add_prefix_for_prod("photos.id")), primary_key=True))
 
 if environment == "production":
-       watchlists_stocks.schema = SCHEMA
+       albums_photos.schema = SCHEMA
