@@ -7,7 +7,7 @@ def seed_users():
     Trevor = User(
         username='Trevor Dobson',
         email='tdobson938@gmail.com',
-        password='password',
+        hashed_password='password',
         first_name = 'Trevor',
         last_name = 'Dobson',
         bio = 'I mostly photograph the night sky in and around my home city of Perth in Western Australia. Occasionally I venture out to Japan and try my hand at other types of photography :-)',
