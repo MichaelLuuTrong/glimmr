@@ -20,12 +20,16 @@ class User(db.Model, UserMixin):
     cover_photo = db.Column(db.String(500), nullable=False)
 
     #relationship attributes
+
+    #user to many
     photos = db.relationship("Photo", back_populates = "owner",
                           cascade="delete, delete-orphan")
     comments = db.relationship("Comment", back_populates = "owner",
                           cascade="delete, delete-orphan")
     favorites = db.relationship("Favorite", back_populates = "owner",
                           cascade="delete, delete-orphan")
+    albums = db.relationship("Album", back_populates = "owner",
+                        cascade="delete, delete-orphan")
 
 
     @property

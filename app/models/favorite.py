@@ -12,6 +12,8 @@ class Favorite(db.Model):
     created_at = db.Column(db.Date, nullable = False)
 
     #relationship attributes
+
+    #favorite to one
     user = db.relationship("User", back_populates = "favorites")
     photo = db.relationship("Photo", back_populates = "favorites")
 

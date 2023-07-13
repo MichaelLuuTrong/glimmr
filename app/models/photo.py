@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .albums_photos import albums_photos
 
 class Photo(db.Model):
     __tablename__ = 'photos'
@@ -15,12 +16,16 @@ class Photo(db.Model):
     created_at = db.Column(db.Date, nullable = False)
 
     #relationship attributes
+
+    #photo to one
     user = db.relationship("User", back_populates = "photos")
+
+    #photo to many
     comments = db.relationship("Comment", back_populates = "photo",
                           cascade="delete, delete-orphan")
     favorites = db.relationship("Favorite", back_populates = "photo",
                           cascade="delete, delete-orphan")
-
+    albums = db.relationship("Album", secondary = albums_photos, back_populates = "photos")
 
     def to_dict(self):
         return {

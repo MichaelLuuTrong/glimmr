@@ -14,6 +14,8 @@ class Comment(db.Model):
     updated_at = db.Column(db.Date, nullable = False)
 
     #relationship attributes
+
+    #comment to one
     user = db.relationship("User", back_populates = "comments")
     photo = db.relationship("Photo", back_populates = "comments")
 
