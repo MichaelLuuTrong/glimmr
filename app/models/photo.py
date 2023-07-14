@@ -10,7 +10,7 @@ class Photo(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable = False)
     photo = db.Column(db.String, nullable = False)
-    title = db.Column(db.String(30), nullable = False)
+    title = db.Column(db.String(50), nullable = False)
     description = db.Column(db.String(2000), nullable = False)
     taken_at = db.Column(db.Date, nullable = False)
     created_at = db.Column(db.Date, nullable = False)

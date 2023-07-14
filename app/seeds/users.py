@@ -3,7 +3,7 @@ from sqlalchemy.sql import text
 
 def seed_users():
     klaus = User(
-        username='Aerial Photohraphy',
+        username='Aerial Photography',
         email='klausl509@gmail.com',
         password='klauspassword',
         first_name='Klaus',
