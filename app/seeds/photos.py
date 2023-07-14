@@ -31,6 +31,7 @@ def convert_date(input_date):
     return output_date
 
 def seed_photos():
+    #1
     klaus1 = Photo(
         user_id=1,
         photo='https://i.imgur.com/4rvoIwH.jpg',
@@ -40,6 +41,7 @@ def seed_photos():
         created_at=convert_date("October 28, 2010")
     )
     klaus2 = Photo(
+        #2
         user_id=1,
         photo='https://i.imgur.com/zKYRwGp.jpg',
         title='Autumn around Chinese Tower',
@@ -48,6 +50,7 @@ def seed_photos():
         created_at=convert_date("October 27, 2011")
     )
     klaus3 = Photo(
+        #3
         user_id=1,
         photo='https://i.imgur.com/Gja2Stv.jpg',
         title='Brightly Coloured Balloon',
@@ -56,6 +59,7 @@ def seed_photos():
         created_at=convert_date("September 5, 2011")
     )
     klaus4 = Photo(
+        #4
         user_id=1,
         photo='https://i.imgur.com/Y1sv073.jpg',
         title='Lonely Planet',
@@ -64,6 +68,7 @@ def seed_photos():
         created_at=convert_date("July 6, 2010")
     )
     klaus5 = Photo(
+        #5
         user_id=1,
         photo='https://i.imgur.com/9u0RufG.jpg',
         title='Trees in a Row - 03',
@@ -72,6 +77,7 @@ def seed_photos():
         created_at=convert_date("April 12, 2019")
     )
     klaus6 = Photo(
+        #6
         user_id=1,
         photo='https://i.imgur.com/uzpAtLm.jpg',
         title='Trees in a Row - 15',
@@ -80,6 +86,7 @@ def seed_photos():
         created_at=convert_date("February 20, 2019")
     )
     klaus7 = Photo(
+        #7
         user_id=1,
         photo='https://i.imgur.com/QYdemjc.jpg',
         title='Trees in a Row - 01',
@@ -88,6 +95,7 @@ def seed_photos():
         created_at=convert_date("December 19, 2017")
     )
     alexander1 = Photo(
+        #8
         user_id=2,
         photo='https://i.imgur.com/qmgGsm5.jpg',
         title='Some shrimp on Crossaster pappusus',
@@ -96,6 +104,7 @@ def seed_photos():
         created_at=convert_date("October 8, 2021")
     )
     alexander2 = Photo(
+        #9
         user_id=2,
         photo='https://i.imgur.com/B3WqOKh.jpg',
         title='Staurozoika',
@@ -104,6 +113,7 @@ def seed_photos():
         created_at=convert_date("January 7, 2023")
     )
     alexander3 = Photo(
+        #10
         user_id=2,
         photo='https://i.imgur.com/PBkN1Ts.jpg',
         title='Beroe cucumis with a mouth wide open',
@@ -112,6 +122,7 @@ def seed_photos():
         created_at=convert_date("January 17, 2023")
     )
     alexander4 = Photo(
+        #11
         user_id=2,
         photo='https://i.imgur.com/uyBKyH1.jpg',
         title='Crossaster papposus skin',
@@ -120,6 +131,7 @@ def seed_photos():
         created_at=convert_date("June 21, 2023")
     )
     steve1 = Photo(
+        #12
         user_id=3,
         photo='https://i.imgur.com/SLwAWVa.jpg',
         title='Sunny Day Mandarin (Mandarin Duck)',
@@ -129,6 +141,7 @@ def seed_photos():
 
     )
     steve2 = Photo(
+        #13
         user_id=3,
         photo='https://i.imgur.com/hpipO2O.jpg',
         title='Mandarin In Flight (Mandarin Duck)',
@@ -137,6 +150,7 @@ def seed_photos():
         created_at=convert_date("March 31, 2020")
     )
     steve3 = Photo(
+        #14
         user_id=3,
         photo='https://i.imgur.com/UPvxtHo.jpg',
         title='Bird On a Wire (Northern Hawk Owl)',
@@ -145,6 +159,7 @@ def seed_photos():
         created_at=convert_date("November 26, 2017")
     )
     steve4 = Photo(
+        #15
         user_id=3,
         photo='https://i.imgur.com/oHN6UaM.jpg',
         title='Right At Eye Level (Northern Hawk Owl)',
@@ -158,7 +173,7 @@ def seed_photos():
                   alexander3, alexander4, steve1, steve2,
                   steve3, steve4]
 
-    _ = [db.session.add(photos) for photos in all_photos]
+    _ = [db.session.add(photo) for photo in all_photos]
     db.session.commit()
 
 
