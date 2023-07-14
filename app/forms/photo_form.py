@@ -1,15 +1,13 @@
-# from flask_wtf import FlaskForm
-# from flask_wtf.file import FileField, FileAllowed, FileRequired
-# from wtforms.validators import DataRequired, Length, URL
-# from wtforms import SubmitField, StringField, DateField
-# from ..api.AWS_helpers import ALLOWED_EXTENSIONS
+from flask_wtf import FlaskForm
+from wtforms import StringField, DateField, SubmitField
+from wtforms.validators import DataRequired
 
-# class PhotoForm(FlaskForm):
-#     #id automatically assigned
-#     #user_id taken from current user
-#     photo = FileField("Image File", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
-#     title = StringField()
-#     description = StringField()
-#     taken_at = DateField()
-#     #created_at = now
-#     submit = SubmitField("Submit")
+class PhotoForm(FlaskForm):
+    #id generated
+    #user_id is current user
+    photo = StringField('Photo URL', validators = [DataRequired()])
+    title = StringField('Title', validators = [DataRequired()])
+    description = StringField('Description', validators = [DataRequired()])
+    taken_at = DateField('Date', validators = [DataRequired()])
+    #created_at is date.now()
+    submit = SubmitField('Submit')
