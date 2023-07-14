@@ -10,10 +10,6 @@ def seed_users():
         last_name='Leidorf',
         bio="""
         Klaus Leidorf: A german aerial archaeologist that likes to observe the human artifacts from a bird's eye view.
-        If you want to know a little bit more about me, read this:
-        www.popphoto.com/Features/Sky-s-the-Limit
-        The content of these images CANNOT BE COPIED, DISTRIBUITED or PUBLISHED for any media, electronic or otherwise.
-        The utilization in other web pages without the express written consent of the author is PROHIBITED. But for private purposes it will be no problem to get the permission.
         """,
         profile_photo='https://i.imgur.com/8Jm1fek.jpg',
         cover_photo='https://i.imgur.com/T43aWJr.jpg'
