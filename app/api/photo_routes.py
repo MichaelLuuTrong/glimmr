@@ -7,8 +7,8 @@ from datetime import datetime
 photo_routes = Blueprint("photos", __name__)
 
 #Post A Photo
-@photo_routes.route('<int:user_Id>/photos', methods=["POST"])
-def post_image(user_Id):
+@photo_routes.route('/<int:user_Id>/photos', methods=["POST"])
+def post_photo(user_Id):
     if current_user.is_authenticated:
         form = PhotoForm()
         new_photo = Photo(
@@ -21,7 +21,7 @@ def post_image(user_Id):
         )
         db.session.add(new_photo)
         db.session.commit()
-        return new_image.to_dict()
+        return new_photo.to_dict()
     else:
         return {'error': 'You are not logged in.'}
 
@@ -49,7 +49,7 @@ def get_all_photos():
 
 #Edit a Photo by photo_id
 @photo_routes.route('/update/<int:photo_id>', methods=["PATCH"])
-def update_image_by_photo_id(photo_id):
+def update_photo_by_photo_id(photo_id):
     if current_user.is_authenticated:
         form = PhotoForm()
         photo_to_update = Photo.query.get(photo_id)
@@ -59,7 +59,7 @@ def update_image_by_photo_id(photo_id):
             photo_to_update.description = form.data['description']
             photo_to_update.taken_at = form.data['taken_at']
             db.session.commit()
-            return image_to_update.to_dict()
+            return photo_to_update.to_dict()
         else:
             return {'error': "You cannot edit someone else's photo."}
     else:
