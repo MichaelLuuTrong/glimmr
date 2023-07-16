@@ -10,18 +10,21 @@ photo_routes = Blueprint("photos", __name__)
 @photo_routes.route('/<int:user_Id>/photos', methods=["POST"])
 def post_photo(user_Id):
     if current_user.is_authenticated:
-        form = PhotoForm()
-        new_photo = Photo(
-            user_id = user_Id,
-            photo = form.data['photo'],
-            title = form.data['title'],
-            description = form.data['description'],
-            taken_at = form.data['taken_at'],
-            created_at = datetime.now()
-        )
-        db.session.add(new_photo)
-        db.session.commit()
-        return new_photo.to_dict()
+        if current_user.id == user_Id:
+            form = PhotoForm()
+            new_photo = Photo(
+                user_id = user_Id,
+                photo = form.data['photo'],
+                title = form.data['title'],
+                description = form.data['description'],
+                taken_at = form.data['taken_at'],
+                created_at = datetime.now()
+            )
+            db.session.add(new_photo)
+            db.session.commit()
+            return new_photo.to_dict()
+        else:
+            return {'error': "You cannot post a photo to someone else's account"}
     else:
         return {'error': 'You are not logged in.'}
 
@@ -34,7 +37,7 @@ def get_photo_by_id(photo_id):
     else:
         return photo.to_dict()
 
-#Get All Photos by user_id
+#Get All Photos by user_Id
 @photo_routes.route('/user/<int:user_Id>')
 def get_photos_by_user_id(user_Id):
     photos = Photo.query.filter(Photo.user_id == user_Id).all()
@@ -48,11 +51,13 @@ def get_all_photos():
         return {'photos' : [photo.to_dict() for photo in photos]}
 
 #Edit a Photo by photo_id
-@photo_routes.route('/update/<int:photo_id>', methods=["PATCH"])
+@photo_routes.route('/<int:photo_id>', methods=["PATCH"])
 def update_photo_by_photo_id(photo_id):
     if current_user.is_authenticated:
         form = PhotoForm()
         photo_to_update = Photo.query.get(photo_id)
+        if not photo_to_update:
+            return {'error': 'That photo does not exist'}
         if photo_to_update.user_id == current_user.id:
             photo_to_update.photo = form.data['photo']
             photo_to_update.title = form.data['title']
@@ -66,7 +71,7 @@ def update_photo_by_photo_id(photo_id):
         return {'error': 'You are not logged in.'}
 
 #Delete Photo by photo_id
-@photo_routes.route('/delete/<int:photo_id>', methods=["DELETE"])
+@photo_routes.route('/<int:photo_id>', methods=["DELETE"])
 def delete_photo_by_photo_id(photo_id):
     if current_user.is_authenticated:
         photo_to_delete = Photo.query.get(photo_id)

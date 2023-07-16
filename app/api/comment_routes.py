@@ -1,37 +1,48 @@
 from flask import Blueprint
 from flask_login import login_required, current_user
 from ..models import db, User, Photo, Comment
+from app.forms.comment_form import CommentForm
 from datetime import datetime
 
 comment_routes = Blueprint("comments", __name__)
 
-#Post A Comment By image_id
+#Post A Comment By photo_id
 @comment_routes.route('/<int:photo_id>/<int:user_id>', methods=["POST"])
-def post_comment(image_id, user_id):
-    if current_user.is_authenticated:
-        form = CommentForm()
-        comment = Comment(
-            user_id = user_id,
-            photo_id = photo_id,
-            text = form.data['text'],
-            created_at = datetime.now(),
-            updated_at = datetime.now()
-        )
-        db.session.add(comment)
-        db.session.commit()
-        return comment.to_dict()
+def post_comment(photo_id, user_id):
+    photo = Photo.query.get(photo_id)
+    if not photo:
+        return {'error': 'That photo does not exist'}
     else:
-        return {'error': 'You are not logged in.'}
+        if current_user.is_authenticated:
+            if user_id == current_user.id:
+                form = CommentForm()
+                comment = Comment(
+                    user_id = user_id,
+                    photo_id = photo_id,
+                    text = form.data['text'],
+                    created_at = datetime.now(),
+                    updated_at = datetime.now()
+                )
+                db.session.add(comment)
+                db.session.commit()
+                return comment.to_dict()
+            else:
+                return {'error': "You cannot post a comment as someone else."}
+        else:
+            return {'error': 'You are not logged in.'}
 
 #Get All Comments by photo_id
 @comment_routes.route('/<int:photo_id>')
-def get_comment_by_image_id(photo_id):
-    comments = Comment.query.filter(Comment.photo_id == photo_id).all()
-    print('COMMENTS REEEEEEEEEEEEEEEEE:', comments)
-    return {'comments': [comment.to_dict() for comment in comments]}
+def get_comment_by_photo_id(photo_id):
+    photo = Photo.query.get(photo_id)
+    if not photo:
+        return {'error': 'That photo does not exist'}
+    else:
+        comments = Comment.query.filter(Comment.photo_id == photo_id).all()
+        return {'comments': [comment.to_dict() for comment in comments]}
 
 #Edit a Comment by comment_id
-@comment_routes.route('/update/<int:comment_id>', methods=["PATCH"])
+@comment_routes.route('/<int:comment_id>', methods=["PATCH"])
 def edit_comment_by_comment_id(comment_id):
     if current_user.is_authenticated:
         form = CommentForm()
@@ -50,7 +61,7 @@ def edit_comment_by_comment_id(comment_id):
         return {'error': 'You are not logged in.'}
 
 #Delete Comment by comment_id
-@comment_routes.route('/delete/<int:comment_id>', methods=["DELETE"])
+@comment_routes.route('/<int:comment_id>', methods=["DELETE"])
 def delete_comment_by_id(comment_id):
     if current_user.is_authenticated:
         comment_to_delete = Comment.query.get(comment_id)
@@ -58,9 +69,9 @@ def delete_comment_by_id(comment_id):
             return {'error': 'That comment does not exist'}
         if comment_to_delete.user_id == current_user.id:
             db.session.delete(comment_to_delete)
-            db.session.comment()
+            db.session.commit()
             return {'comment': 'Your comment has successfully been deleted.'}
         else:
-            return {'error': "You cannot delete someone else's photo."}
+            return {'error': "You cannot delete someone else's comment."}
     else:
         return {'error': 'You are not logged in.'}

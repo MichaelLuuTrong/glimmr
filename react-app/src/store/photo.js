@@ -104,7 +104,7 @@ export const getAllPhotosThunk = () => async (dispatch) => {
 
 export const patchPhotoThunk = (photo, photoId) => async (dispatch) => {
     try {
-        const res = await fetch(`/api/photos/${photoId}/update`, {
+        const res = await fetch(`/api/photos/${photoId}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(photo)
@@ -123,7 +123,7 @@ export const patchPhotoThunk = (photo, photoId) => async (dispatch) => {
 
 export const deletePhotoThunk = (photo_id) => async (dispatch) => {
     try {
-        const res = await fetch(`/api/photos/delete/${photo_id}`, {
+        const res = await fetch(`/api/photos/${photo_id}`, {
             method: "DELETE"
         })
 
@@ -138,15 +138,50 @@ export const deletePhotoThunk = (photo_id) => async (dispatch) => {
 }
 
 //reducer
-const initialState = {
-    photos: {},
-
-}
+const initialState = { allPhotos: {}, singlePhoto: {}, userPhotos: {} }
 
 const photoReducer = (state = initialState, action) => {
     let newState = {}
+    switch (action.type) {
+        case POST_PHOTO: {
+            newState = { ...state, userPhotos: { ...state.userPhotos } }
+            newState.singlePhoto = action.photo
+            return newState
+        }
+        case GET_PHOTO: {
+            newState = { ...state, singlePhoto: { ...state.singlePhoto } }
+            newState.singlePhoto = action.photo
+            return newState
+        }
+        case GET_USER_PHOTOS: {
+            newState = { ...state, userPhotos: { ...state.userPhotos } }
+            newState.userPhotos = action.photos
+            return newState
+        }
+        case GET_ALL_PHOTOS: {
+            newState = { ...state, allPhotos: {} }
+            action.photos.photos.forEach((photo) => {
+                newState.allPhotos[photo.id] = photo
+            })
+            return newState
+        }
+        case PATCH_PHOTO: {
+            newState = { ...state, allPhotos: { ...state.allPhotos }, userPhotos: { ...state.userPhotos } }
+            const updatedPhoto = action.photo
+            newState.allPhotos[updatedPhoto.id] = updatedPhoto;
+            if (newState.userPhotos[updatedPhoto.id]) {
+                newState.userPhotos[updatedPhoto.id] = { ...newState.userPhotos[updatedPhoto.id], ...updatedPhoto };
+            }
+            return newState
+        }
+        case DELETE_PHOTO: {
+            newState = { ...state, userPhotos: { ...state.userPhotos } }
+            delete newState.userPhotos[action.photo_id]
+            return newState
+        }
+        default:
+            return state
+    }
 }
-
-
 
 export default photoReducer
