@@ -77,6 +77,11 @@ export const signUp = (username, email, password) => async (dispatch) => {
 			username,
 			email,
 			password,
+			first_name,
+			last_name,
+			bio,
+			profile_photo,
+			cover_photo
 		}),
 	});
 
