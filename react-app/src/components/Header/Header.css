@@ -1,0 +1,142 @@
+.hidden {
+    display: none
+}
+
+.changeCursor {
+    cursor: pointer
+}
+
+.headerFull {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerBackground {
+    z-index: -1;
+    opacity: 90%;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #000000;
+}
+
+.headerLeftSide {
+    height: 50px;
+    margin-left: 15%;
+    display: flex;
+    align-items: center;
+}
+
+.headerRightSide {
+    height: 50px;
+    margin-right: 15%;
+    display: flex;
+    align-items: center;
+}
+
+.landingLinkImageImg {
+    display: flex;
+    height: 12px;
+    margin-right: 3px
+}
+
+.landingLinkLogoImg {
+    display: flex;
+    height: 30px;
+    margin-right: 30px
+}
+
+.headerProfilePicture {
+    border-radius: 50%;
+    height: 35px
+}
+
+.headerYouDiv {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    margin-right: 30px
+}
+
+.headerYouDiv:hover {
+    color: lightgray
+}
+
+.headerExploreDiv {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.headerExploreDiv:hover {
+    color: lightgray
+}
+
+.headerLoginDiv {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    padding-right: 30px
+}
+
+.headerLoginDiv:hover {
+    color: lightgray
+}
+
+.headerSignupDiv:hover {
+    color: lightgray;
+    background-color: #1E77AD
+}
+
+.headerSignupDiv {
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background-color: #128FDC;
+    border-radius: 10%;
+    height: 30px;
+    width: 80px;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerNavLink {
+    text-decoration: none
+}
+
+.uploadIcon {
+    margin-top: 5px;
+    margin-right: 30px;
+    height: 40px
+}
+
+.profile-dropdown {
+    position: absolute;
+    padding: 13px;
+    right: 15%;
+    width: 125px;
+    top: 55px;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0.15px 0.15px black;
+}
+
+.logOut {
+    padding-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.hiUser {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    padding-bottom: 10px
+}
+
+.headerDividerDiv {
+    position: absolute;
+    right: 0px;
+    width: 151px;
+    border-bottom: 1px solid lightgray
+}
