@@ -44,13 +44,13 @@ export const postPhotoThunk = (photo, user) => async (dispatch) => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(photo)
-        })
+        });
 
         if (res.ok) {
             const newPhoto = await res.json();
             dispatch(postPhoto(newPhoto));
             return newPhoto
-        }
+        };
     } catch (err) {
         const errors = await err.json();
         return errors
@@ -59,13 +59,13 @@ export const postPhotoThunk = (photo, user) => async (dispatch) => {
 
 export const getPhotoThunk = (photoId) => async (dispatch) => {
     try {
-        const res = await fetch(`/api/photos/${photoId}`)
+        const res = await fetch(`/api/photos/${photoId}`);
 
         if (res.ok) {
             const photo = await res.json();
-            dispatch(getPhoto(photo))
+            dispatch(getPhoto(photo));
             return photo
-        }
+        };
     } catch (err) {
         const errors = await err.json();
         return errors
@@ -74,13 +74,13 @@ export const getPhotoThunk = (photoId) => async (dispatch) => {
 
 export const getUserPhotosThunk = (user_id) => async (dispatch) => {
     try {
-        const res = await fetch(`/api/photos/user/${user_id}`)
+        const res = await fetch(`/api/photos/user/${user_id}`);
 
         if (res.ok) {
-            const userPhotos = await res.json()
-            dispatch(getUserPhotos(userPhotos))
+            const userPhotos = await res.json();
+            dispatch(getUserPhotos(userPhotos));
             return userPhotos
-        }
+        };
     } catch (err) {
         const errors = await err.json();
         return errors
@@ -89,13 +89,13 @@ export const getUserPhotosThunk = (user_id) => async (dispatch) => {
 
 export const getAllPhotosThunk = () => async (dispatch) => {
     try {
-        const res = await fetch(`/api/photos`)
+        const res = await fetch(`/api/photos`);
 
         if (res.ok) {
             const allPhotos = await res.json();
-            dispatch(getAllPhotos(allPhotos))
+            dispatch(getAllPhotos(allPhotos));
             return allPhotos
-        }
+        };
     } catch (err) {
         const errors = await err.json();
         return errors
@@ -112,9 +112,9 @@ export const patchPhotoThunk = (photo, photoId) => async (dispatch) => {
 
         if (res.ok) {
             const updatedPhoto = await res.json();
-            dispatch(patchPhoto(updatedPhoto))
+            dispatch(patchPhoto(updatedPhoto));
             return updatedPhoto
-        }
+        };
     } catch (err) {
         const errors = await err.json();
         return errors
@@ -125,12 +125,12 @@ export const deletePhotoThunk = (photo_id) => async (dispatch) => {
     try {
         const res = await fetch(`/api/photos/${photo_id}`, {
             method: "DELETE"
-        })
+        });
 
         if (res.ok) {
-            dispatch(deletePhoto(photo_id))
+            dispatch(deletePhoto(photo_id));
             return
-        }
+        };
     } catch (err) {
         const errors = await err.json();
         return errors
