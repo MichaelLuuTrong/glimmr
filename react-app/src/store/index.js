@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import photoReducer from './photo'
 import commentReducer from './comment'
+import userReducer from './user'
 
 const rootReducer = combineReducers({
   session,
   photoReducer,
   commentReducer,
+  userReducer
 });
 
 
