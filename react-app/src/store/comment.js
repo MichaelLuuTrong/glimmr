@@ -48,12 +48,11 @@ export const postCommentThunk = (photo_id, user_id, comment) => async (dispatch)
 export const getPhotoCommentsThunk = (photo_id) => async (dispatch) => {
     try {
         const res = await fetch(`/api/comments/${photo_id}`)
-
         if (res.ok) {
             const photoComments = await res.json();
-            dispatch(getPhotoComments(photoComments));
-            return photoComments
-        };
+            dispatch(getPhotoComments(photoComments.comments));
+            return photoComments.comments
+        }
     } catch (err) {
         const errors = await err.json();
         return errors
@@ -107,11 +106,14 @@ const commentReducer = (state = initialState, action) => {
             return newState
         }
         case GET_PHOTO_COMMENTS: {
-            newState = { ...state, photoComments: {} };
+            if (action.comments.length === 0) {
+                return { ...state, photoComments: {} }
+            }
+            newState = { ...state, photoComments: { ...state.photoComments } };
             action.comments.forEach((comment) => {
-                newState.photoComments[comment.id] = comment
-            })
-            return newState
+                newState.photoComments[comment.id] = comment;
+            });
+            return newState;
         }
         case PATCH_COMMENT: {
             newState = { ...state, singleComment: { ...state.singleComment } };

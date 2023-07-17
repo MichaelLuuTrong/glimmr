@@ -1,0 +1,12 @@
+.mainPhoto {
+    margin-top: 100px;
+    width: 80%;
+    max-width: 1200px;
+    margin-bottom: 50px
+}
+
+.mainPhotoDiv {
+    border-top: 100px;
+    background-color: magenta;
+    border-color: 10px blue solid;
+}
