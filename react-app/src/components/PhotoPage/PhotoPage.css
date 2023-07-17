@@ -1,12 +1,20 @@
 .mainPhoto {
     margin-top: 100px;
-    width: 80%;
-    max-width: 1200px;
+    max-width: 1300px;
+    max-height: 800px;
     margin-bottom: 50px
 }
 
 .mainPhotoDiv {
+    display: flex;
     border-top: 100px;
-    background-color: magenta;
-    border-color: 10px blue solid;
+    background-color: darkblue;
+    justify-content: center;
+}
+
+.photographerPhotoProfilePhotoImg {
+    position: relative;
+    height: 60px;
+    border-radius: 50%;
+    transition: opacity 0.3s
 }
