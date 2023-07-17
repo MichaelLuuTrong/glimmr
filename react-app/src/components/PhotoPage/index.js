@@ -59,7 +59,6 @@ function getProfilePhotoById(usersArray, id) {
     return user ? user.profile_photo : null;
 }
 
-
 function PhotoPage() {
     const dispatch = useDispatch()
     const { photoId } = useParams()
