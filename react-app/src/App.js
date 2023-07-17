@@ -5,6 +5,7 @@ import { authenticate } from "./store/session";
 import LoginFormPage from "./components/LoginFormPage"
 import SignupFormPage from "./components/SignupFormPage";
 import Header from "./components/Header"
+import Explore from "./components/Explore"
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
           <Route path="/explore">
             {/* Explore Page */}
             <Header />
+            <Explore />
           </Route>
           <Route path='/photos/upload'>
             {/* Upload Photos Page */}

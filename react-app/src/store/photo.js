@@ -50,7 +50,7 @@ export const postPhotoThunk = (photo, user) => async (dispatch) => {
             const newPhoto = await res.json();
             dispatch(postPhoto(newPhoto));
             return newPhoto
-        };
+        }
     } catch (err) {
         const errors = await err.json();
         return errors
