@@ -8,6 +8,7 @@ import Header from "./components/Header"
 import Explore from "./components/Explore"
 import { useSelector } from "react-redux";
 import PhotoPage from "./components/PhotoPage";
+import PhotoUpload from "./components/PhotoUpload";
 
 
 function App() {
@@ -41,6 +42,8 @@ function App() {
           </Route>
           <Route path='/photos/upload'>
             {/* Upload Photos Page */}
+            <Header />
+            <PhotoUpload />
           </Route>
           <Route exact path='/photos/:photoId'>
             <PhotoPage />

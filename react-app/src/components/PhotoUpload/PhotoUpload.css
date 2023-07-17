@@ -1,0 +1,94 @@
+.formDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2D2D2D;
+}
+
+.newPhotoForm {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 4px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.validationError {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f00;
+    font-size: 14px;
+    margin-bottom: 5px;
+    padding-left: 3px
+}
+
+.photoInputDiv,
+.titleInputDiv,
+.descriptionInputDiv,
+.takenAtInputDiv {
+    margin-bottom: 10px;
+}
+
+.takenAtField {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.photoField,
+.titleField,
+.descriptionField,
+.takenAtField {
+    width: 95%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.photoField:focus,
+.titleField:focus,
+.descriptionField:focus,
+.takenAtField:focus {
+    outline: none;
+    border-color: #007aff;
+}
+
+.postPhotoButtonDiv {
+    padding-top: 15px;
+    text-align: center;
+}
+
+.postPhotoButton {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #007aff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.postPhotoButton:hover {
+    background-color: #0056b3;
+}
+
+.topMiddleDiv {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.postAPhotoText {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+}
+
+.photoFormGlimmrLogo {
+    height: 15px;
+    margin-bottom: 10px;
+}
