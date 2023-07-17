@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { authenticate } from "./store/session";
 import LoginFormPage from "./components/LoginFormPage"
 import SignupFormPage from "./components/SignupFormPage";
 import Header from "./components/Header"
 import Explore from "./components/Explore"
+import { useSelector } from "react-redux";
+import PhotoPage from "./components/PhotoPage";
+
 
 function App() {
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user)
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
@@ -20,6 +24,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             {/* Landing Page */}
+            {sessionUser ? <Redirect to="/explore" /> : null}
           </Route>
           <Route path="/sign-up">
             {/* Sign-Up Page */}
@@ -37,8 +42,8 @@ function App() {
           <Route path='/photos/upload'>
             {/* Upload Photos Page */}
           </Route>
-          <Route path='/photos/:photoId'>
-            {/* Photo Page */}
+          <Route exact path='/photos/:photoId'>
+            <PhotoPage />
             <Header />
           </Route>
           <Route path='/photos/:userId/:albumsId'>
@@ -61,8 +66,9 @@ function App() {
             {/* User - Favorites Page */}
             <Header />
           </Route>
-        </Switch>
-      )}
+        </Switch >
+      )
+      }
     </>
   );
 }
