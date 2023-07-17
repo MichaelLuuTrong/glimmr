@@ -1,4 +1,4 @@
-import { useParams, NavLink } from "react-router-dom"
+import { useParams, NavLink, useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { getPhotoThunk } from "../../store/photo"
@@ -59,8 +59,8 @@ function getProfilePhotoById(usersArray, id) {
     return user ? user.profile_photo : null;
 }
 
-
 function PhotoPage() {
+    const history = useHistory()
     const dispatch = useDispatch()
     const { photoId } = useParams()
     const photoObj = useSelector(state => state.photoReducer.singlePhoto)
@@ -86,11 +86,16 @@ function PhotoPage() {
             </div >
             <div className="photoMainInfoDiv">
                 <div className="photoMainInfoDivLeft">
-                    <div className="photoPhotographerName">
+                    <NavLink className="photoPhotographerName" exact to={`/photos/${photoObj.user_id}/photostream`}>
                         {getFirstNameById(usersArray, photoObj.user_id)} {getLastNameById(usersArray, photoObj.user_id)}
-                    </div>
-                    <div className="photoPhotographerProfilePhoto">
-                        <img src={getProfilePhotoById(usersArray, photoObj.user_id)} />
+                    </NavLink>
+                    <div className="photographerPhotoProfileImgAndHoverTransparency">
+                        <div className="photographerPhotoProfileHoverTransparency"></div>
+                        <img
+                            onClick={() => history.push(`/photos/${photoObj.user_id}/photostream`)}
+                            className="photographerPhotoProfilePhotoImg changeCursor"
+                            src={getProfilePhotoById(usersArray, photoObj.user_id)}
+                            alt="Photographer" />
                     </div>
                     <div className="photoTitle">
                         {photoObj.title}
@@ -121,7 +126,7 @@ function PhotoPage() {
             <div className="allCommentsDiv">
                 {commentsArray.map(comment => (
                     <div className="wholeCommentDiv" key={comment.id}>
-                        <NavLink exact to={`/photos/${comment.user.id}/photostream`}>
+                        <NavLink exact to={`/ photos / ${comment.user.id} /photostream`}>
                             <div className="commentUserNameDiv">{comment.user.first_name} {comment.user.last_name}</div>
                         </NavLink>
                         <img className="commentUserProfilePhoto" src={comment.user.profile_photo} />
