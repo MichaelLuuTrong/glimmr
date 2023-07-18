@@ -60,7 +60,7 @@ function PhotoUpload() {
         <div onSubmit={formSubmit} className='formDiv' noValidate>
             <form className='newPhotoForm'>
                 <div className='topMiddleDiv'>
-                    <img className='photoFormGlimmrLogo' src='https://i.imgur.com/CN01U69.png' />
+                    <img className='photoFormGlimmrLogo' src='https://i.imgur.com/CN01U69.png' alt='' />
                     <div className='postAPhotoText'>Post a Photo</div>
                 </div>
                 {submitted && (Object.values(responseErrors).length) ? <div>{Object.values(responseErrors)}</div> : null}
@@ -99,6 +99,7 @@ function PhotoUpload() {
                 </div>
                 <div className='takenAtInputDiv'>
                     {submitted ? <div className='validationError'>{errors.taken_at}</div> : null}
+                    <div className="takenAtText">Taken At</div>
                     <input
                         className='takenAtField'
                         type='date'
