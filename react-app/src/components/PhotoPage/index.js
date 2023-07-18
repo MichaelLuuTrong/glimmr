@@ -76,9 +76,6 @@ function PhotoPage() {
         dispatch(getAllUsersThunk())
     }, [dispatch, photoId])
 
-    if (!photoObj) return null
-    console.log("COMMENTS ARRAY:", commentsArray)
-    console.log("photoObj:", photoObj)
     return (
         <div className="wholePhotoDiv">
             <div className='mainPhotoDiv'>
