@@ -15,8 +15,6 @@ function UserPageTop() {
         }
     }, [dispatch, userId])
 
-
-
     return (
         <>
             <div className="profileCoverDiv">
@@ -38,36 +36,38 @@ function UserPageTop() {
                     {userObj.username}
                 </div>
             </div>
-            <div className='navLinksDiv'>
-                <NavLink
-                    className='bannerNavLink bannerAboutNavLink'
-                    exact
-                    to={`/people/${userId}/`}
-                >
-                    About
-                </NavLink>
-                <NavLink
-                    className='bannerNavLink bannerPhotostreamNavLink'
-                    exact
-                    to={`/photos/${userId}/photostream`}
-                >
-                    Photostream
-                </NavLink>
-                <NavLink
-                    className='bannerNavLink bannerAlbumsNavLink'
-                    exact
-                    to={`/photos/${userId}/albums`}
-                >
-                    Albums
-                </NavLink>
-                <NavLink
-                    className='bannerNavLink bannerFavoritesNavLink'
-                    exact
-                    to={`/photos/${userId}/favorites/`}
-                >
-                    Favorites
-                </NavLink>
-            </div >
+            <div className='navLinksDivDiv'>
+                <div className='navLinksDiv'>
+                    <NavLink
+                        className='bannerNavLink bannerAboutNavLink'
+                        exact
+                        to={`/people/${userId}/`}
+                    >
+                        About
+                    </NavLink>
+                    <NavLink
+                        className='bannerNavLink bannerPhotostreamNavLink'
+                        exact
+                        to={`/photos/${userId}/photostream`}
+                    >
+                        Photostream
+                    </NavLink>
+                    <NavLink
+                        className='bannerNavLink bannerAlbumsNavLink'
+                        exact
+                        to={`/photos/${userId}/albums`}
+                    >
+                        Albums
+                    </NavLink>
+                    <NavLink
+                        className='bannerNavLink bannerFavoritesNavLink'
+                        exact
+                        to={`/photos/${userId}/favorites/`}
+                    >
+                        Favorites
+                    </NavLink>
+                </div >
+            </div>
         </>
     );
 }

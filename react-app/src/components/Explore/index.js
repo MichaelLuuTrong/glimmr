@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 import Masonry from "react-masonry-component"
 import "./Explore.css"
 import { useDispatch, useSelector } from "react-redux"
@@ -18,11 +18,6 @@ function Explore() {
         dispatch(getAllPhotosThunk())
         dispatch(getAllUsersThunk())
     }, [dispatch]);
-
-    // useEffect(() => {
-    //     // This will log the current state whenever either photos or users are updated.
-    //     console.log("State:", { photosObj, usersObj });
-    // }, [photosObj, usersObj]);
 
     function getFirstNameById(usersArray, id) {
         const user = usersArray.find(user => user.id === id);
@@ -69,7 +64,7 @@ function Explore() {
                                     <img
                                         src={photo.photo}
                                         style={{ height: 250, margin: "0px 2px 0px 2px" }}
-                                        alt='clickable'
+                                        alt=''
                                     />
 
                                 </div>

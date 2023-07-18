@@ -10,6 +10,8 @@ import { useSelector } from "react-redux";
 import PhotoPage from "./components/PhotoPage";
 import PhotoUpload from "./components/PhotoUpload";
 import UserPageTop from "./components/UserPageTop";
+import Photostream from "./components/Photostream";
+import About from "./components/About"
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +29,7 @@ function App() {
             {/* User - Photostream Page */}
             <Header />
             <UserPageTop />
+            <Photostream />
           </Route>
 
           <Route exact path='/photos/:userId/albums'>
@@ -45,6 +48,7 @@ function App() {
             {/* User - About Page */}
             <Header />
             <UserPageTop />
+            <About />
           </Route>
 
           <Route exact path='/photos/upload'>

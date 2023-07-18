@@ -1,0 +1,115 @@
+.masonryDiv {
+    width: 80%;
+}
+
+.masonryGrid {
+    position: absolute;
+    margin: 0 auto;
+    display: flex;
+}
+
+.fullExplorePage {
+    padding-top: 30px;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #F3F5F6;
+    flex-direction: column;
+    min-height: calc(100vh - 397px);
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.exploreHeader {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    font-weight: lighter;
+    width: 71.4%
+}
+
+.masonryItem {
+    z-index: 0;
+}
+
+.divOverPhoto {
+    background-color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    left: 2px;
+    width: calc(100% - 4px);
+    height: 98.5%;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.divOverPhoto::before,
+.divOverPhoto::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 30%;
+    z-index: -1;
+}
+
+.divOverPhoto::before {
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+}
+
+.divOverPhoto::after {
+    bottom: 0;
+    background: none;
+}
+
+.masonryItem:hover .divOverPhoto {
+    opacity: 1;
+}
+
+.hoverPhotoTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    position: absolute;
+    width: 50%;
+    bottom: 10px;
+    left: 10px;
+}
+
+.hoverFavoriteCount,
+.hoverCommentCount {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 13px;
+    position: absolute;
+}
+
+.hoverFavoriteCount {
+    bottom: 7px;
+    right: 60px;
+}
+
+.hoverCommentCount {
+    bottom: 7px;
+    right: 20px;
+}
+
+.hoverFavoriteCount svg {
+    fill: white;
+    transform: translateY(0.8px) translateX(-3px)
+}
+
+.hoverCommentCount svg {
+    fill: white;
+    transform: translateY(1.5px) translateX(-4px)
+}
+
+.noPhotosDiv {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    padding-top: 50px;
+    padding-bottom: 80px;
+    position: absolute;
+    bottom: 55vh;
+}
