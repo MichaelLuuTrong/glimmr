@@ -12,6 +12,7 @@ import PhotoUpload from "./components/PhotoUpload";
 import UserPageTop from "./components/UserPageTop";
 import Photostream from "./components/Photostream";
 import About from "./components/About"
+import PhotoEdit from "./components/PhotoEdit"
 
 function App() {
   const dispatch = useDispatch();
@@ -55,6 +56,11 @@ function App() {
             {/* Upload Photos Page - COMPLETED*/}
             <Header />
             <PhotoUpload />
+          </Route>
+
+          <Route exact path='/photos/:photoId/edit'>
+            <Header />
+            <PhotoEdit />
           </Route>
 
           <Route exact path='/photos/:photoId'>
