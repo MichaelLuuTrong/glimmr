@@ -66,10 +66,24 @@ def seed_comments():
         created_at=datetime(2023, 7, 14),
         updated_at=datetime(2023, 7, 14)
     )
+    comment10 = Comment(
+        user_id=2,
+        photo_id=12,
+        text='I love the reflection in the ripples.',
+        created_at=datetime(2023, 7, 14),
+        updated_at=datetime(2023, 7, 14)
+    )
+    comment11 = Comment(
+        user_id=3,
+        photo_id=12,
+        text='Great details.',
+        created_at=datetime(2023, 7, 15),
+        updated_at=datetime(2023, 7, 15)
+    )
 
     all_comments = [comment1, comment2, comment3, comment4,
                     comment5, comment6, comment7, comment8,
-                    comment9]
+                    comment9, comment10, comment11]
 
     _ = [db.session.add(comment) for comment in all_comments]
     db.session.commit()

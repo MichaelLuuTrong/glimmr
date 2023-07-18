@@ -1,20 +1,220 @@
 .mainPhoto {
     margin-top: 100px;
-    max-width: 1300px;
-    max-height: 800px;
-    margin-bottom: 50px
+    max-width: 1800px;
+    max-height: 900px;
+    margin-bottom: 50px;
 }
 
 .mainPhotoDiv {
+    width: 100%;
     display: flex;
-    border-top: 100px;
-    background-color: darkblue;
+    background-color: #212124;
     justify-content: center;
 }
 
 .photographerPhotoProfilePhotoImg {
+    margin-top: 30px;
     position: relative;
     height: 60px;
     border-radius: 50%;
-    transition: opacity 0.3s
+    transition: opacity 0.3s;
+}
+
+.commentUserProfilePhoto {
+    margin-top: 7px;
+    margin-right: 7px;
+    position: relative;
+    height: 40px;
+    border-radius: 50%;
+    transition: opacity 0.3s;
+}
+
+.photoInfoAndCommentsDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.photoInfoTop {
+    display: flex;
+    width: 50%;
+    min-width: 1000px;
+    justify-content: space-between;
+}
+
+.wholePhotoDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f3f5f6;
+}
+
+.photoMainInfoDivLeft {
+    display: flex;
+    align-items: flex-start;
+}
+
+.photoImportantInfoDiv {
+    width: 80%;
+    margin-left: 10px;
+    margin-top: 30px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    border-bottom: 1px lightgray solid;
+}
+
+.photoMainInfoDiv {
+    width: 60%;
+}
+
+.photoTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 10px;
+    font-weight: Bold;
+}
+
+.photoDescription {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 10px;
+}
+
+.mainInfoDivInfo {
+    padding-top: 10px;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px lightgray solid;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.photoMainInfoDivRight {
+    display: flex;
+    flex-direction: row;
+    padding-top: 50px;
+    width: 40%;
+}
+
+
+.photoFavorites {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photoFavoritesText {
+    font-size: 13px;
+    color: gray
+}
+
+.photoFavoritesCount {
+    font-size: 18px;
+}
+
+.photoCommentsText {
+    font-size: 13px;
+    color: gray
+}
+
+.photoCommentsCount {
+    font-size: 18px;
+}
+
+.photoComments {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photoDates {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.photoUploadDate {
+    font-size: 16px;
+}
+
+.photoTakenDate {
+    padding-top: 3px;
+    font-size: 15px;
+    color: gray
+}
+
+.commentsSection {
+    width: 50%;
+    min-width: 1000px;
+    display: flex;
+}
+
+.wholePhotoDiv {
+    display: flex;
+}
+
+.commentUserNameandTimeAndComment {
+    padding-top: 7px;
+    display: flex;
+    flex-direction: column;
+}
+
+.commentUserNameAndTime {
+    display: flex;
+    padding-bottom: 7px;
+}
+
+.allCommentsDiv {
+    padding-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 10px;
+    width: 51%
+}
+
+.wholeCommentDiv {
+    padding: 0px 0px 6px 6px;
+    margin-left: 10px;
+    display: flex;
+    margin-bottom: 10px;
+    width: 100%;
+    transition: background-color 0.3s
+}
+
+.wholeCommentDiv:hover {
+    background-color: white
+}
+
+.timeSinceComment {
+    color: gray;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.photoPhotographerName {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+.commentUserNameDiv {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #006DAC;
+    text-decoration: none;
+}
+
+.photoPhotographerName:hover,
+.commentUserNameDiv:hover {
+    text-decoration: underline;
+    color: #006DAC;
+}
+
+.commentTextDiv {
+    font-size: 14px;
 }
