@@ -113,3 +113,22 @@
     position: absolute;
     bottom: 55vh;
 }
+
+.editImageOnHoverDiv {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.editImageOnHoverIcon svg {
+    fill: white;
+}
+
+.editImageOnHoverText {
+    padding-right: 3px;
+}
