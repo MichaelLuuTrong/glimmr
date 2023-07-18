@@ -36,7 +36,7 @@ function Photostream() {
                                     <div onClick={() => history.push(`/photos/${photo.id}`)} key={id} className="masonryItem changeCursor">
                                         <div className='divOverPhoto'>
                                             <div className='leftSideHoverInfo'>
-                                                <div className='hoverPhotoTitle'>{photo.title}</div>
+                                                <div className='hoverPhotoTitlePhotostream'>{photo.title}</div>
                                             </div>
                                             <div className='rightSideHoverInfo'>
                                                 <div className='hoverFavoriteCount'>
