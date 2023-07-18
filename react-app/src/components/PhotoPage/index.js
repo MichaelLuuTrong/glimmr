@@ -59,6 +59,22 @@ function getProfilePhotoById(usersArray, id) {
     return user ? user.profile_photo : null;
 }
 
+function keepObjectsByPhotoId(arr, photoIdToKeep) {
+    // Use the filter method to create a new array with objects that have the specified photo_id
+    return arr.filter((obj) => obj.photo_id == photoIdToKeep);
+}
+
+function sortByCreatedAt(arr) {
+    return arr.sort((a, b) => {
+        const dateA = new Date(a.created_at);
+        const dateB = new Date(b.created_at);
+        return dateA - dateB;
+    });
+}
+
+
+
+
 function PhotoPage() {
     const history = useHistory()
     const dispatch = useDispatch()
@@ -66,6 +82,8 @@ function PhotoPage() {
     const photoObj = useSelector(state => state.photoReducer.singlePhoto)
     const commentsObj = useSelector(state => state.commentReducer.photoComments)
     const commentsArray = Object.values(commentsObj)
+    const filteredCommentsArray = keepObjectsByPhotoId(commentsArray, photoId)
+    const sortedCommentsArray = sortByCreatedAt(filteredCommentsArray)
     const usersObj = useSelector(state => state.userReducer.allUsers)
     const usersArray = Object.values(usersObj)
     const user = useSelector(state => state.session.user)
@@ -76,61 +94,78 @@ function PhotoPage() {
         dispatch(getAllUsersThunk())
     }, [dispatch, photoId])
 
+    console.log(commentsArray)
+
     return (
         <div className="wholePhotoDiv">
             <div className='mainPhotoDiv'>
                 <img className='mainPhoto' src={photoObj.photo} />
             </div >
-            <div className="photoMainInfoDiv">
-                <div className="photoMainInfoDivLeft">
-                    <NavLink className="photoPhotographerName" exact to={`/photos/${photoObj.user_id}/photostream`}>
-                        {getFirstNameById(usersArray, photoObj.user_id)} {getLastNameById(usersArray, photoObj.user_id)}
-                    </NavLink>
-                    <div className="photographerPhotoProfileImgAndHoverTransparency">
-                        <div className="photographerPhotoProfileHoverTransparency"></div>
-                        <img
-                            onClick={() => history.push(`/photos/${photoObj.user_id}/photostream`)}
-                            className="photographerPhotoProfilePhotoImg changeCursor"
-                            src={getProfilePhotoById(usersArray, photoObj.user_id)}
-                            alt="Photographer" />
-                    </div>
-                    <div className="photoTitle">
-                        {photoObj.title}
-                    </div>
-                    <div className="photoDescription">
-                        {photoObj.description}
-                    </div>
-                </div>
-                <div className="photoMainInfoDivRight">
-                    <div className="photoFavorites">
-                        <div className="photoFavoritesCount">{photoObj.favorites_count}</div>
-                        <div className="photoFavoritesText">
-                            {photoObj.favorites_count === 1 ? 'Favorite' : 'Favorites'}
+            <div className='photoInfoAndCommentsDiv'>
+                <div className='photoInfoTop'>
+                    <div className="photoMainInfoDiv">
+                        <div className="photoMainInfoDivLeft">
+                            <div className="photographerPhotoProfileImgAndHoverTransparency">
+                                <div className="photographerPhotoProfileHoverTransparency"></div>
+                                <img
+                                    onClick={() => history.push(`/photos/${photoObj.user_id}/photostream`)}
+                                    className="photographerPhotoProfilePhotoImg changeCursor"
+                                    src={getProfilePhotoById(usersArray, photoObj.user_id)}
+                                    alt="Photographer" />
+                            </div>
+                            <div className='photoImportantInfoDiv'>
+                                <NavLink className="photoPhotographerName" exact to={`/photos/${photoObj.user_id}/photostream`}>
+                                    {getFirstNameById(usersArray, photoObj.user_id)} {getLastNameById(usersArray, photoObj.user_id)}
+                                </NavLink>
+                                <div className="photoTitle">
+                                    {photoObj.title}
+                                </div>
+                                <div className="photoDescription">
+                                    {photoObj.description}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="photoComments">
-                        <div className="photoCommentsCount">{photoObj.comments_count}</div>
-                        <div className="photoCommentsText">
-                            {photoObj.comments_count === 1 ? 'Comment' : 'Comments'}
+                    <div className="photoMainInfoDivRight">
+                        <div className='mainInfoDivInfo'>
+                            <div className="photoFavorites">
+                                <div className="photoFavoritesCount">{photoObj.favorites_count}</div>
+                                <div className="photoFavoritesText">
+                                    {photoObj.favorites_count === 1 ? 'Favorite' : 'Favorites'}
+                                </div>
+                            </div>
+                            <div className="photoComments">
+                                <div className="photoCommentsCount">{photoObj.comments_count}</div>
+                                <div className="photoCommentsText">
+                                    {photoObj.comments_count === 1 ? 'Comment' : 'Comments'}
+                                </div>
+                            </div>
+                            <div className="photoDates">
+                                <div className="photoUploadDate">Uploaded on {convertDate(photoObj.created_at)}</div>
+                                <div className="photoTakenDate">Taken on {convertDate(photoObj.taken_at)}</div>
+                            </div>
                         </div>
-                    </div>
-                    <div className="photoDates">
-                        <div className="photoUploadDate">Uploaded on {convertDate(photoObj.created_at)}</div>
-                        <div className="photoTakenDate">Taken on {convertDate(photoObj.taken_at)}</div>
+                        <div className="grayBorder"></div>
                     </div>
                 </div>
-            </div>
-            <div className="allCommentsDiv">
-                {commentsArray.map(comment => (
-                    <div className="wholeCommentDiv" key={comment.id}>
-                        <NavLink exact to={`/ photos / ${comment.user.id} /photostream`}>
-                            <div className="commentUserNameDiv">{comment.user.first_name} {comment.user.last_name}</div>
-                        </NavLink>
-                        <img className="commentUserProfilePhoto" src={comment.user.profile_photo} />
-                        <div className="timeSinceComment" >{timeSinceCommentDate(comment.created_at)}</div>
-                        <div className="commentTextDiv">{comment.text}</div>
+                <div className='commentsSection'>
+                    <div className="allCommentsDiv">
+                        {sortedCommentsArray.map(comment => (
+                            <div className="wholeCommentDiv" key={comment.id}>
+                                <img className="commentUserProfilePhoto changeCursor" src={comment.user.profile_photo} onClick={() => history.push(`/photos/${comment.user.id}/photostream`)} />
+                                <div className='commentUserNameandTimeAndComment'>
+                                    <div className="commentUserNameAndTime">
+                                        <NavLink className="commentUserNameDiv" exact to={`/photos/${comment.user.id}/photostream`}>
+                                            {comment.user.first_name} {comment.user.last_name}
+                                        </NavLink>
+                                        <div className="timeSinceComment" >{timeSinceCommentDate(comment.created_at)}</div>
+                                    </div>
+                                    <div className="commentTextDiv">{comment.text}</div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                ))}
+                </div>
             </div>
         </div>
     )

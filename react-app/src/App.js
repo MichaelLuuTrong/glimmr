@@ -27,7 +27,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path='/photos/:userId/photostream'>
-            {/* User - Photostream Page */}
+            {/* User - Photostream Page - COMPLETED*/}
             <Header />
             <UserPageTop />
             <Photostream />
@@ -59,11 +59,13 @@ function App() {
           </Route>
 
           <Route exact path='/photos/:photoId/edit'>
+            {/* Edit Photo Page - COMPLETED*/}
             <Header />
             <PhotoEdit />
           </Route>
 
           <Route exact path='/photos/:photoId'>
+            {/* Photo Page */}
             <PhotoPage />
             <Header />
           </Route>
