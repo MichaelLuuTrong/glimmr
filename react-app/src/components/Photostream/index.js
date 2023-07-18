@@ -36,7 +36,7 @@ function Photostream() {
                                 return (
                                     <div onClick={() => history.push(`/photos/${photo.id}`)} key={id} className="masonryItem changeCursor">
                                         <div className='divOverPhoto'>
-                                            {sessionuser.id === Number(userId) && (
+                                            {sessionuser && sessionuser.id === Number(userId) && (
                                                 <div className='editImageOnHoverDiv'>
                                                     <div className='editImageOnHoverText'
                                                         onClick={(e) => {
