@@ -3,6 +3,7 @@ const POST_COMMENT = "comment/POST_COMMENT"
 const GET_PHOTO_COMMENTS = "comment/GET_PHOTO_COMMENTS"
 const PATCH_COMMENT = "comment/PATCH_COMMENT"
 const DELETE_COMMENT = "comment/DELETE_COMMENT"
+const DELETE_COMMENT_SUCCESS = "comment/DELETE_COMMENT_SUCCESS"
 
 //action creators
 const postComment = (comment) => ({
@@ -79,20 +80,16 @@ export const patchCommentThunk = (comment, comment_id) => async (dispatch) => {
 }
 
 export const deleteCommentThunk = (comment_id) => async (dispatch) => {
-    try {
-        const res = await fetch(`/api/comments/${comment_id}`, {
-            method: "DELETE"
-        });
+    const res = await fetch(`/api/comments/${comment_id}`, {
+        method: "DELETE"
+    });
 
-        if (res.ok) {
-            dispatch(deleteComment(comment_id));
-            return
-        };
-    } catch (err) {
-        const errors = await err.json();
-        return errors
+    if (res.ok) {
+        dispatch(deleteComment(comment_id));
+        return
     }
-}
+};
+
 
 //reducer
 const initialState = { photoComments: {}, singleComment: {} }
