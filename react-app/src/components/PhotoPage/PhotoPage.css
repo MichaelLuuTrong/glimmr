@@ -173,7 +173,7 @@
     margin-bottom: 10px;
     width: 100%;
     transition: background-color 0.3s;
-    border: 1px solid red;
+
 }
 
 .wholeCommentDiv:hover {
@@ -211,6 +211,8 @@
 
 .commentTextDiv {
     font-size: 14px;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 
@@ -265,15 +267,15 @@
     align-items: flex-end;
 }
 
-.deleteCommentButtonIcon {
-    opacity: 0;
-    transition: opacity 0.3s;
+.editAndDeleteButtons {
     position: absolute;
-    top: 7px;
-    right: 7px;
-    fill: #CACCCE
+    display: flex;
+    top: 3px;
+    right: 2px;
+    opacity: 0;
+    transition: opacity 0.3s
 }
 
-.wholeCommentDiv:hover .deleteCommentButtonIcon {
+.wholeCommentDiv:hover .editAndDeleteButtons {
     opacity: 1
 }
