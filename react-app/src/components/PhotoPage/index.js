@@ -157,7 +157,7 @@ function PhotoPage() {
                                     </div>
                                     <div className="commentTextDiv">{comment.text}</div>
                                 </div>
-                                {comment.user_id === user.id && (
+                                {(user) && comment.user_id === user.id && (
                                     <div className="editAndDeleteButtonsWrapper">
                                         <div className="editAndDeleteButtons">
                                             <OpenModalButton
