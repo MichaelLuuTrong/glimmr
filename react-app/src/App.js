@@ -65,7 +65,7 @@ function App() {
           </Route>
 
           <Route exact path='/photos/:photoId'>
-            {/* Photo Page */}
+            {/* Photo Page - COMPLETED */}
             <PhotoPage />
             <Header />
           </Route>
