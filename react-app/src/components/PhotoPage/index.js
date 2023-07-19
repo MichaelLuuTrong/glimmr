@@ -86,9 +86,8 @@ function PhotoPage() {
         dispatch(getAllUsersThunk())
     }, [dispatch, photoId])
 
-    const handleDeleteComment = async (commentId) => {
-        const deleted = await dispatch(deleteCommentThunk(commentId))
-        console.log(deleted, ' deleted')
+    const handleDeleteComment = (commentId) => {
+        dispatch(deleteCommentThunk(commentId))
     };
 
     return (
