@@ -34,8 +34,18 @@ def seed_users():
         profile_photo='https://i.imgur.com/Vz2yeN4.jpg',
         cover_photo='https://i.imgur.com/3rQycJo.jpg'
     )
+    demo = User(
+        username='demoUser',
+        email='demo@aa.io',
+        password='password',
+        first_name='Demo',
+        last_name='User',
+        bio='I am a demo user, and I am exploring this website!',
+        profile_photo='https://i.imgur.com/o5hKPxy.png',
+        cover_photo='https://i.imgur.com/NCHLA2B.jpg'
+    )
 
-    all_users = [klaus, alexander, steve]
+    all_users = [klaus, alexander, steve, demo]
 
     _ = [db.session.add(user) for user in all_users]
     db.session.commit()

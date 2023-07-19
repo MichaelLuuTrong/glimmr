@@ -19,7 +19,7 @@ function Photostream() {
     return (
         <>
             <div className='fullExplorePage'>
-                {userPhotosArray[0] ? (
+                {(Boolean(userPhotosArray.toString())) && userPhotosArray[0] ? (
                     <div className='masonryDiv'>
                         {userPhotosArray[0].reverse().map((photo, id) => {
                             return (

@@ -76,7 +76,7 @@ function App() {
           </Route>
 
           <Route exact path="/log-in">
-            {/* Log-In Page */}
+            {/* Log-In Page - COMPLETED*/}
             <LoginFormPage />
           </Route>
 
