@@ -31,6 +31,16 @@ def post_comment(photo_id, user_id):
         else:
             return {'error': 'You are not logged in.'}
 
+#Get Comment by comment_id
+@comment_routes.route('/comment/<int:comment_id>')
+def get_comment_by_comment_id(comment_id):
+    comment = Comment.query.get(comment_id)
+    if not comment:
+        return {'error': 'That comment does not exist'}
+    else:
+        return comment.to_dict()
+
+
 #Get All Comments by photo_id
 @comment_routes.route('/<int:photo_id>')
 def get_comment_by_photo_id(photo_id):

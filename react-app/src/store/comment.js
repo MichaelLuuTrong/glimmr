@@ -1,5 +1,6 @@
 //constants
 const POST_COMMENT = "comment/POST_COMMENT"
+const GET_COMMENT = "comment/GET_COMMENT"
 const GET_PHOTO_COMMENTS = "comment/GET_PHOTO_COMMENTS"
 const PATCH_COMMENT = "comment/PATCH_COMMENT"
 const DELETE_COMMENT = "comment/DELETE_COMMENT"
@@ -13,6 +14,11 @@ const postComment = (comment) => ({
 const getPhotoComments = (comments) => ({
     type: GET_PHOTO_COMMENTS,
     comments
+})
+
+const getComment = (comment) => ({
+    type: GET_COMMENT,
+    comment
 })
 
 const patchComment = (comment) => ({
@@ -45,6 +51,20 @@ export const postCommentThunk = (photo_id, user_id, comment) => async (dispatch)
     }
 }
 
+export const getCommentThunk = (comment_id) => async (dispatch) => {
+    try {
+        const res = await fetch(`/api/comments/comment/${comment_id}`)
+        if (res.ok) {
+            const comment = await res.json();
+            dispatch(getComment(comment));
+            return comment;
+        }
+    } catch (err) {
+        const errors = err.json();
+        return errors;
+    }
+}
+
 export const getPhotoCommentsThunk = (photo_id) => async (dispatch) => {
     try {
         const res = await fetch(`/api/comments/${photo_id}`)
@@ -64,7 +84,8 @@ export const patchCommentThunk = (comment, comment_id) => async (dispatch) => {
         const res = await fetch(`/api/comments/${comment_id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(comment),
+            body: JSON.stringify(
+                { text: comment }),
         });
 
         if (res.ok) {
@@ -100,6 +121,11 @@ const commentReducer = (state = initialState, action) => {
             newState = { ...state, photoComments: { ...state.photoComments } };
             newState.photoComments[action.comment.id] = action.comment;
             return newState
+        }
+        case GET_COMMENT: {
+            newState = { ...state, singleComment: { ...state.singleComment } };
+            newState.singleComment = action.comment;
+            return newState;
         }
         case GET_PHOTO_COMMENTS: {
             if (action.comments.length === 0) {
