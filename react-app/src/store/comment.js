@@ -79,20 +79,16 @@ export const patchCommentThunk = (comment, comment_id) => async (dispatch) => {
 }
 
 export const deleteCommentThunk = (comment_id) => async (dispatch) => {
-    try {
-        const res = await fetch(`/api/comments/${comment_id}`, {
-            method: "DELETE"
-        });
+    const res = await fetch(`/api/comments/${comment_id}`, {
+        method: "DELETE"
+    });
 
-        if (res.ok) {
-            dispatch(deleteComment(comment_id));
-            return
-        };
-    } catch (err) {
-        const errors = await err.json();
-        return errors
+    if (res.ok) {
+        dispatch(deleteComment(comment_id));
+        return
     }
-}
+};
+
 
 //reducer
 const initialState = { photoComments: {}, singleComment: {} }
@@ -109,7 +105,7 @@ const commentReducer = (state = initialState, action) => {
             if (action.comments.length === 0) {
                 return { ...state, photoComments: {} }
             }
-            newState = { ...state, photoComments: { ...state.photoComments } };
+            newState = { ...state, photoComments: {} };
             action.comments.forEach((comment) => {
                 newState.photoComments[comment.id] = comment;
             });
@@ -122,7 +118,7 @@ const commentReducer = (state = initialState, action) => {
         }
         case DELETE_COMMENT: {
             newState = { ...state, photoComments: { ...state.photoComments } };
-            delete newState.photoComments[action.comment.id];
+            delete newState.photoComments[action.comment];
             return newState
         }
         default:

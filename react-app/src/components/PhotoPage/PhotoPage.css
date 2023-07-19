@@ -20,19 +20,11 @@
     transition: opacity 0.3s;
 }
 
-.commentUserProfilePhoto {
-    margin-top: 7px;
-    margin-right: 7px;
-    position: relative;
-    height: 40px;
-    border-radius: 50%;
-    transition: opacity 0.3s;
-}
-
 .photoInfoAndCommentsDiv {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 1000px;
 }
 
 
@@ -146,8 +138,7 @@
 }
 
 .commentsSection {
-    width: 50%;
-    min-width: 1000px;
+    width: 1000px;
     display: flex;
 }
 
@@ -174,12 +165,15 @@
 }
 
 .wholeCommentDiv {
+    align-items: flex-start;
+    position: relative;
     padding: 0px 0px 6px 6px;
     margin-left: 10px;
     display: flex;
     margin-bottom: 10px;
     width: 100%;
-    transition: background-color 0.3s
+    transition: background-color 0.3s;
+    border: 1px solid red;
 }
 
 .wholeCommentDiv:hover {
@@ -217,4 +211,69 @@
 
 .commentTextDiv {
     font-size: 14px;
+}
+
+
+.commentForm {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.commentUserProfilePhoto {
+    margin-top: 7px;
+    margin-right: 10px;
+    position: relative;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.commentTextInput {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 80px;
+    width: 400px;
+    padding: 10px 10px 10px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+.submitCommentButton {
+    width: 100px;
+    margin-top: 5px;
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #006dac;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.newCommentDiv {
+    padding: 0px 0px 6px 6px;
+    margin-left: 10px;
+    display: flex;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.commentFormRightSide {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.deleteCommentButtonIcon {
+    opacity: 0;
+    transition: opacity 0.3s;
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    fill: #CACCCE
+}
+
+.wholeCommentDiv:hover .deleteCommentButtonIcon {
+    opacity: 1
 }
