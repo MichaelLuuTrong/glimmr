@@ -45,6 +45,7 @@ function Explore() {
                                             {photo.title}</div>
                                         <div className='hoverPhotoTakerName'>
                                             by {getFirstNameById(usersArray, photo.user_id)}
+                                            {" "}
                                             {getLastNameById(usersArray, photo.user_id)}
                                         </div>
                                     </div>
