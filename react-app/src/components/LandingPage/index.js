@@ -15,10 +15,19 @@ import image10 from './BackgroundImages/image10.jpg'
 import image11 from './BackgroundImages/image11.jpg'
 import image12 from './BackgroundImages/image12.jpg'
 
+
+//I tried to change the background image, but it would take some time to load and there
+//would be an unpleasant white flask between images. Instead I render 12 different divs,
+//and set the opacity on one to 1 and the rest to 0. That way, the transitions are instant.
 const backgroundImages = [
     image1, image2, image3, image4,
     image5, image6, image7, image8,
     image9, image10, image11, image12]
+
+const backgroundImageStylingArray = backgroundImages.map((image) => ({
+    backgroundImage: `url(${image})`,
+    opacity: 0,
+}));
 
 const backgroundImageTitles = [
     "Fantasy Island",
@@ -43,11 +52,11 @@ const backgroundImagePhotographers = [
     "Rachel Brokaw",
     "Axel F",
     "Ria Putzker",
-    "Jorge Guadalupe",
+    "Jorge Guadalupe Lizárraga",
     "Junji Aoyama",
     "Fabian Fortmann",
     "Adam Gibbs",
-    "Joe Buurmans",
+    "Jos Buurmans",
     "Anna Kwa"
 ]
 
@@ -55,12 +64,11 @@ function LandingPage() {
     const [backgroundImageIndex, setBackgroundImageIndex] = useState(0);
 
     useEffect(() => {
-        setBackgroundImageIndex(Math.floor(Math.random() * backgroundImages.length));
+        const interval = setInterval(() => {
+            setBackgroundImageIndex((i) => (i + 1) % backgroundImages.length);
+        }, 5000);
+        return () => clearInterval(interval);
     }, []);
-
-    const backgroundImageStyling = {
-        backgroundImage: `url(${backgroundImages[backgroundImageIndex]})`,
-    };
 
     const backgroundImageTitle = backgroundImageTitles[backgroundImageIndex];
     const backgroundImagePhotographer = backgroundImagePhotographers[backgroundImageIndex];
@@ -73,33 +81,37 @@ function LandingPage() {
                     <img className='landingLogoImg' src="https://i.imgur.com/b9YTbxQ.png" alt="glimmr logo" />
                 </div>
                 <div className="landingHeaderLoginAndSignUp">
-                    <NavLink className='landingHeaderNavLink' exact to={`/log-in`}>
+                    <NavLink className='landingHeaderNavLink' exact to={`/ log -in `}>
                         <div className="landingLoginDiv">
                             Log In
                         </div>
                     </NavLink>
-                    <NavLink className='landingHeaderNavLink' exact to={`/sign-up`}>
+                    <NavLink className='landingHeaderNavLink' exact to={`/ sign - up`}>
                         <div className='landingSignupDiv'>
                             Sign Up </div>
                     </NavLink>
                 </div>
                 <div className="landingHeaderBackground"></div>
             </div >
-            <div className="landingBackgroundDiv" style={backgroundImageStyling}>
-                <div className="centralContentDiv">
-                    <div className="findYourInspirationText">Find your inspiration.</div>
-                    <div className="joinTheCommunityText">Join the Glimmr community, home to tens of tens of photos.</div>
-                    <NavLink className='landingNavLink' exact to={`/sign-up`}>
-                        <div className='landingStartDiv'>
-                            Sign Up
-                        </div>
-                    </NavLink>
-                </div>
-                <div className='landingPhotoCredit'>
-                    <div className='backgroundImageTitle'>{backgroundImageTitle}</div>
-                    <div className='backgroundImagePhotographer'>by {backgroundImagePhotographer}</div>
 
-                </div>
+            <div>
+                {backgroundImageStylingArray.map((backgroundImageStyling, index) => (
+                    <div className="landingBackgroundDiv" key={index} style={{ ...backgroundImageStyling, opacity: backgroundImageIndex === index ? 1 : 0 }}>
+                        <div className="centralContentDiv">
+                            <div className="findYourInspirationText">Find your inspiration.</div>
+                            <div className="joinTheCommunityText">Join the Glimmr community, home to tens of tens of photos.</div>
+                            <NavLink className='landingNavLink' exact to={`/sign-up`}>
+                                <div className='landingStartDiv'>
+                                    Sign Up
+                                </div>
+                            </NavLink>
+                        </div>
+                        <div className='landingPhotoCredit'>
+                            <div className='backgroundImageTitle'>{backgroundImageTitle}</div>
+                            <div className='backgroundImagePhotographer'>by {backgroundImagePhotographer}</div>
+                        </div>
+                    </div>
+                ))}
             </div>
         </>
     )
