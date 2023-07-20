@@ -1,0 +1,165 @@
+.landingBackgroundDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center
+}
+
+.landingHeaderBackground {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .25)
+}
+
+.landingHeaderDiv {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+}
+
+.landingLogoImageImg {
+    display: flex;
+    height: 12px;
+    margin-right: 3px
+}
+
+.landingLogoImg {
+    display: flex;
+    height: 30px;
+    margin-right: 30px
+}
+
+.landingLogoAndTextDiv {
+    height: 40px;
+    z-index: 1;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    margin-top: 7px;
+    margin-left: 3%;
+    align-items: center;
+}
+
+.landingHeaderLoginAndSignUp {
+    height: 40px;
+    z-index: 1;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    margin-left: 90%;
+    align-items: center;
+}
+
+.landingHeaderNavLink {
+    text-decoration: none
+}
+
+.landingLoginDiv {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    padding-right: 30px
+}
+
+.landingLoginDiv:hover {
+    color: lightgray
+}
+
+.landingSignupDiv {
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    background-color: white;
+    border-radius: 4px;
+    height: 30px;
+    width: 92px;
+    justify-content: center;
+    align-items: center;
+}
+
+.landingNavLink {
+    text-decoration: none;
+}
+
+.landingSignupDiv:hover {
+    color: lightgray;
+}
+
+.landingStartDiv {
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    background-color: white;
+    border-radius: 4px;
+    height: 58px;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+    transition: color .15s ease-in-out;
+    font-size: 24px;
+    font-weight: 600
+}
+
+.landingStartDiv:hover {
+    color: lightgray;
+}
+
+.centralContentDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logOut:hover,
+.yourPhotos:hover {
+    color: lightgray
+}
+
+.landingPhotoCredit {
+    position: absolute;
+    bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.backgroundImageTitle {
+    display: flex;
+    justify-content: center;
+}
+
+.backgroundImagePhotographer {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Text */
+
+.findYourInspirationText {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 56px;
+    color: white
+}
+
+.joinTheCommunityText {
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 50px;
+    color: white;
+    width: 530px;
+    text-align: center;
+}

@@ -94,7 +94,7 @@ function PhotoPage() {
     return (
         <div className="wholePhotoDiv">
             <div className='mainPhotoDiv'>
-                <img className='mainPhoto' src={photoObj.photo} />
+                <img className='mainPhoto' src={photoObj.photo} alt='Main' />
             </div >
             <div className='photoInfoAndCommentsDiv'>
                 <div className='photoInfoTop'>
@@ -147,7 +147,9 @@ function PhotoPage() {
                     <div className="allCommentsDiv">
                         {(Object.values(commentsObj)).map(comment => (
                             <div className="wholeCommentDiv" key={comment.id}>
-                                <img className="commentUserProfilePhoto changeCursor" src={comment.user.profile_photo} onClick={() => history.push(`/photos/${comment.user.id}/photostream`)} />
+                                <img className="commentUserProfilePhoto changeCursor" src={comment.user.profile_photo} onClick={() => history.push(`/photos/${comment.user.id}/photostream`)}
+                                    alt='Commenter Profile'
+                                />
                                 <div className='commentUserNameandTimeAndComment'>
                                     <div className="commentUserNameAndTime">
                                         <NavLink className="commentUserNameDiv" exact to={`/photos/${comment.user.id}/photostream`}>

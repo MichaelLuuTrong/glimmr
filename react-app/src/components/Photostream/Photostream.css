@@ -140,6 +140,10 @@
     fill: white;
 }
 
+.editImageOnHoverIcon:hover svg {
+    fill: lightgray;
+}
+
 .editImageOnHoverText {
     padding-right: 3px;
 }
