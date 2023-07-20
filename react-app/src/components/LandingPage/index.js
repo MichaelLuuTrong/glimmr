@@ -81,12 +81,12 @@ function LandingPage() {
                     <img className='landingLogoImg' src="https://i.imgur.com/b9YTbxQ.png" alt="glimmr logo" />
                 </div>
                 <div className="landingHeaderLoginAndSignUp">
-                    <NavLink className='landingHeaderNavLink' exact to={`/ log -in `}>
+                    <NavLink className='landingHeaderNavLink' exact to={`/log-in`}>
                         <div className="landingLoginDiv">
                             Log In
                         </div>
                     </NavLink>
-                    <NavLink className='landingHeaderNavLink' exact to={`/ sign - up`}>
+                    <NavLink className='landingHeaderNavLink' exact to={`/sign-up`}>
                         <div className='landingSignupDiv'>
                             Sign Up </div>
                     </NavLink>
