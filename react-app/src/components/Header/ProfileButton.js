@@ -37,8 +37,14 @@ function ProfileButton() {
         e.preventDefault();
         dispatch(sessionActions.logout());
         closeMenu();
-        history.push("/explore");
+        history.push("/");
     };
+
+    const yourPhotos = (e) => {
+        e.preventDefault();
+        closeMenu();
+        history.push(`/photos/${sessionUser.id}/photostream`)
+    }
 
     const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
@@ -50,7 +56,7 @@ function ProfileButton() {
                     <div className="hiUser">Hi, {sessionUser.first_name} {sessionUser.last_name}!</div>
                     <div className='headerDividerDiv'></div>
                     <div className="logOut changeCursor" onClick={logout}>Log Out</div>
-
+                    <div className="yourPhotos changeCursor" onClick={yourPhotos}>Your Photos</div>
                 </div>
             </div>
         </>

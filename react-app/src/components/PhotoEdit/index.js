@@ -91,7 +91,7 @@ function PhotoEdit() {
 
     const handleConfirmDelete = async (e) => {
         e.preventDefault();
-        let deletedPhoto = await dispatch(deletePhotoThunk(photoId));
+        await dispatch(deletePhotoThunk(photoId));
         history.push(`/photos/${user_id}/photostream`);
     };
 

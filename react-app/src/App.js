@@ -13,6 +13,7 @@ import UserPageTop from "./components/UserPageTop";
 import Photostream from "./components/Photostream";
 import About from "./components/About"
 import PhotoEdit from "./components/PhotoEdit"
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -87,7 +88,7 @@ function App() {
           </Route>
 
           <Route exact path="/">
-            {/* Landing Page */}
+            <LandingPage />
             {sessionUser ? <Redirect to="/explore" /> : null}
           </Route>
 
