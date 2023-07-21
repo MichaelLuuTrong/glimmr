@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { signUp } from "../../store/session";
+import { Redirect, NavLink } from "react-router-dom";
+import { signUp, login } from "../../store/session";
 import { getAllUsersThunk } from "../../store/user"
 import validator from 'validator'
 import './SignupForm.css';
@@ -41,8 +41,8 @@ function SignupFormPage() {
     if (first_name.length < 2) err.first_name = 'Please provide your first name.';
     if (first_name.length > 20) err.first_name = 'Please shorten your first name to 20 characters or fewer.'
 
-    if (last_name.length < 2) err.first_name = 'Please provide your last name.';
-    if (first_name.length > 20) err.first_name = 'Please shorten your last name to 20 characters or fewer.'
+    if (last_name.length < 2) err.last_name = 'Please provide your last name.';
+    if (last_name.length > 20) err.last_name = 'Please shorten your last name to 20 characters or fewer.'
 
     if (bio.length < 10) err.bio = "Please provide at least 10 characters of information. Don't be shy!"
     if (bio.length < 1) err.bio = 'Please provide information you would like others to know about you.';
@@ -77,134 +77,180 @@ function SignupFormPage() {
     }
   }
 
+  const handleDemoUser = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login("klausl509@gmail.com", "klauspassword"))
+    if (data) {
+      setErrors(data);
+    }
+  }
+
   if (sessionUser) return <Redirect to="/explore" />;
 
   return (
     <>
-      <div className="mainSignUpFormDiv">
-        <div className="signUpHeader">Sign Up</div>
-        {/* <ul>
+      <div className="signupHeaderDiv">
+        <div className="signupLogoAndTextDiv">
+          <NavLink className='loginLogoImage' exact to="/">
+            <img className='loginLogoImageImg' src="https://i.imgur.com/CN01U69.png" alt="glimmr icon" />
+          </NavLink>
+          <NavLink className='loginLogoLogo' exact to="/">
+            <img className='loginLogoImg' src="https://i.imgur.com/b9YTbxQ.png" alt="glimmr logo" />
+          </NavLink>
+        </div>
+        <div className="signupHeaderBackground"></div>
+      </div>
+      <div className="backgroundPhotoCredit">033120190455 by Henry , CC BY</div>
+      <div className="backgroundDiv">
+        <div className="mainSignUpFormDiv">
+          <img
+            className="signupGlimmrLogo"
+            src="https://i.imgur.com/CN01U69.png"
+            alt=""
+          />
+          <div className="signUpHeader">Sign up for Glimmr</div>
+          {/* <ul>
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul> */}
-        <form onSubmit={handleSubmit}>
-          <div className="firstNameInput">
-            {submitted && errors.first_name && <div className="signupError">{errors.first_name}</div>}
-            <label>
-              First Name
-              <input
-                maxLength={30}
-                type="text"
-                value={first_name}
-                onChange={(e) => setfirst_name(e.target.value)}
-                required
-              />
-            </label>
-          </div>
-          <div className="lastNameInput">
-            {submitted && errors.last_name && <div className="signupError">{errors.last_name}</div>}
-            <label>
-              Last Name
-              <input
-                maxLength={30}
-                type="text"
-                value={last_name}
-                onChange={(e) => setlast_name(e.target.value)}
-                required
-              />
-            </label>
-          </div>
-          <div className="emailInput">
-            {submitted && errors.email && <div className="signupError">{errors.email}</div>}
-            <label>
-              Email
-              <input
-                maxLength={30}
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </label>
-          </div>
-          <div className="usernameInput">
-            {submitted && errors.username && <div className="signupError">{errors.username}</div>}
-            <label>
-              Username
-              <input
-                maxLength={30}
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-            </label></div>
-          <div className="profilePhotoInput">
-            {submitted && errors.profile_photo && <div className="signupError">{errors.profile_photo}</div>}
-            <label>
-              Profile Photo
-              <input
-                type="text"
-                value={profile_photo}
-                onChange={(e) => setprofile_photo(e.target.value)}
-                required
-              />
-            </label>
-          </div>
-          <div className="coverPhotoInput">
-            {submitted && errors.cover_photo && <div className="signupError">{errors.cover_photo}</div>}
-            <label>
-              Cover Photo
-              <input
-                type="text"
-                value={cover_photo}
-                onChange={(e) => setcover_photo(e.target.value)}
-                required
-              />
-            </label>
-          </div>
-          <div className="bioInput">
-            {submitted && errors.bio && <div className="signupError">{errors.bio}</div>}
-            <label>
-              Bio
-              <input
-                maxLength={2000}
-                type="text"
-                value={bio}
-                onChange={(e) => setBio(e.target.value)}
-                required
-              />
-            </label>
-          </div>
-          <div className="passwordInput">
-            {submitted && errors.password && <div className="signupError">{errors.password}</div>}
-            <label>
-              Password
-              <input
-                maxLength={30}
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </label>
-          </div>
-          <div className="confirmPasswordInput">
-            {submitted && errors.confirmPassword && <div className="signupError">{errors.confirmPassword}</div>}
-            <label>
-              Confirm Password
-              <input
-                maxLength={30}
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
-            </label>
-          </div>
-          {/* <div>{Object.values(errors)}</div> */}
-          {/* <div>{Object.keys(errors)}</div> */}
-          <button className={Object.values(errors).length ? 'signupButtonDisabled' : 'signupButton changeCursor'} type="submit">Sign Up</button>
-        </form>
+          <form onSubmit={handleSubmit}>
+            <div className="firstNameInput">
+              {submitted && errors.first_name && <div className="signupError">{errors.first_name}</div>}
+              <label className='signupLabel'>
+                First Name
+                <input
+                  className='firstNameInputField'
+                  maxLength={30}
+                  type="text"
+                  value={first_name}
+                  onChange={(e) => setfirst_name(e.target.value)}
+                  required
+                />
+              </label>
+            </div>
+            <div className="lastNameInput">
+              {submitted && errors.last_name && <div className="signupError">{errors.last_name}</div>}
+              <label className='signupLabel'>
+                Last Name
+                <input
+                  className='lastNameInputField'
+                  maxLength={30}
+                  type="text"
+                  value={last_name}
+                  onChange={(e) => setlast_name(e.target.value)}
+                  required
+                />
+              </label>
+            </div>
+            <div className="emailInput">
+              {submitted && errors.email && <div className="signupError">{errors.email}</div>}
+              <label className='signupLabel'>
+                Email
+                <input
+                  className='emailInputField'
+                  maxLength={30}
+                  type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </label>
+            </div>
+            <div className="usernameInput">
+              {submitted && errors.username && <div className="signupError">{errors.username}</div>}
+              <label className='signupLabel'>
+                Username
+                <input
+                  className='usernameInputField'
+                  maxLength={30}
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+              </label></div>
+            <div className="profilePhotoInput">
+              {submitted && errors.profile_photo && <div className="signupError">{errors.profile_photo}</div>}
+              <label className='signupLabel'>
+                Profile Photo
+                <input
+                  className='profilePhotoInputField'
+                  type="text"
+                  value={profile_photo}
+                  onChange={(e) => setprofile_photo(e.target.value)}
+                  required
+                />
+              </label>
+            </div>
+            <div className="coverPhotoInput">
+              {submitted && errors.cover_photo && <div className="signupError">{errors.cover_photo}</div>}
+              <label className='signupLabel'>
+                Cover Photo
+                <input
+                  className='coverPhotoInputField'
+                  type="text"
+                  value={cover_photo}
+                  onChange={(e) => setcover_photo(e.target.value)}
+                  required
+                />
+              </label>
+            </div>
+            <div className="bioInput">
+              {submitted && errors.bio && <div className="signupError">{errors.bio}</div>}
+              <label className='signupLabel'>
+                Bio
+                <textarea
+                  className='bioInputField'
+                  maxLength={2000}
+                  type="text"
+                  value={bio}
+                  onChange={(e) => setBio(e.target.value)}
+                  required
+                />
+              </label>
+            </div>
+            <div className="passwordInput">
+              {submitted && errors.password && <div className="signupError">{errors.password}</div>}
+              <label className='signupLabel'>
+                Password
+                <input
+                  className='passwordInputField'
+                  maxLength={30}
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </label>
+            </div>
+            <div className="confirmPasswordInput">
+              {submitted && errors.confirmPassword && <div className="signupError">{errors.confirmPassword}</div>}
+              <label className='signupLabel'>
+                Confirm Password
+                <input
+                  className='passwordConfirmationInputField'
+                  maxLength={30}
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+              </label>
+            </div>
+            {/* <div>{Object.values(errors)}</div> */}
+            {/* <div>{Object.keys(errors)}</div> */}
+            <button className={Object.values(errors).length ? 'signupButtonDisabled' : 'signupButtonEnabled'} type="submit">Sign Up</button>
+            <div className='demoUserDiv'>
+              <button className="signupDemoUserButton changeCursor"
+                onClick={handleDemoUser}>
+                Log in as Demo User
+              </button>
+            </div>
+          </form>
+          <div className="seperatorDiv"></div>
+          <div className="notAGlimmrMemberText">Already a Glimmr member?
+            <NavLink exact to='/log-in'> Log in here.</NavLink>
+          </div >
+        </div>
       </div>
     </>
   );
