@@ -42,8 +42,9 @@ export const postPhotoThunk = (photo, user) => async (dispatch) => {
     try {
         const res = await fetch(`/api/photos/${user.id}/photos`, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(photo)
+            // headers: { "Content-Type": "application/json" },
+            // body: JSON.stringify(photo)
+            body: photo
         });
 
         if (res.ok) {
@@ -106,8 +107,9 @@ export const patchPhotoThunk = (photo, photoId) => async (dispatch) => {
     try {
         const res = await fetch(`/api/photos/${photoId}`, {
             method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(photo)
+            // headers: { "Content-Type": "application/json" },
+            // body: JSON.stringify(photo)
+            body: photo
         })
 
         if (res.ok) {

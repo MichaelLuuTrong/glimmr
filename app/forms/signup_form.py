@@ -2,6 +2,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
+from flask_wtf.file import FileField, FileAllowed, FileRequired
+from app.api.AWS_helpers import ALLOWED_EXTENSIONS
 
 
 def user_exists(form, field):
@@ -28,5 +30,5 @@ class SignUpForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()])
     last_name = StringField('Last Name', validators=[DataRequired()])
     bio = StringField('Bio', validators=[DataRequired()])
-    profile_photo = StringField('Profile Photo', validators=[DataRequired()])
-    cover_photo = StringField('Cover Photo', validators=[DataRequired()])
+    profile_photo = FileField('Profile Photo', validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+    cover_photo = FileField('Cover Photo', validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])

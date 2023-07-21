@@ -24,6 +24,7 @@ function SignupFormPage() {
   const usersArray = Object.values(usersObj)
   const usernamesArray = usersArray.map((user) => user.username)
   const emailsArray = usersArray.map((user) => user.email)
+  // const [imageLoading, setImageLoading] = useState(false);
 
   useEffect(() => {
     const err = {};
@@ -65,15 +66,27 @@ function SignupFormPage() {
     setSubmitted(true)
     if (Object.values(errors).length < 1) {
       setErrors({})
-      await dispatch(signUp(
-        username,
-        email,
-        password,
-        first_name,
-        last_name,
-        bio,
-        profile_photo,
-        cover_photo));
+      const responses = new FormData();
+      responses.append("username", username);
+      responses.append("email", email);
+      responses.append("password", password);
+      responses.append("first_name", first_name);
+      responses.append("last_name", last_name);
+      responses.append("bio", bio);
+      responses.append("profile_photo", profile_photo);
+      responses.append("cover_photo", cover_photo)
+      // const responses = {
+      //   username,
+      //   email,
+      //   password,
+      //   first_name,
+      //   last_name,
+      //   bio,
+      //   profile_photo,
+      //   cover_photo
+      // }
+      // setImageLoading(true)
+      await dispatch(signUp(responses));
     }
   }
 
@@ -112,7 +125,9 @@ function SignupFormPage() {
           {/* <ul>
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul> */}
-          <form onSubmit={handleSubmit}>
+          <form
+            onSubmit={handleSubmit}
+            encType="multipart/form-data">
             <div className="firstNameInput">
               {submitted && errors.first_name && <div className="signupError">{errors.first_name}</div>}
               <label className='signupLabel'>
@@ -174,9 +189,9 @@ function SignupFormPage() {
                 Profile Photo
                 <input
                   className='profilePhotoInputField'
-                  type="text"
-                  value={profile_photo}
-                  onChange={(e) => setprofile_photo(e.target.value)}
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => setprofile_photo(e.target.files[0])}
                   required
                 />
               </label>
@@ -187,9 +202,9 @@ function SignupFormPage() {
                 Cover Photo
                 <input
                   className='coverPhotoInputField'
-                  type="text"
-                  value={cover_photo}
-                  onChange={(e) => setcover_photo(e.target.value)}
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => setcover_photo(e.target.files[0])}
                   required
                 />
               </label>

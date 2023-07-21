@@ -18,10 +18,11 @@ function PhotoUpload() {
 
     const dispatch = useDispatch()
     const history = useHistory()
+    // const [imageLoading, setImageLoading] = useState(false);
 
     useEffect(() => {
         const errorArray = [];
-        if (!photo.length) errorArray.photo = 'Photo is required'
+        if (!photo) errorArray.photo = 'Photo is required'
         if (!title.length) errorArray.title = 'Title is required'
         if (!description.length) errorArray.description = 'Description is required'
         if (!taken_at.length) errorArray.taken_at = 'Taken at date is required'
@@ -38,14 +39,20 @@ function PhotoUpload() {
         e.preventDefault();
         setSubmitted(true);
         setResponseErrors({});
-        const responses = {
-            photo,
-            title,
-            description,
-            taken_at,
-            created_at: new Date().toISOString()
-        };
-
+        const responses = new FormData()
+        responses.append("photo", photo);
+        responses.append("title", title);
+        responses.append("description", description);
+        responses.append("taken_at", taken_at);
+        responses.append("created_at", (new Date().toISOString()))
+        // const responses = {
+        //     photo,
+        //     title,
+        //     description,
+        //     taken_at,
+        //     created_at: new Date().toISOString()
+        // };
+        // setImageLoading(true)
         if (!Object.values(errors).length) {
             let createdPhoto = await dispatch(postPhotoThunk(responses, sessionUser));
             if (!createdPhoto.errors) {
@@ -57,8 +64,11 @@ function PhotoUpload() {
     };
 
     return (
-        <div onSubmit={formSubmit} className='formDiv' noValidate>
-            <form className='newPhotoForm'>
+        <div className='formDiv'>
+            <form
+                className='newPhotoForm'
+                encType="multipart/form-data"
+                onSubmit={formSubmit}>
                 <div className='topMiddleDiv'>
                     <img className='photoFormGlimmrLogo' src='https://i.imgur.com/CN01U69.png' alt='' />
                     <div className='postAPhotoText'>Post a Photo</div>
@@ -66,33 +76,34 @@ function PhotoUpload() {
                 {submitted && (Object.values(responseErrors).length) ? <div>{Object.values(responseErrors)}</div> : null}
                 <div className='photoInputDiv'>
                     {submitted ? <div className='validationError'>{errors.photo}</div> : null}
+                    <div className="takenAtText">Photo</div>
                     <input
                         className='photoField'
-                        type='text'
+                        type='file'
                         name='photo'
-                        placeholder='Photo'
-                        value={photo}
-                        onChange={(e) => setPhoto(e.target.value)}
+                        accept="image/*"
+                        // value={photo}
+                        onChange={(e) => setPhoto(e.target.files[0])}
                     />
                 </div>
                 <div className='titleInputDiv'>
                     {submitted ? <div className='validationError'>{errors.title}</div> : null}
+                    <div className="takenAtText">Title</div>
                     <input
                         className='titleField'
                         type='text'
                         name='title'
-                        placeholder='Title'
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
                 </div>
                 <div className='descriptionInputDiv'>
                     {submitted ? <div className='validationError'>{errors.description}</div> : null}
+                    <div className="takenAtText">Description</div>
                     <input
                         className='descriptionField'
                         type='text'
                         name='description'
-                        placeholder='Description'
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
