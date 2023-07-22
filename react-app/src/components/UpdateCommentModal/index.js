@@ -24,6 +24,14 @@ const UpdateCommentModal = ({ comment_id, comment_text, photo_id }) => {
         <div className="updateCommentDiv">
             <div className="updateCommentText">Update Comment
             </div>
+            {comment.length > 300 && comment.length < 500 &&
+                <div className="errorContainer">
+                    <div className="commentTooLongError">
+                        Characters: {comment.length}/500
+                    </div>
+
+                </div>
+            }
             {comment.length === 500 &&
                 <div className="errorContainer">
                     <div className="commentTooLongError">

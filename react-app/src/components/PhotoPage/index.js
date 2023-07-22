@@ -196,6 +196,14 @@ function PhotoPage() {
                                     alt="User Profile"
                                 />
                                 <div className="commentFormRightSide">
+                                    {commentText.length > 300 && commentText.length < 500 &&
+                                        <div className="errorContainer">
+                                            <div className="commentTooLongError">
+                                                Characters: {commentText.length}/500
+                                            </div>
+
+                                        </div>
+                                    }
                                     {commentText.length === 500 &&
                                         <div className="errorContainer">
                                             <div className="commentTooLongError">
