@@ -85,7 +85,6 @@ function PhotoEdit() {
             let updatedPhoto = await dispatch(
                 patchPhotoThunk(responses, photoId)
             );
-            console.log(updatedPhoto)
             if (updatedPhoto) {
                 history.push(`/photos/${updatedPhoto.id}`);
             } else {
