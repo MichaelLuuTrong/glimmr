@@ -2,9 +2,7 @@
     width: 100%;
     background-color: #F3F5F6;
     position: relative;
-    /* Add this line */
     min-height: 71.2vh;
-    /* Ensure the container takes at least the full viewport height */
 }
 
 .userBio {
@@ -17,9 +15,7 @@
     border-radius: 4px;
     position: absolute;
     left: 10%;
-    /* Adjust as needed */
     right: 10%;
-    /* Adjust as needed */
 }
 
 .userBioText {
