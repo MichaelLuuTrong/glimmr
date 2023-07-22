@@ -163,7 +163,7 @@ function PhotoEdit() {
                             <div className="validationError">{errors.description}</div>
                         ) : null}
                         <div className="aboveFieldText">Description</div>
-                        <input
+                        <textarea
                             className="descriptionField"
                             type="text"
                             name="description"
@@ -184,9 +184,13 @@ function PhotoEdit() {
                         />
                     </div>
                     <div className="updatePhotoButtonDiv">
+                        <button className="cancelUpdatePhotoButton" onClick={() => history.push(`/photos/${sessionUser.id}/photostream`)}>
+                            Cancel Update
+                        </button>
                         <button className="updatePhotoButton" type="submit">
                             Update Photo
                         </button>
+
                     </div>
                 </form>
             ) :
