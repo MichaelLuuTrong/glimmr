@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from ..models import db, User, Photo
 from app.forms.photo_form import PhotoForm
 from datetime import datetime
+from app.api.AWS_helpers import (upload_file_to_s3, get_unique_filename)
 
 photo_routes = Blueprint("photos", __name__)
 
@@ -12,9 +13,16 @@ def post_photo(user_Id):
     if current_user.is_authenticated:
         if current_user.id == user_Id:
             form = PhotoForm()
+            photo = form.data['photo']
+            photo.filename = get_unique_filename(photo.filename)
+            upload = upload_file_to_s3(photo)
+
+            if "url" not in upload:
+                return {Error: "Upload Error"}
+
             new_photo = Photo(
                 user_id = user_Id,
-                photo = form.data['photo'],
+                photo = upload["url"],
                 title = form.data['title'],
                 description = form.data['description'],
                 taken_at = form.data['taken_at'],
@@ -58,8 +66,17 @@ def update_photo_by_photo_id(photo_id):
         photo_to_update = Photo.query.get(photo_id)
         if not photo_to_update:
             return {'error': 'That photo does not exist'}
+
         if photo_to_update.user_id == current_user.id:
-            photo_to_update.photo = form.data['photo']
+            if form.data['photo']:
+                photo = form.data['photo']
+                photo.filename = get_unique_filename(photo.filename)
+                upload = upload_file_to_s3(photo)
+
+                if "url" not in upload:
+                    return {Error: "Upload Error"}
+                photo_to_update.photo = upload["url"]
+
             photo_to_update.title = form.data['title']
             photo_to_update.description = form.data['description']
             photo_to_update.taken_at = form.data['taken_at']

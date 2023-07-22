@@ -1,0 +1,31 @@
+.userBioBackground {
+    width: 100%;
+    background-color: #F3F5F6;
+    position: relative;
+    /* Add this line */
+    min-height: 71.2vh;
+    /* Ensure the container takes at least the full viewport height */
+}
+
+.userBio {
+    margin-top: 22px;
+    margin-bottom: 22px;
+    border: 1px #E3E3E3 solid;
+    width: 80%;
+    background-color: white;
+    display: inline-block;
+    border-radius: 4px;
+    position: absolute;
+    left: 10%;
+    /* Adjust as needed */
+    right: 10%;
+    /* Adjust as needed */
+}
+
+.userBioText {
+    margin-top: 39px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 39px;
+    font-family: Arial, Helvetica, sans-serif;
+}

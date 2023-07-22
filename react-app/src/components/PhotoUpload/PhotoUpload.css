@@ -36,14 +36,19 @@
 
 .photoField,
 .titleField,
-.descriptionField,
-.takenAtField {
+.takenAtField,
+.descriptionField {
     width: 95%;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 4px;
     transition: border-color 0.2s ease-in-out;
+}
+
+.descriptionField {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 150px;
 }
 
 .photoField:focus,

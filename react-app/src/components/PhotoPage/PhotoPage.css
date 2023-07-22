@@ -69,6 +69,7 @@
 .photoDescription {
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 10px;
+    word-wrap: break-word
 }
 
 .mainInfoDivInfo {
@@ -278,4 +279,15 @@
 
 .wholeCommentDiv:hover .editAndDeleteButtons {
     opacity: 1
+}
+
+.errorContainer {
+    width: 100%;
+}
+
+.commentTooLongError {
+    margin-left: 5px;
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
 }

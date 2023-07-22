@@ -18,6 +18,8 @@ function PhotoEdit() {
     const dispatch = useDispatch();
     const history = useHistory();
     const [confirmDelete, setConfirmDelete] = useState(false)
+    // const [imageLoading, setImageLoading] = useState(false);
+    const [oldPhoto, setOldPhoto] = useState({})
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,12 +29,13 @@ function PhotoEdit() {
             }
             setUser_id(photoData.user_id)
             setPhoto(photoData.photo);
+            setOldPhoto(photoData.photo)
             setTitle(photoData.title);
             setDescription(photoData.description);
             // Check if photoData.taken_at is a valid date string
             const dateObject = new Date(photoData.taken_at);
             if (isNaN(dateObject.getTime())) {
-                // Invalid date string, set taken_at to an empty string or some default value
+                // Invalid date string, set taken_at to an empty string
                 setTaken_at("");
             } else {
                 // Valid date string, format it
@@ -44,11 +47,11 @@ function PhotoEdit() {
     }, [dispatch, photoId]);
 
     useEffect(() => {
-        if (!photo) return;
         const errorArray = [];
-        if (!photo.length) errorArray.photo = 'Photo is required'
         if (!title.length) errorArray.title = "Title is required";
+        if (title.length > 50) errorArray.title = 'Title must be less than 50 characters'
         if (!description.length) errorArray.description = "Description is required";
+        if (description.length > 2000) errorArray.description = 'Description can be a maximum of 2000 characters.'
         if (!taken_at.length) errorArray.taken_at = "Taken at date is required";
 
         const currentDate = new Date();
@@ -63,23 +66,30 @@ function PhotoEdit() {
         e.preventDefault();
         setSubmitted(true);
         setResponseErrors({});
-        const responses = {
-            photo,
-            title,
-            description,
-            taken_at,
-            updated_at: new Date().toISOString(),
-        };
+        const responses = new FormData()
+        if (photo) responses.append("photo", photo)
+        responses.append("title", title)
+        responses.append("description", description)
+        responses.append("taken_at", taken_at)
+        responses.append("updated_at", (new Date().toISOString()))
 
+        // const responses = {
+        //     photo,
+        //     title,
+        //     description,
+        //     taken_at,
+        //     updated_at: new Date().toISOString(),
+        // };
+        // setImageLoading(true)
         if (!Object.values(errors).length) {
             let updatedPhoto = await dispatch(
                 patchPhotoThunk(responses, photoId)
             );
             console.log(updatedPhoto)
-            if (!updatedPhoto.errors) {
+            if (updatedPhoto) {
                 history.push(`/photos/${updatedPhoto.id}`);
             } else {
-                setResponseErrors(updatedPhoto.errors);
+                setResponseErrors("Error: there was an issue editing your photo.");
             }
         }
     };
@@ -98,7 +108,11 @@ function PhotoEdit() {
     return (
         <div className="formDiv">
             {sessionUser && sessionUser.id === user_id ? (
-                <form onSubmit={formSubmit} className="editPhotoForm" noValidate>
+                <form
+                    onSubmit={formSubmit}
+                    className="editPhotoForm"
+                    encType="multipart/form-data"
+                >
                     <div className="deleteButtonContainer">
                         {!confirmDelete ? (
                             <button className="deleteButton" onClick={handleDelete}>
@@ -119,18 +133,18 @@ function PhotoEdit() {
                         <div className="editPhotoText">Edit a Photo</div>
                     </div>
                     {submitted && Object.values(responseErrors).length ? (
-                        <div>{Object.values(responseErrors)}</div>
+                        <div className='editPhotoResponseErrors'>{Object.values(responseErrors)}</div>
                     ) : null}
                     <div className='photoInputDiv'>
                         {submitted ? <div className='validationError'>{errors.photo}</div> : null}
                         <div className="aboveFieldText">Photo</div>
+                        <div className="aboveFieldText">(Leave Empty to Keep Current Photo)</div>
                         <input
                             className='photoField'
-                            type='text'
+                            type='file'
+                            accept="image/*"
                             name='photo'
-                            placeholder='Photo'
-                            value={photo}
-                            onChange={(e) => setPhoto(e.target.value)}
+                            onChange={(e) => setPhoto(e.target.files[0])}
                         />
                     </div>
                     <div className="titleInputDiv">

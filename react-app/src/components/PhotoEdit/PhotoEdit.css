@@ -15,6 +15,15 @@
     width: 100%;
 }
 
+.editPhotoResponseErrors {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f00;
+    font-size: 14px;
+    margin-bottom: 5px;
+    padding-left: 3px;
+}
+
+
 .validationError {
     font-family: Arial, Helvetica, sans-serif;
     color: #f00;

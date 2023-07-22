@@ -41,6 +41,7 @@ function convertDate(dateString) {
     ];
 
     const date = new Date(dateString);
+    date.setDate(date.getDate() + 1) //Adds one day to account for timezone issue
     const day = date.getDate();
     const month = months[date.getMonth()];
     const year = date.getFullYear();
@@ -195,7 +196,15 @@ function PhotoPage() {
                                     alt="User Profile"
                                 />
                                 <div className="commentFormRightSide">
+                                    {commentText.length === 500 &&
+                                        <div className="errorContainer">
+                                            <div className="commentTooLongError">
+                                                You have reached the maximum comment length.
+                                            </div>
+                                        </div>
+                                    }
                                     <textarea
+                                        maxlength={500}
                                         className="commentTextInput"
                                         type="text"
                                         placeholder="Add a comment"
