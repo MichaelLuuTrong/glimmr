@@ -22,7 +22,15 @@ const UpdateCommentModal = ({ comment_id, comment_text, photo_id }) => {
 
     return (
         <div className="updateCommentDiv">
-            <div className="updateCommentText">Update Comment</div>
+            <div className="updateCommentText">Update Comment
+            </div>
+            {comment.length === 500 &&
+                <div className="errorContainer">
+                    <div className="commentTooLongError">
+                        You have reached the maximum comment length.
+                    </div>
+                </div>
+            }
             <form onSubmit={handleUpdateComment}>
                 <textarea
                     className="updateCommentTextInput"

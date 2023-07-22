@@ -196,7 +196,15 @@ function PhotoPage() {
                                     alt="User Profile"
                                 />
                                 <div className="commentFormRightSide">
+                                    {commentText.length === 500 &&
+                                        <div className="errorContainer">
+                                            <div className="commentTooLongError">
+                                                You have reached the maximum comment length.
+                                            </div>
+                                        </div>
+                                    }
                                     <textarea
+                                        maxlength={500}
                                         className="commentTextInput"
                                         type="text"
                                         placeholder="Add a comment"

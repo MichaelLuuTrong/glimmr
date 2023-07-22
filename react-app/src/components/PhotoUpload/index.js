@@ -24,7 +24,9 @@ function PhotoUpload() {
         const errorArray = [];
         if (!photo) errorArray.photo = 'Photo is required'
         if (!title.length) errorArray.title = 'Title is required'
+        if (title.length > 50) errorArray.title = 'Title must be less than 50 characters'
         if (!description.length) errorArray.description = 'Description is required'
+        if (description.length > 2000) errorArray.description = 'Description can be a maximum of 2000 characters.'
         if (!taken_at.length) errorArray.taken_at = 'Taken at date is required'
 
         const currentDate = new Date();
@@ -100,7 +102,7 @@ function PhotoUpload() {
                 <div className='descriptionInputDiv'>
                     {submitted ? <div className='validationError'>{errors.description}</div> : null}
                     <div className="takenAtText">Description</div>
-                    <input
+                    <textarea
                         className='descriptionField'
                         type='text'
                         name='description'
