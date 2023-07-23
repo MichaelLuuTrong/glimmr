@@ -518,8 +518,8 @@ def seed_photos():
     md3 = Photo(
         user_id=6,
         photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/md/md3.png',
-        title="Later in the afternoon the suns angle gave an amazing oceanside underwater view of this beautiful paradise in Sardinia.",
-        description="Crystal Clear Cove - Sardinia, Italy",
+        title="Crystal Clear Cove - Sardinia, Italy",
+        description="Later in the afternoon the suns angle gave an amazing oceanside underwater view of this beautiful paradise in Sardinia.",
         taken_at=datetime(2022, 6, 12),
         created_at=datetime(2022, 6, 29)
     )
