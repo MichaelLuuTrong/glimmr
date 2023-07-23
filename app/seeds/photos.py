@@ -334,11 +334,92 @@ def seed_photos():
         created_at=datetime(2020, 10, 18)
     )
 
+    mc1 = Photo(
+        user_id=4,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/mc/mc1.jpg',
+        title="Autumn Again",
+        description="Taken with Sony ILCE-6000",
+        taken_at=datetime(2019, 11, 10),
+        created_at=datetime(2020, 12, 22)
+    )
+
+    mc2 = Photo(
+        user_id=4,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/mc/mc2.jpg',
+        title="Italian Landscape",
+        description="Heavenly clouds.",
+        taken_at=datetime(2022, 3, 20),
+        created_at=datetime(2022, 3, 20)
+    )
+
+    mc3 = Photo(
+        user_id=4,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/mc/mc3.jpg',
+        title="Verso L'Autunno",
+        description="Taken with Sony ILCE-6000",
+        taken_at=datetime(2021, 9, 15),
+        created_at=datetime(2021, 9, 22)
+    )
+
+    mc4 = Photo(
+        user_id=4,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/mc/mc4.jpg',
+        title="Mountains",
+        description="taken with Sony ILCE-6000",
+        taken_at=datetime(2020, 1, 5),
+        created_at=datetime(2021, 1, 8)
+    )
+
+    mc5 = Photo(
+        user_id=4,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/mc/mc5.jpg',
+        title="Il Borgo Vecchio Al Tramonto",
+        description="Taken with HUAWEI ELS-NX9",
+        taken_at=datetime(2021, 9, 1),
+        created_at=datetime(2021, 9, 7)
+    )
+
+    mc6 = Photo(
+        user_id=4,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/mc/mc6.jpg',
+        title="Sunrise in the Countryside",
+        description="Taken with Sony ILCE-6000",
+        taken_at=datetime(2021, 1, 14),
+        created_at=datetime(2021, 2, 8)
+    )
+
+    mc7 = Photo(
+        user_id=4,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/mc/mc7.jpg',
+        title="Mountain Sunrise",
+        description="taken with Sony ILCE-6000",
+        taken_at=datetime(2020, 1, 5),
+        created_at=datetime(2021, 1, 23)
+    )
+
+    mc8 = Photo(
+        user_id=4,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/mc/mc8.jpg',
+        title="Italian Landscape",
+        description="Taken with Sony ILCE-6000",
+        taken_at=datetime(2020, 7, 25),
+        created_at=datetime(2022, 5, 8)
+    )
+
+    mc9 = Photo(
+        user_id=4,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/mc/mc9.jpg',
+        title="Art of Landscape",
+        description="Dreamlike",
+        taken_at=datetime(2023, 2, 9),
+        created_at=datetime(2023, 3, 4)
+    )
 
 
     all_photos = [demo1, demo2, demo3, demo4, demo5, demo6, demo7, demo8, demo9, demo10, demo11,
                   dp1, dp2, dp3, dp4, dp5, dp6, dp7, dp8, dp9, dp10, dp11, dp12, dp13, dp14, dp15,
                   jy1, jy2, jy3, jy4, jy5, jy6, jy7, jy8, jy9, jy10, jy11,
+                  mc1, mc2, mc3, mc4, mc5, mc6, mc7, mc8, mc9,
 
                   ]
 
