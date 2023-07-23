@@ -16,12 +16,16 @@ function Photostream() {
         dispatch(getUserPhotosThunk(userId))
     }, [dispatch, userId])
 
+    function sortByCreatedAt(array) {
+        return array.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+    }
+
     return (
         <>
             <div className='fullExplorePage'>
                 {(Boolean(userPhotosArray.toString())) && userPhotosArray[0] ? (
                     <div className='masonryDiv'>
-                        {userPhotosArray[0].reverse().map((photo, id) => {
+                        {sortByCreatedAt(userPhotosArray[0]).reverse().map((photo, id) => {
                             return (
                                 <div onClick={() => history.push(`/photos/${photo.id}`)} key={id}
                                     className="photoWithHoverDiv changeCursor">
