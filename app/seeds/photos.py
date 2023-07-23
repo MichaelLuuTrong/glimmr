@@ -32,7 +32,7 @@ def seed_photos():
     demo4 = Photo(
         user_id=1,
         photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/demo/demo4.jpg',
-        title='Endless stairs',
+        title='Endless Stairs',
         description='Taken in Antrodoco, Latium, Italy.',
         taken_at=datetime(2023, 5, 20),
         created_at=datetime(2023, 6, 13)
