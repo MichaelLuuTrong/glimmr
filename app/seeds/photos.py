@@ -600,13 +600,196 @@ def seed_photos():
         created_at=datetime(2020, 12, 16)
     )
 
-    all_photos = [demo1, demo2, demo3, demo4, demo5, demo6, demo7, demo8, demo9, demo10, demo11,
-                  dp1, dp2, dp3, dp4, dp5, dp6, dp7, dp8, dp9, dp10, dp11, dp12, dp13, dp14, dp15,
-                  jy1, jy2, jy3, jy4, jy5, jy6, jy7, jy8, jy9, jy10, jy11,
-                  mc1, mc2, mc3, mc4, mc5, mc6, mc7, mc8, mc9,
-                  mj1, mj2, mj3, mj4, mj5, mj6, mj7, mj8, mj9,
-                  md1, md2, md3, md4, md5, md6, md7, md8, md9, md10
-                  ]
+    sm1 = Photo(
+        user_id=7,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/sm/sm1.jpg',
+        title="Winter River of Gold - River Shiel, Blain, Moidart",
+        description="The old bridge over the River Shiel at dawn after a fresh fall of overnight snow, with the golden light of the rising sun colouring the mist in the sky and the surface of the river as well.",
+        taken_at=datetime(2021, 1, 23),
+        created_at=datetime(2022, 8, 6)
+    )
+
+    sm2 = Photo(
+        user_id=7,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/sm/sm2.jpg',
+        title="Castle Tioram from Kinlochmoidart, Moidart",
+        description="Castle Tioram viewed from across Loch Moidart looking south-west through the gap in between Eilean an Fheidh and Eilean Shona as the golden hazy light of a setting winter sun separates it from the hills of Ardnamurchan beyond.",
+        taken_at=datetime(2021, 1, 11),
+        created_at=datetime(2023, 1, 20)
+    )
+
+    sm3 = Photo(
+        user_id=7,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/sm/sm3.jpg',
+        title="Day's End, Land's End - Ardnamurchan Lighthouse",
+        description="A midsummer day comes to an end as the sun dips below the north-western horizon, out beyond the tower of Ardnamurchan Lighthouse",
+        taken_at=datetime(2022, 7, 19),
+        created_at=datetime(2023, 7, 19)
+    )
+
+    sm4 = Photo(
+        user_id=7,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/sm/sm4.jpg',
+        title="Inbhir Allt na Luachair, Portuairk, Ardnamurchan",
+        description="The rugged peaks of the Rùm Cuillin silhouetted against the orange of a dusk sky, viewed immediately after sunset from amongst the rocky shoreline of Inbhir Allt na Luachair",
+        taken_at=datetime(2022, 3, 30),
+        created_at=datetime(2023, 3, 4)
+    )
+
+    sm5 = Photo(
+        user_id=7,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/sm/sm5.jpg',
+        title="Kentra Bay, Arivegaig, Ardnamurchan",
+        description="On the morning of 30 December 2020, a Cold Full Moon and the last full moon of the year and of the decade travels over the Small Isles of Eigg and Rum, out beyond the entrance of Kentra Bay, about an hour or so before it would set in the north-west.",
+        taken_at=datetime(2020, 12, 30),
+        created_at=datetime(2022, 12, 12)
+    )
+
+    sm6 = Photo(
+        user_id=7,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/sm/sm6.jpg',
+        title="River Shiel, Blain, Moidart",
+        description="As a day in early November comes to a close, the setting autumn sun breaks through the trees, lighting up the parapet of the old bridge over the River Shiel and the trees along the riverbank.",
+        taken_at=datetime(2021, 11, 25),
+        created_at=datetime(2022, 11, 3)
+    )
+
+    sm7 = Photo(
+        user_id=7,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/sm/sm7.jpg',
+        title="Loch Sunart, Resipole, Sunart",
+        description="A silvery Loch Sunart shimmering under the grey and overcast sky of a January morning",
+        taken_at=datetime(2022, 1, 20),
+        created_at=datetime(2023, 2, 10)
+    )
+
+    sm8 = Photo(
+        user_id=7,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/sm/sm8.jpg',
+        title="Lochan Doire a' Bhraghaid, Inversanda, Ardgour",
+        description="A cold January morning with a waning crescent moon sitting above Lochan Doire a' Bhraghaid and the orange of a rising sun colouring its frozen surface and the sky above the hills beyond.",
+        taken_at=datetime(2021, 1, 8),
+        created_at=datetime(2023, 1, 27)
+    )
+
+    sm9 = Photo(
+        user_id=7,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/sm/sm9.jpg',
+        title="Sailean nan Cuileag, Salen, Ardnamurchan",
+        description="The last of the ice from the prolonged cold spell of early 2021 clings on to the fringes of Sailean nan Cuileag as it loses the battle against a rising tide during sunset on a calm winter evening.",
+        taken_at=datetime(2021, 2, 9),
+        created_at=datetime(2023, 2, 14)
+    )
+
+    sm10 = Photo(
+        user_id=7,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/sm/sm10.jpg',
+        title="Loch Sunart, Glenborrodale, Ardnamurchan",
+        description="The first light of a spring day falling on the island of Risga and the skerries around it, while the isle of Carna sits in the morning haze in the background.",
+        taken_at=datetime(2022, 4, 19),
+        created_at=datetime(2022, 5, 22)
+    )
+
+    pm1 = Photo(
+        user_id=8,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/pm/pm1.jpg',
+        title="Tree",
+        description="Thank you for taking the time to view my photo, maybe for your faves and comments, I appreciate that very much!",
+        taken_at=datetime(2021, 1, 8),
+        created_at=datetime(2021, 1, 11)
+    )
+
+    pm2 = Photo(
+        user_id=8,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/pm/pm2.jpg',
+        title="A View from My Window",
+        description="Thanks for your visit, faves and comments, I appreciate that very much!",
+        taken_at=datetime(2018, 11, 6),
+        created_at=datetime(2018, 11, 9)
+    )
+
+    pm3 = Photo(
+        user_id=8,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/pm/pm3.jpg',
+        title="Blue Hour",
+        description="Thank you for taking the time to view my photo, maybe for your faves and comments, I appreciate that very much!",
+        taken_at=datetime(2021, 2, 21),
+        created_at=datetime(2021, 2, 26)
+    )
+
+    pm4 = Photo(
+        user_id=8,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/pm/pm4.jpg',
+        title="The Guardians",
+        description="Thank you for taking the time to view my photo, maybe for your faves and comments, I appreciate that very much!",
+        taken_at=datetime(2021, 11, 9),
+        created_at=datetime(2022, 1, 10)
+    )
+
+    pm5 = Photo(
+        user_id=8,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/pm/pm5.jpg',
+        title="Madeira",
+        description="Real sun, no Luminar",
+        taken_at=datetime(2021, 11, 7),
+        created_at=datetime(2021, 11, 17)
+    )
+
+    pm6 = Photo(
+        user_id=8,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/pm/pm6.jpg',
+        title="Sunset",
+        description="Thank you for taking the time to view my photo, maybe for your faves and comments, I appreciate that very much!",
+        taken_at=datetime(2023, 5, 17),
+        created_at=datetime(2023, 6, 12)
+    )
+
+    pm7 = Photo(
+        user_id=8,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/pm/pm7.jpg',
+        title="Bláhylur",
+        description="Panorama made from 4 shots",
+        taken_at=datetime(2022, 7, 10),
+        created_at=datetime(2022, 7, 18)
+    )
+
+    pm8 = Photo(
+        user_id=8,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/pm/pm8.jpg',
+        title="Kerlingarfjöll",
+        description="Thank you for taking the time to view my photo, maybe for your faves and comments, I appreciate that very much!",
+        taken_at=datetime(2022, 7, 8),
+        created_at=datetime(2023, 7, 20)
+    )
+
+    pm9 = Photo(
+        user_id=8,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/pm/pm9.jpg',
+        title="Autumn",
+        description="Thank you for taking the time to view my photo, maybe for your faves and comments, I appreciate that very much!",
+        taken_at=datetime(2022, 10, 28),
+        created_at=datetime(2022, 11, 4)
+    )
+
+    pm10 = Photo(
+        user_id=8,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/pm/pm10.jpg',
+        title="Goðafoss",
+        description="Thank you for taking the time to view my photo, maybe for your faves and comments, I appreciate that very much!",
+        taken_at=datetime(2022, 9, 7),
+        created_at=datetime(2022, 7, 5)
+    )
+
+    all_photos = [
+                demo1, demo2, demo3, demo4, demo5, demo6, demo7, demo8, demo9, demo10, demo11,
+                dp1, dp2, dp3, dp4, dp5, dp6, dp7, dp8, dp9, dp10, dp11, dp12, dp13, dp14, dp15,
+                jy1, jy2, jy3, jy4, jy5, jy6, jy7, jy8, jy9, jy10, jy11,
+                mc1, mc2, mc3, mc4, mc5, mc6, mc7, mc8, mc9,
+                mj1, mj2, mj3, mj4, mj5, mj6, mj7, mj8, mj9,
+                md1, md2, md3, md4, md5, md6, md7, md8, md9, md10,
+                sm1, sm2, sm3, sm4, sm5, sm6, sm7, sm8, sm9, sm10,
+                pm1, pm2, pm3, pm4, pm5, pm6, pm7, pm8, pm9, pm10
+                ]
 
     _ = [db.session.add(photo) for photo in all_photos]
     db.session.commit()
