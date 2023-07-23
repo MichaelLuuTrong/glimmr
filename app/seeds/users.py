@@ -23,9 +23,12 @@ def seed_users():
         """
         Dennis Polkläser, born in 1983 and based in Germany, is an award-winning photoartist and workshop educator with focus mainly on landscape photography.
 
+
         With his art and his style of photography he is always aiming to express his fascination and passion for the wild and primal regions of this planet and to capture the beauty of nature.
 
+
         Dennis preferred motives are scandinavian landscapes in combination with an expressive mood of the light and dramatic weather situation.
+
 
         He has already achieved several successes in international photography contests and his work has been published in various media.
         """,
@@ -69,7 +72,7 @@ def seed_users():
         last_name='Jeska',
         bio=
         """
-        I'm in my 30s and work in the sports industry. I love shooting pictures with old cameras and often vintage lenses while hiking, backpacking, mountaineering, and cycling.'.
+        I'm in my 30s and work in the sports industry. I love shooting pictures with old cameras and often vintage lenses while hiking, backpacking, mountaineering, and cycling.
         """,
         profile_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/michaljeska+profile+photo.jpg',
         cover_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/michaljeska+cover+photo.jpg'
@@ -141,7 +144,7 @@ def seed_users():
         last_name="Lacaze",
         bio=
         """
-        I disocvered photography with a digital SLR in 2014. I'm an amateur photographer with little innate artistic ability, but I learn while traveling.
+        I discovered photography with a digital SLR in 2014. I'm an amateur photographer with little innate artistic ability, but I learn while traveling.
         """,
         profile_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/dominiquelacaze+profile+photo.jpg',
         cover_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/doiniquelacaze+cover+photo.jpg'
