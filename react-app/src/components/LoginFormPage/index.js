@@ -23,7 +23,7 @@ function LoginFormPage() {
 
   const handleDemoUser = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login("klausl509@gmail.com", "klauspassword"))
+    const data = await dispatch(login("demo@aa.io", "password"))
     if (data) {
       setErrors(data);
     }
