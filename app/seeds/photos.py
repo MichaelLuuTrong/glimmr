@@ -150,7 +150,7 @@ def seed_photos():
         user_id=2,
         photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/dp/dp6.jpg',
         title='The Arrival',
-        description=".... deep in the misty woods of Germany",
+        description="...deep in the misty woods of Germany",
         taken_at=datetime(2020, 11, 7),
         created_at=datetime(2020, 11, 7)
     )
@@ -274,7 +274,7 @@ def seed_photos():
     jy5 = Photo(
         user_id=3,
         photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/jy/jy5.jpg',
-        title="Deteroit at Night",
+        title="Detroit at Night",
         description="Detroit is making a come back. After ice skating at Campus Martias, it is safe to take a walk and see the glory of Detroit.",
         taken_at=datetime(2015, 1, 31),
         created_at=datetime(2015, 2, 2)
