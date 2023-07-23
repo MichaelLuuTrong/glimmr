@@ -3,147 +3,344 @@ from sqlalchemy.sql import text
 from datetime import datetime
 
 def seed_photos():
-    klaus1 = Photo(
-        #1
+    demo1 = Photo(
         user_id=1,
-        photo='https://i.imgur.com/4rvoIwH.jpg',
-        title='Ascending Mist',
-        description='Luftbild vom Großen Arber, Blick vom Osten',
-        taken_at=datetime(2010, 10, 11),
-        created_at=datetime(2010, 10, 28)
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/demo/demo1.jpg',
+        title='Emporia',
+        description="The amazing architecture of Emporia, one of Scandinavia's largest shopping malls.",
+        taken_at=datetime(2021, 8, 24),
+        created_at=datetime(2021, 8, 15)
     )
-    klaus2 = Photo(
-        #2
+    demo2 = Photo(
         user_id=1,
-        photo='https://i.imgur.com/zKYRwGp.jpg',
-        title='Autumn around Chinese Tower',
-        description='Luftbild vom herbstlich bunt gefärbten Englischen Garten am Chinesischen Turm in München',
-        taken_at=datetime(2010, 10, 27),
-        created_at=datetime(2010, 10, 28)
-    )
-    klaus3 = Photo(
-        #3
-        user_id=1,
-        photo='https://i.imgur.com/Gja2Stv.jpg',
-        title='Brightly Coloured Balloon',
-        description='Luftbild von einem bunten Heißluftballon',
-        taken_at=datetime(2011, 9, 5),
-        created_at=datetime(2011, 9, 5)
-    )
-    klaus4 = Photo(
-        #4
-        user_id=1,
-        photo='https://i.imgur.com/Y1sv073.jpg',
-        title='Lonely Planet',
-        description='Luftbild von einem kleinen Häuschen auf einem Trinkwasserbrunnen bei Sassanfahrt',
-        taken_at=datetime(2010, 6, 23),
-        created_at=datetime(2011, 7, 6)
-    )
-    klaus5 = Photo(
-        #5
-        user_id=1,
-        photo='https://i.imgur.com/9u0RufG.jpg',
-        title='Trees in a Row - 03',
-        description='Luftbild von Lindenbaumreihen am Neuen Südfriedhof in München-Perlach',
-        taken_at=datetime(2019, 4, 4),
-        created_at=datetime(2019, 4, 12)
-    )
-    klaus6 = Photo(
-        #6
-        user_id=1,
-        photo='https://i.imgur.com/uzpAtLm.jpg',
-        title='Trees in a Row - 15',
-        description='Luftbild von den Lindenbaumreihen im Winter auf dem Südfriedhof in München-Perlach',
-        taken_at=datetime(2019, 2, 18),
-        created_at=datetime(2019, 2, 20)
-    )
-    klaus7 = Photo(
-        #7
-        user_id=1,
-        photo='https://i.imgur.com/QYdemjc.jpg',
-        title='Trees in a Row - 01',
-        description='Luftbild von einer Reihe schattenwerfender Kirschbäume am Feldweg',
-        taken_at=datetime(2013, 12, 10),
-        created_at=datetime(2013, 12, 19)
-    )
-    alexander1 = Photo(
-        #8
-        user_id=2,
-        photo='https://i.imgur.com/qmgGsm5.jpg',
-        title='Some shrimp on Crossaster pappusus',
-        description='Taken with Nikon D850',
-        taken_at=datetime(2018, 9, 17),
-        created_at=datetime(2021, 10, 8)
-    )
-    alexander2 = Photo(
-        #9
-        user_id=2,
-        photo='https://i.imgur.com/B3WqOKh.jpg',
-        title='Staurozoika',
-        description='Unidentified staurozoan jellyfish from Northern Kuril Islands, Northern pacific.',
-        taken_at=datetime(2023, 1, 7),
-        created_at=datetime(2023, 1, 7)
-    )
-    alexander3 = Photo(
-        #10
-        user_id=2,
-        photo='https://i.imgur.com/PBkN1Ts.jpg',
-        title='Beroe cucumis with a mouth wide open',
-        description='Taken with Nikon D850',
-        taken_at=datetime(2019, 4, 6),
-        created_at=datetime(2023, 1, 17)
-    )
-    alexander4 = Photo(
-        #11
-        user_id=2,
-        photo='https://i.imgur.com/uyBKyH1.jpg',
-        title='Crossaster papposus skin',
-        description='taken with Hasselblad X1D II 50C',
-        taken_at=datetime(2023, 6, 7),
-        created_at=datetime(2019, 6, 21)
-    )
-    steve1 = Photo(
-        #12
-        user_id=3,
-        photo='https://i.imgur.com/SLwAWVa.jpg',
-        title='Sunny Day Mandarin (Mandarin Duck)',
-        description='The sun was a bit harsh today but I did my best to avoid the shadows. Got some pretty good detail as the mandarin came in really close this time.',
-        taken_at=datetime(2020, 3, 29),
-        created_at=datetime(2020, 3, 30)
-
-    )
-    steve2 = Photo(
-        #13
-        user_id=3,
-        photo='https://i.imgur.com/hpipO2O.jpg',
-        title='Mandarin In Flight (Mandarin Duck)',
-        description='Took this one from about 200 feet with 1200 mm. Just a quick grab as they burst off of the water. Here is the mandarin male flying with his female wood duck mate.',
-        taken_at=datetime(2020, 3, 29),
-        created_at=datetime(2020, 3, 31)
-    )
-    steve3 = Photo(
-        #14
-        user_id=3,
-        photo='https://i.imgur.com/UPvxtHo.jpg',
-        title='Bird On a Wire (Northern Hawk Owl)',
-        description="OK, don't get excited! This is not from any of my recent images. I have been getting a few inquiries lately from my buddies that may have not been around or did not do bird photos when the hawk owl was in Nanaimo. I also wanted to start a new album for my owl section on them. My gear is a lot better these days than it was in 2009 when this was taken. However, I do have a few shots that will probably benefit from some of our fine new technology and I have decided to re-work a few hawk owl photos. Don't be too surprised if you see some of them mixed in with my short-ear stuff as I go through the old images and rejuvenate them.",
-        taken_at=datetime(2010, 2, 8),
-        created_at=datetime(2017, 2, 26)
-    )
-    steve4 = Photo(
-        #15
-        user_id=3,
-        photo='https://i.imgur.com/oHN6UaM.jpg',
-        title='Right At Eye Level (Northern Hawk Owl)',
-        description='I was walking down a forest road by the edge of a field when my phone rang. It was my buddy Dave Pley. As I walked and talked I just happened to look over to my left and there was this hawk owl perched no more than five feet up and about fifteen feet away. Needless to say I told Dave that I would call him back later :-)',
-        taken_at=datetime(2021, 3, 21),
-        created_at=datetime(2021, 2, 21),
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/demo/demo2.jpg',
+        title='Suogo de Fouzargo/Ju de Falzares/Passo di Falzarego',
+        description='Iconic mountain pass of the Dolomites, including a sight of the Church and the Sass de Stria.',
+        taken_at=datetime(2019, 4, 19),
+        created_at=datetime(2019, 6, 22)
     )
 
-    all_photos = [klaus1, klaus2, klaus3, klaus4, klaus5,
-                  klaus6, klaus7, alexander1, alexander2,
-                  alexander3, alexander4, steve1, steve2,
-                  steve3, steve4]
+    demo3 = Photo(
+        user_id=1,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/demo/demo3.jpg',
+        title='Faggeta del Cimino',
+        description='Summer is starting to fade. Autumn is on the way...',
+        taken_at=datetime(2018, 11, 17),
+        created_at=datetime(2022, 7, 13)
+    )
+
+    demo4 = Photo(
+        user_id=1,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/demo/demo4.jpg',
+        title='Endless stairs',
+        description='Taken in Antrodoco, Latium, Italy.',
+        taken_at=datetime(2023, 5, 20),
+        created_at=datetime(2023, 6, 13)
+    )
+
+    demo5 = Photo(
+        user_id=1,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/demo/demo5.jpg',
+        title='Terni',
+        description='The more I wander around Terni, the more my love for this city grows!',
+        taken_at=datetime(2022, 6, 1),
+        created_at=datetime(2022, 9, 30)
+    )
+
+    demo6 = Photo(
+        user_id=1,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/demo/demo6.jpg',
+        title='Malmö',
+        description='Walking through Kalendagatan, towards majestic sights.',
+        taken_at=datetime(2021, 8, 15),
+        created_at=datetime(2022, 11, 3)
+    )
+
+    demo7 = Photo(
+        user_id=1,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/demo/demo7.jpg',
+        title='Civita di Bagnoregio',
+        description='The motorcycle, the bike and the bell tower all made this alley quite interesting.',
+        taken_at=datetime(2021, 7, 3),
+        created_at=datetime(2022, 12, 26)
+    )
+
+    demo8 = Photo(
+        user_id=1,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/demo/demo8.jpg',
+        title='Giardino di Ninfa',
+        description="A relaxing view while approaching the garden's exit.",
+        taken_at=datetime(2021, 7, 17),
+        created_at=datetime(2022, 8, 28)
+    )
+
+    demo9 = Photo(
+        user_id=1,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/demo/demo9.jpg',
+        title='Stroncone',
+        description='Night and day, still alway gorgeous.',
+        taken_at=datetime(2022, 10, 28),
+        created_at=datetime(2023, 1, 29)
+    )
+
+    demo10 = Photo(
+        user_id=1,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/demo/demo10.jpg',
+        title='A Rare Snowfall',
+        description='Taken in Portuense, Rome, Latium',
+        taken_at=datetime(2023, 2, 26),
+        created_at=datetime(2023, 4, 19)
+    )
+
+    demo11 = Photo(
+        user_id=1,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/demo/demo11.jpg',
+        title='Lost in the Setting Sun',
+        description='Taken near the Roman catholic diocese of Terni, Umbria',
+        taken_at=datetime(2023, 4, 3),
+        created_at=datetime(2023, 4, 3)
+    )
+
+    dp1 = Photo(
+        user_id=2,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/dp/dp1.jpg',
+        title='Morningrise',
+        description="Dolomites, Italy, July 2018",
+        taken_at=datetime(2018, 8, 7),
+        created_at=datetime(2018, 8, 7)
+    )
+
+    dp2 = Photo(
+        user_id=2,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/dp/dp2.jpg',
+        title='Red Carpet',
+        description="Camera: Canon Eos 5 Ds R",
+        taken_at=datetime(2019, 4, 20),
+        created_at=datetime(2023, 4, 3)
+    )
+
+    dp3 = Photo(
+        user_id=2,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/dp/dp3.jpg',
+        title='Seiser Alm',
+        description="Dolomites, Italy, October 2017",
+        taken_at=datetime(2018, 6, 23),
+        created_at=datetime(2018, 6, 23)
+    )
+
+    dp4 = Photo(
+        user_id=2,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/dp/dp4.jpg',
+        title='A Peaceful Morning',
+        description="Bavaria, Germany, July 2022",
+        taken_at=datetime(2022, 7, 8),
+        created_at=datetime(2022, 8, 3)
+    )
+
+    dp5 = Photo(
+        user_id=2,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/dp/dp5.jpg',
+        title='Primeval',
+        description="Iceland, Highlands",
+        taken_at=datetime(2014, 7, 26),
+        created_at=datetime(2019, 12, 26)
+    )
+
+    dp6 = Photo(
+        user_id=2,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/dp/dp6.jpg',
+        title='The Arrival',
+        description=".... deep in the misty woods of Germany",
+        taken_at=datetime(2020, 11, 7),
+        created_at=datetime(2020, 11, 7)
+    )
+
+    dp7 = Photo(
+        user_id=2,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/dp/dp7.jpg',
+        title='The Dark Fortress',
+        description="Dolomites, Italy, July 2018",
+        taken_at=datetime(2018, 7, 8),
+        created_at=datetime(2019, 8, 4)
+    )
+
+    dp8 = Photo(
+        user_id=2,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/dp/dp8.jpg',
+        title='Evanescence',
+        description="For an upcoming project",
+        taken_at=datetime(2013, 4, 3),
+        created_at=datetime(2021, 1, 18)
+    )
+
+    dp9 = Photo(
+        user_id=2,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/dp/dp9.jpg',
+        title='Breath of Autumn',
+        description="Bavaria, October 2021",
+        taken_at=datetime(2021, 10, 21),
+        created_at=datetime(2021, 10, 30)
+    )
+
+    dp10 = Photo(
+        user_id=2,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/dp/dp10.jpg',
+        title='The Art of Nature',
+        description="Iceland, 2021",
+        taken_at=datetime(2021, 5, 3),
+        created_at=datetime(2021, 5, 21)
+    )
+
+    dp11 = Photo(
+        user_id=2,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/dp/dp11.jpg',
+        title='Dark Glacier',
+        description="Alps, 2020",
+        taken_at=datetime(2020, 12, 13),
+        created_at=datetime(2020, 12, 20)
+    )
+
+    dp12 = Photo(
+        user_id=2,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/dp/dp12.jpg',
+        title='The Beauty of Bavaria',
+        description="Bavaria, July 2022",
+        taken_at=datetime(2022, 7, 24),
+        created_at=datetime(2023, 3, 13)
+    )
+
+    dp13 = Photo(
+        user_id=2,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/dp/dp13.jpg',
+        title='Seceda',
+        description="Dolomites, Italy, July 2018",
+        taken_at=datetime(2018, 7, 12),
+        created_at=datetime(2018, 8, 30)
+    )
+
+    dp14 = Photo(
+        user_id=2,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/dp/dp14.jpg',
+        title='Otherworld',
+        description="Mullerthal, 2020",
+        taken_at=datetime(2020, 3, 15),
+        created_at=datetime(2020, 5, 28)
+    )
+
+    dp15 = Photo(
+        user_id=2,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/dp/dp15.jpg',
+        title="Eagle's View",
+        description="Lofoten, Northern Norway, September 2022",
+        taken_at=datetime(2022, 9, 13),
+        created_at=datetime(2023, 2, 5)
+    )
+
+    jy1 = Photo(
+        user_id=3,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/jy/jy1.jpg',
+        title="Paris at Night",
+        description="Could there be a more beautiful city than Paris at Night?",
+        taken_at=datetime(2014, 8, 10),
+        created_at=datetime(2015, 1, 22)
+    )
+
+    jy2 = Photo(
+        user_id=3,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/jy/jy2.jpg',
+        title="Arches Sunset Balanced Rock",
+        description="What a beautiful park! Arches and Utah in general have caught my attention, this is by far one of the most fantastic places on earth. So many rock formations and so much light. This picture is taken from an easy vantage point, no difficult hike, the beauty is overflowing and accessible here!",
+        taken_at=datetime(2021, 5, 4),
+        created_at=datetime(2021, 5, 6)
+    )
+    jy3 = Photo(
+        user_id=3,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/jy/jy3.jpg',
+        title="Brrr... It's Cold at the Grand Haven Lighthouse",
+        description="Visiting the Grand Haven Lighthouse in the wintertime can be a bit of a challenge, especially with three kids in tow. But let me tell you, it’s worth it! The chilly weather only adds to the beauty of this historic landmark, and the kids had a blast despite the frigid temperatures.",
+        taken_at=datetime(2023, 2, 4),
+        created_at=datetime(2023, 2, 23)
+    )
+
+    jy4 = Photo(
+        user_id=3,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/jy/jy4.jpg',
+        title="A Bruges Sunset",
+        description="To enjoy an amazing sunset, travel to Bruges, order a local beer, and grab a waffle. Enjoy with chocolate.",
+        taken_at=datetime(2014, 8, 7),
+        created_at=datetime(2015, 2, 12)
+    )
+
+    jy5 = Photo(
+        user_id=3,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/jy/jy5.jpg',
+        title="Deteroit at Night",
+        description="Detroit is making a come back. After ice skating at Campus Martias, it is safe to take a walk and see the glory of Detroit.",
+        taken_at=datetime(2015, 1, 31),
+        created_at=datetime(2015, 2, 2)
+    )
+
+    jy6 = Photo(
+        user_id=3,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/jy/jy6.jpg',
+        title="Black Sands of Ireland",
+        description="Do not turn your back to this magnificent beach, tides are fast and powerful! Beautiful storm with wonderful rock formations!",
+        taken_at=datetime(2017, 5, 10),
+        created_at=datetime(2022, 6, 29)
+    )
+
+    jy7 = Photo(
+        user_id=3,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/jy/jy7.jpg',
+        title="Observing the Sunset",
+        description="After a 3 mile round trip hike, Big Sable is a stunning lighthouse with fantastic views. Stay for the evening's prime event!",
+        taken_at=datetime(2022, 7, 8),
+        created_at=datetime(2022, 7, 18)
+    )
+
+    jy8 = Photo(
+        user_id=3,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/jy/jy8.jpg',
+        title="Route de Paris",
+        description="Take a carriage to the top of the city, and wait for the last light of the evening. This will prove to be a most rewarding experience.",
+        taken_at=datetime(2014, 8, 2),
+        created_at=datetime(2015, 1, 28)
+    )
+
+    jy9 = Photo(
+        user_id=3,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/jy/jy9.jpg',
+        title="Michigan Shoreline",
+        description="There is no place more beautiful than the miles of shoreline in Michigan. The great lakes are are worth visiting. This is Lake Michigan, near Manistee at Orchard Beach State Park.",
+        taken_at=datetime(2014, 8, 23),
+        created_at=datetime(2015, 1, 16)
+    )
+
+    jy10 = Photo(
+        user_id=3,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/jy/jy10.jpg',
+        title="Sunset in Paris",
+        description="Walking through the Tuileries Garden in the evening. The sunset is always stunning.",
+        taken_at=datetime(2014, 8, 9),
+        created_at=datetime(2015, 1, 26)
+    )
+
+    jy11 = Photo(
+        user_id=3,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/jy/jy11.jpg',
+        title="Painting with Leaves",
+        description="Grand Ledge Michigan offers some of the best autumn views!",
+        taken_at=datetime(2020, 10, 11),
+        created_at=datetime(2020, 10, 18)
+    )
+
+
+
+    all_photos = [demo1, demo2, demo3, demo4, demo5, demo6, demo7, demo8, demo9, demo10, demo11,
+                  dp1, dp2, dp3, dp4, dp5, dp6, dp7, dp8, dp9, dp10, dp11, dp12, dp13, dp14, dp15,
+                  jy1, jy2, jy3, jy4, jy5, jy6, jy7, jy8, jy9, jy10, jy11,
+
+                  ]
 
     _ = [db.session.add(photo) for photo in all_photos]
     db.session.commit()

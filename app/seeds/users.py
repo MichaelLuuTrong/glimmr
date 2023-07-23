@@ -150,7 +150,6 @@ def seed_users():
         cover_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/doiniquelacaze+cover+photo.jpg'
         )
 
-
     all_users = [demo, dp, jy, mc, mj, md, sm, pm, im, dl]
 
     _ = [db.session.add(user) for user in all_users]
