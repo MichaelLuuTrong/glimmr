@@ -28,13 +28,17 @@ function Explore() {
         return user ? user.last_name : null;
     }
 
+    function sortByCreatedAt(array) {
+        return array.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+    }
+
     return (
         <>
             <div className='spacerDiv'></div>
             <div className='fullExplorePage'>
                 <h1 className='exploreHeader'>Explore</h1>
                 <div className='masonryDiv'>
-                    {photosArray.reverse().map((photo, id) => {
+                    {sortByCreatedAt(photosArray).reverse().map((photo, id) => {
                         return (
                             <div onClick={() =>
                                 history.push(`/photos/${photo.id}`)} key={id}
