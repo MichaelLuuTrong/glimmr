@@ -1,4 +1,6 @@
 .masonryDiv {
+    margin-right: 5%;
+    margin-left: 5%;
     display: flex;
     width: 90%;
     flex-wrap: wrap;
@@ -131,6 +133,7 @@
 }
 
 .noMorePhotosDiv {
+    display: none;
     font-family: Arial;
 }
 

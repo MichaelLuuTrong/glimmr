@@ -415,12 +415,197 @@ def seed_photos():
         created_at=datetime(2023, 3, 4)
     )
 
+    mj1 = Photo(
+        user_id=5,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/mj/mj1.jpg',
+        title="Neuschwanstein Castle",
+        description="taken with Canon EOS 5D Mark II",
+        taken_at=datetime(2020, 10, 13),
+        created_at=datetime(2020, 10, 15)
+    )
+
+    mj2 = Photo(
+        user_id=5,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/mj/mj2.jpg',
+        title="Vosges du Nord",
+        description="Taken with Sony ILCE-7",
+        taken_at=datetime(2020, 8, 4),
+        created_at=datetime(2020, 4, 13)
+    )
+
+    mj3 = Photo(
+        user_id=5,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/mj/mj3.jpg',
+        title="Höfats",
+        description="Allgäu Alps",
+        taken_at=datetime(2020, 6, 13),
+        created_at=datetime(2020, 8, 31)
+    )
+
+    mj4 = Photo(
+        user_id=5,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/mj/mj4.jpg',
+        title="Château du Hohenbourg",
+        description="Taken with Canon EOS 7D",
+        taken_at=datetime(2020, 9, 2),
+        created_at=datetime(2020, 9, 14)
+    )
+
+    mj5 = Photo(
+        user_id=5,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/mj/mj5.jpg',
+        title="Felsglühen",
+        description="The Altschlossfelsen are a 1.5km long rock wall in the Palatinate Forest, not far away from the French border. They are known for the fact that in spring one of the rocks appear to glow in the light of the setting sun.",
+        taken_at=datetime(2019, 4, 11),
+        created_at=datetime(2019, 4, 15)
+    )
+
+    mj6 = Photo(
+        user_id=5,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/mj/mj6.jpg',
+        title="Vosges du Nord",
+        description="Taken with Sony ILCE-7",
+        taken_at=datetime(2022, 1, 11),
+        created_at=datetime(2023, 5, 19)
+    )
+
+    mj7 = Photo(
+        user_id=5,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/mj/mj7.jpg',
+        title="Schlicker Seespitze seen from Hoher Burgstall",
+        description="Sir Edmund Hillary chose the Hoher Burgstall as his first alpine peak during his 1949 trip to the Stubai Alps.",
+        taken_at=datetime(2021, 8, 6),
+        created_at=datetime(2023, 4, 24)
+    )
+
+    mj8 = Photo(
+        user_id=5,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/mj/mj8.jpg',
+        title="Elfer, Stubai Alps",
+        description="Today, April 22 is Earth Day",
+        taken_at=datetime(2021, 8, 5),
+        created_at=datetime(2023, 4, 22)
+    )
+
+    mj9 = Photo(
+        user_id=5,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/mj/mj9.jpg',
+        title="View from Nebelhorn",
+        description="Allgäu Alps",
+        taken_at=datetime(2021, 7, 6),
+        created_at=datetime(2023, 4, 19)
+    )
+
+    md1 = Photo(
+        user_id=6,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/md/md1.png',
+        title="On The Edge Of A Volcano Crater",
+        description="Haleakalā - meaning (house of the sun), or the East Maui Volcano, is a massive shield volcano that forms more than 75 percent of the Hawaiian Island of Maui. The crater measures 11.25 km (7 miles) in diameter.",
+        taken_at=datetime(2021, 3, 20),
+        created_at=datetime(2021, 3, 28)
+    )
+
+    md2 = Photo(
+        user_id=6,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/md/md2.jpg',
+        title="The Twelve Apostles - Australia",
+        description="The Twelve Apostles is a collection of limestone stacks off the shore of Port Campbell National Park, by the Great Ocean Road in Victoria, Australia. Their proximity to one another has made the site a popular tourist attraction.",
+        taken_at=datetime(2020, 2, 22),
+        created_at=datetime(2020, 6, 10)
+    )
+
+
+    md3 = Photo(
+        user_id=6,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/md/md3.png',
+        title="Later in the afternoon the suns angle gave an amazing oceanside underwater view of this beautiful paradise in Sardinia.",
+        description="Crystal Clear Cove - Sardinia, Italy",
+        taken_at=datetime(2022, 6, 12),
+        created_at=datetime(2022, 6, 29)
+    )
+
+    md4 = Photo(
+        user_id=6,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/md/md4.png',
+        title="Whitehaven Beach - Australia",
+        description=
+        """
+        One of the most beautiful beaches in Australia, Whitehaven is a sublime 7 kilometer slice of white silica sand and turquoise sea. Located at the northern end of Whitehaven Beach on Whitsunday Island, Hill Inlet Lookout is one of the jewels of the Australian landscape.
+
+        No two visits to Hill Inlet are the same. As the tide flows, so does the sand, capturing swirling patterns in the turquoise waters. From the air, it looks like an abstract watercolour painting.
+        """,
+        taken_at=datetime(2022, 4, 6),
+        created_at=datetime(2022, 4, 17)
+    )
+
+    md5 = Photo(
+        user_id=6,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/md/md5.jpg',
+        title="Sainte-Lucie-de-Tallano - South of Corsica",
+        description=
+        """
+        The village of Sainte-Lucie-de-Tallano is a small village located south east of France in Corsica. Located at 460m high in direction of the Gulf of Valincu, this village is surprising because of its architecture. It is composed of tall granite houses and narrow streets. The Roman Church Saint Jean Baptiste (XIIth century)
+        - made of well cut stones, its immense door, its nave and the central axe make this chapel a work of art of Roman architecture.
+        """,
+        taken_at=datetime(2021, 9, 21),
+        created_at=datetime(2021, 10, 9)
+    )
+
+    md6 = Photo(
+        user_id=6,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/md/md6.jpg',
+        title="Ponto Vecchio At Sunset - Florence, Italy",
+        description="Ponte Vecchio Bridge - is the most famous bridge in Florence and undoubtedly one of the city’s most illustrious landmarks. It is an incredibly breathtaking sight when seen from afar, and even more so when you walk across it!",
+        taken_at=datetime(2014, 6, 3),
+        created_at=datetime(2016, 12, 23)
+    )
+
+    md7 = Photo(
+        user_id=6,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/md/md7.png',
+        title="Lazy Koala",
+        description=
+        """
+        Formerly killed in huge numbers for their fur, especially during the 1920s and ’30s, koalas dwindled in number from several million to a few hundred thousand. In the southern part of their range, they became practically extinct except for a single population in Gippsland, Victoria in Australia. Some were translocated onto small offshore islands, especially Phillip Island, where they did so well that these koalas were used to restock much of the original range in Victoria and southern New South Wales, Australia.
+        """,
+        taken_at=datetime(2020, 4, 19),
+        created_at=datetime(2020, 4, 28)
+    )
+
+
+    md8 = Photo(
+        user_id=6,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/md/md8.jpg',
+        title="Moon Orchids",
+        description="(Phalaenopsis amabilis) Moon Orchid lives by sticking to stems or other plants in forests and can grow at an elevation of 600 meters above sea level. Moon Orchid can easily be found in Southeast Asia such as Indonesia, Malaysia, the Philippines, and also in Australia.",
+        taken_at=datetime(2020, 10, 27),
+        created_at=datetime(2023, 11, 1)
+    )
+
+    md9 = Photo(
+        user_id=6,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/md/md9.png',
+        title="Ausable River - New York",
+        description='The Ausable River, also known as AuSable River and originally written as "Au Sable", runs in the U.S. state of New York, from the Adirondack Mountains and past the village of Lake Placid and Au Sable Forks to empty into Lake Champlain.',
+        taken_at=datetime(2022, 6, 6),
+        created_at=datetime(2022, 9, 5)
+    )
+
+    md10 = Photo(
+        user_id=6,
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/md/md10.jpg',
+        title="Horseshoe Bay, Bowen, Queensland, Australia",
+        description="If you are travelling along Australia’s east coast, be sure to plan a stop in the coastal town of Bowen. North Queensland’s oldest town, Bowen is well known for two main reasons - it is the home of Bowen Mangoes (a popular variety of the mango fruit) and it was the main filming location for the famous movie Australia in 2008. Bowen is one of the only places on Australia’s east coast that you can walk straight of the shore into the water and explore the reef.",
+        taken_at=datetime(2020, 3, 6),
+        created_at=datetime(2020, 12, 16)
+    )
 
     all_photos = [demo1, demo2, demo3, demo4, demo5, demo6, demo7, demo8, demo9, demo10, demo11,
                   dp1, dp2, dp3, dp4, dp5, dp6, dp7, dp8, dp9, dp10, dp11, dp12, dp13, dp14, dp15,
                   jy1, jy2, jy3, jy4, jy5, jy6, jy7, jy8, jy9, jy10, jy11,
                   mc1, mc2, mc3, mc4, mc5, mc6, mc7, mc8, mc9,
-
+                  mj1, mj2, mj3, mj4, mj5, mj6, mj7, mj8, mj9,
+                  md1, md2, md3, md4, md5, md6, md7, md8, md9, md10
                   ]
 
     _ = [db.session.add(photo) for photo in all_photos]
