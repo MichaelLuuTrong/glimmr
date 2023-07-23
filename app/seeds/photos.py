@@ -3,8 +3,8 @@ from sqlalchemy.sql import text
 from datetime import datetime
 
 def seed_photos():
-    #1
     klaus1 = Photo(
+        #1
         user_id=1,
         photo='https://i.imgur.com/4rvoIwH.jpg',
         title='Ascending Mist',
