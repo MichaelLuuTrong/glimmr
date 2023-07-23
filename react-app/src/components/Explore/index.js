@@ -17,7 +17,7 @@ function Explore() {
     const [hasMore, setHasMore] = useState(true)
     const [pageNum, setPageNum] = useState(1)
     const [displayedPhotos, setDisplayedPhotos] = useState([]);
-    const itemsPerPage = 25
+    const itemsPerPage = 30
 
     useEffect(() => {
         dispatch(getAllPhotosThunk())
