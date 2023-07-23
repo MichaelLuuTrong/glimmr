@@ -14,7 +14,7 @@ def seed_photos():
     demo2 = Photo(
         user_id=1,
         photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/demo/demo2.jpg',
-        title='Suogo de Fouzargo/Ju de Falzares/Passo di Falzarego',
+        title='Suogo de Fouzargo/Ju de Falzares',
         description='Iconic mountain pass of the Dolomites, including a sight of the Church and the Sass de Stria.',
         taken_at=datetime(2019, 4, 19),
         created_at=datetime(2019, 6, 22)
