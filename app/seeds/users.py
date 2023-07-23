@@ -2,50 +2,155 @@ from app.models import db, User, environment, SCHEMA
 from sqlalchemy.sql import text
 
 def seed_users():
-    klaus = User(
-        username='Aerial Photography',
-        email='klausl509@gmail.com',
-        password='klauspassword',
-        first_name='Klaus',
-        last_name='Leidorf',
-        bio="""
-        Klaus Leidorf: A german aerial archaeologist that likes to observe the human artifacts from a bird's eye view.
-        """,
-        profile_photo='https://i.imgur.com/8Jm1fek.jpg',
-        cover_photo='https://i.imgur.com/T43aWJr.jpg'
-        )
-    alexander = User(
-        username='MarineBioAlex',
-        email='alexsemenov523@gmail.com',
-        password='alexanderpassword',
-        first_name='Alexander',
-        last_name='Semenov',
-        bio="I’m marine biologist, specialising in invertebrate animals. Currently, I’m the Head of the Divers’ team at Moscow State University’s White Sea Biological Station where I organise and manage all sorts of underwater work. My team and I are used to diving in unfavourable and often harsh conditions, successfully conducting complex research projects. I’m a professional underwater photographer with 9 years of experience. My key specialism is scientific macrophotography in natural environments. This practice makes it possible to observe animals that cannot be properly studied under laboratory conditions, such as soft bodied planktonic organisms or stationary life forms living on the sea floor. My personal goal is to study underwater life through camera lenses and to boost people’s interest in marine biology. I do this by sharing all my finding through social media and in real life through public lectures, movies, exhibitions and media events.",
-        profile_photo='https://i.imgur.com/GRofAEK.jpg',
-        cover_photo='https://i.imgur.com/4Bocffa.jpg'
-    )
-    steve = User(
-        username='TheOwlMan',
-        email='stevelargeowls345@gmail.com',
-        password='stevepassword',
-        first_name='Steve',
-        last_name='Large',
-        bio="I have been interested in photography since I was a young boy many decades ago. I had a cheap box camera and would develop photos in an old closet in the basement of my parents house in Courtenay B.C. Back then we used messy chemicals and I created small negative sized contact prints in black and white. Needless to say, digital photography was all thought of as science fiction in those days. We would sometimes hear rumors of the digital technology but never dreamed that it would develop into what we see today. As a young man I upgraded to a film SLR camera which allowed me to gain more knowledge of how exposure and lighting worked in order to get good results. You couldn’t afford to take more than a few pictures at a time as everything was chemical based and very expensive to have developed. Most roles of film were a set ISO in lots of 24 or 36 photographs per role. You had to always make sure that your settings were perfect and that there was something worthwhile to shoot before pressing the shutter button. There was a period for several years where I did not do photography at all. I spent a lot of time working and involving myself in other pursuits such as amateur radio. This later developed into more modern interests like computers, the Internet, and digital multimedia not to mention getting married and raising a family. It wasn’t until my mid forties when digital photography became more mainstream that I started to get interested in photography once more.",
-        profile_photo='https://i.imgur.com/Vz2yeN4.jpg',
-        cover_photo='https://i.imgur.com/3rQycJo.jpg'
-    )
     demo = User(
-        username='demoUser',
+        username='Demo User',
         email='demo@aa.io',
         password='password',
         first_name='Demo',
         last_name='User',
-        bio='I am a demo user, and I am exploring this website!',
-        profile_photo='https://i.imgur.com/o5hKPxy.png',
-        cover_photo='https://i.imgur.com/NCHLA2B.jpg'
-    )
+        bio="Hi! I'm a demo user and I'm exploring this website.",
+        profile_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/demo+profile+photo.jpg',
+        cover_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/demo+cover+photo.jpg'
+        )
 
-    all_users = [klaus, alexander, steve, demo]
+    dp = User(
+        username='DP Photography',
+        email='dpphotography@aa.io',
+        password='password',
+        first_name='Dennis',
+        last_name='Polkläser',
+        bio=
+        """
+        Dennis Polkläser, born in 1983 and based in Germany, is an award-winning photoartist and workshop educator with focus mainly on landscape photography.
+
+
+        With his art and his style of photography he is always aiming to express his fascination and passion for the wild and primal regions of this planet and to capture the beauty of nature.
+
+
+        Dennis preferred motives are scandinavian landscapes in combination with an expressive mood of the light and dramatic weather situation.
+
+
+        He has already achieved several successes in international photography contests and his work has been published in various media.
+        """,
+        profile_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/dp+profile+photo.jpg',
+        cover_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/dp+cover+photo.jpg'
+        )
+
+    jy = User(
+        username='joshuay04',
+        email='joshuay04@aa.io',
+        password='password',
+        first_name='Joshua',
+        last_name='Young',
+        bio=
+        """
+        I have always loved to travel with my family. Whether it’s a weekend road trip or a cross-country adventure, there’s nothing quite like exploring new places and creating lasting memories with the ones you love. Through my travel posts, I aim to share my favorite destinations, tips for traveling with kids, and ideas for making the most of your time on the road.
+        """,
+        profile_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/joshyoung+profile+photo.jpg',
+        cover_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/joshyoung+cover+pohoto.jpg'
+        )
+
+    mc = User(
+        username='michele carbone',
+        email='mcarbone04@aa.io',
+        password='password',
+        first_name='Michele',
+        last_name='Carbone',
+        bio=
+        """
+        I am a photographer from Novara, Italia. Thank you looking at my page.
+        """,
+        profile_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/michelecarbone+profile+photo.jpg',
+        cover_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/michelecarbone+cover+photo.jpg'
+        )
+
+    mj = User(
+        username='Michal Jeska',
+        email='mjeska@aa.io',
+        password='password',
+        first_name='Michal',
+        last_name='Jeska',
+        bio=
+        """
+        I'm in my 30s and work in the sports industry. I love shooting pictures with old cameras and often vintage lenses while hiking, backpacking, mountaineering, and cycling.
+        """,
+        profile_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/michaljeska+profile+photo.jpg',
+        cover_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/michaljeska+cover+photo.jpg'
+        )
+
+    md = User(
+        username="mikederrico69",
+        email='mdericco04@aa.io',
+        password='password',
+        first_name='Mike',
+        last_name="D'Errico",
+        bio=
+        """
+        Hi everyone ! Becoming a photographer gave me an entirely new perspective on everyday life. I use photography to turn almost anything I find beautiful into a work of art. I try to use my photographic skills to creatively capture an array of subjects that ranges from landscape mood to human and animal emotion. I do this by exploring the world through my camera lens. Inspiration comes from underwater photography (scuba diving) and hiking this amazing planet.
+        """,
+        profile_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/mikederrico+profile+photoi.jpg',
+        cover_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/mikederrico+cover+photo.jpg'
+        )
+
+    sm = User(
+        username="smarshasm",
+        email='smashasm04@aa.io',
+        password='password',
+        first_name='Steven',
+        last_name="Marshall",
+        bio=
+        """
+        Fortunate enough to be living at Rockpool House on the Ardnamurchan Peninsula, a wild, remote and yet beautiful place in the Scottish Highlands. Fortunate enough to have time to look at the landscape, look at the light and to really look at Scotland. And fortunate enough to be able to share images of what is a truly stunning country.
+        """,
+        profile_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/stevenmarshall+profile+photo.jpg',
+        cover_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/stevenmarshall+cover+photo.jpg'
+        )
+
+    pm = User(
+        username="peter manintveld",
+        email='peterm@aa.io',
+        password='password',
+        first_name='Peter',
+        last_name="Manintveld",
+        bio=
+        """
+        Hi, I'm Peter, an amateur photographer living in the south-west of the Netherlands, and using Sony gear.
+        """,
+        profile_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/petermanintveld+profile+photo.jpg',
+        cover_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/petermanintveld+cover+photo.jpg'
+        )
+
+    im = User(
+        username="alma csutka",
+        email='imester@aa.io',
+        password='password',
+        first_name='Ibolya',
+        last_name="Mester",
+        bio=
+        """
+        Hi, my dear friend, welcome to my world!
+
+        Although I live in a town, I am a crazy nature lover! If I can, I'll run out into the meadow or the woods, away from the noise of people... If you have time, look at my photographs. I hope you'll enjoy the silence too!
+        """,
+        profile_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/almacsutska+profile+photo.jpg',
+        cover_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/almacutska+cover+photo.jpg'
+        )
+
+    dl = User(
+        username="valecomte20",
+        email='dlacaze@aa.io',
+        password='password',
+        first_name='Dominique',
+        last_name="Lacaze",
+        bio=
+        """
+        I discovered photography with a digital SLR in 2014. I'm an amateur photographer with little innate artistic ability, but I learn while traveling.
+        """,
+        profile_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/dominiquelacaze+profile+photo.jpg',
+        cover_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/doiniquelacaze+cover+photo.jpg'
+        )
+
+    all_users = [demo, dp, jy, mc, mj, md, sm, pm, im, dl]
 
     _ = [db.session.add(user) for user in all_users]
     db.session.commit()

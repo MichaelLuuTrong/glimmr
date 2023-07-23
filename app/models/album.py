@@ -13,7 +13,6 @@ class Album(db.Model):
     description = db.Column(db.String(2000), nullable = False)
 
     #relationship attributes
-
     #album to one
     user = db.relationship("User", back_populates = "albums")
 
