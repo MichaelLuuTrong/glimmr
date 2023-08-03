@@ -65,7 +65,7 @@ function Photostream() {
                                     </div>
                                     <img
                                         src={photo.photo}
-                                        style={{ height: 250 }}
+                                        style={{ height: 400 }}
                                         alt=''
                                     />
 
