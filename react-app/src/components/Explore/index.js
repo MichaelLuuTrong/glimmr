@@ -17,12 +17,7 @@ function Explore() {
     const [hasMore, setHasMore] = useState(true)
     const [pageNum, setPageNum] = useState(1)
     const [displayedPhotos, setDisplayedPhotos] = useState([]);
-    const itemsPerPage = 30
-
-    useEffect(() => {
-        dispatch(getAllPhotosThunk())
-        dispatch(getAllUsersThunk())
-    }, [dispatch]);
+    const itemsPerPage = 12
 
     function getFirstNameById(usersArray, id) {
         const user = usersArray.find(user => user.id === id);
@@ -55,6 +50,11 @@ function Explore() {
 
         setDisplayedPhotos(updatedDisplayedPhotos)
     }
+
+    useEffect(() => {
+        dispatch(getAllPhotosThunk())
+        dispatch(getAllUsersThunk())
+    }, [dispatch]);
 
     useEffect(() => {
         const sortedPhotos = sortByCreatedAt(photosArray).reverse().slice(0, pageNum * itemsPerPage);
@@ -113,7 +113,7 @@ function Explore() {
                                     <img
                                         className='displayPhoto'
                                         src={photo.photo}
-                                        style={{ height: 250 }}
+                                        style={{ height: 375 }}
                                         alt=''
                                     />
                                 </div>
