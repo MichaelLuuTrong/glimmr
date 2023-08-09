@@ -593,7 +593,7 @@ def seed_photos():
 
     md10 = Photo(
         user_id=6,
-        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/md/md10.jpg',
+        photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/md/md10.png',
         title="Horseshoe Bay, Bowen, Queensland, Australia",
         description="If you are travelling along Australia’s east coast, be sure to plan a stop in the coastal town of Bowen. North Queensland’s oldest town, Bowen is well known for two main reasons - it is the home of Bowen Mangoes (a popular variety of the mango fruit) and it was the main filming location for the famous movie Australia in 2008. Bowen is one of the only places on Australia’s east coast that you can walk straight of the shore into the water and explore the reef.",
         taken_at=datetime(2020, 3, 6),
