@@ -14,8 +14,12 @@ def post_photo(user_Id):
         if current_user.id == user_Id:
             form = PhotoForm()
             photo = form.data['photo']
+            photo2 = form.data['thumbnail_photo']
             photo.filename = get_unique_filename(photo.filename)
+            photo2.filename = get_unique_filename(photo2.filename)
             upload = upload_file_to_s3(photo)
+            upload2 = upload_file_to_s3(photo2)
+
 
             if "url" not in upload:
                 return {Error: "Upload Error"}
@@ -26,7 +30,8 @@ def post_photo(user_Id):
                 title = form.data['title'],
                 description = form.data['description'],
                 taken_at = form.data['taken_at'],
-                created_at = datetime.now()
+                created_at = datetime.now(),
+                thumbnail_photo = upload2["url"]
             )
             db.session.add(new_photo)
             db.session.commit()
@@ -70,12 +75,16 @@ def update_photo_by_photo_id(photo_id):
         if photo_to_update.user_id == current_user.id:
             if form.data['photo']:
                 photo = form.data['photo']
+                photo2 = form.data['thumbnail_photo']
                 photo.filename = get_unique_filename(photo.filename)
+                photo2.filename = get_unique_filename(photo2.filename)
                 upload = upload_file_to_s3(photo)
+                upload2 = upload_file_to_s3(photo2)
 
                 if "url" not in upload:
                     return {Error: "Upload Error"}
                 photo_to_update.photo = upload["url"]
+                photo_to_update.thumbnail_photo = upload2["url"]
 
             photo_to_update.title = form.data['title']
             photo_to_update.description = form.data['description']

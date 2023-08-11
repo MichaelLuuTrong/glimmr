@@ -13,3 +13,4 @@ class PhotoForm(FlaskForm):
     taken_at = DateField('Date', validators = [DataRequired()])
     #created_at is date.now()
     submit = SubmitField('Submit')
+    thumbnail_photo = FileField('Photo File', validators = [FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])

@@ -17,7 +17,7 @@ function Explore() {
     const [hasMore, setHasMore] = useState(true)
     const [pageNum, setPageNum] = useState(1)
     const [displayedPhotos, setDisplayedPhotos] = useState([]);
-    const itemsPerPage = 12
+    const itemsPerPage = 23
 
     function getFirstNameById(usersArray, id) {
         const user = usersArray.find(user => user.id === id);
@@ -112,8 +112,8 @@ function Explore() {
                                     </div>
                                     <img
                                         className='displayPhoto'
-                                        src={photo.photo}
-                                        style={{ height: 375 }}
+                                        src={photo.thumbnail_photo}
+                                        style={{ height: 300 }}
                                         alt=''
                                     />
                                 </div>

@@ -4,6 +4,31 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import "./PhotoEdit.css";
 
+import Resizer from "react-image-file-resizer"
+
+const resizeFile = async (file) =>
+    new Promise((resolve) => {
+        Resizer.imageFileResizer(
+            file, //file
+            9000, //maxWidth
+            400, //maxHeight,
+            "JPEG", //compressFormat
+            100, //quality
+            0, //rotation
+            async (uri) => {
+                const binaryData = atob(uri.split(',')[1]);
+                const blob = new Blob([new Uint8Array([...binaryData].map(char => char.charCodeAt(0)))]);
+                const resizedFile = new File([blob], `thumbnail_${file.name}`, {
+                    type: 'image/jpeg', // Adjust the MIME type if needed
+                    lastModified: file.lastModified,
+                });
+
+                resolve(resizedFile);
+            },
+            "base64"
+        );
+    });
+
 function PhotoEdit() {
     const { photoId } = useParams();
     const [photo, setPhoto] = useState({});
@@ -73,23 +98,23 @@ function PhotoEdit() {
         responses.append("taken_at", taken_at)
         responses.append("updated_at", (new Date().toISOString()))
 
-        // const responses = {
-        //     photo,
-        //     title,
-        //     description,
-        //     taken_at,
-        //     updated_at: new Date().toISOString(),
-        // };
-        // setImageLoading(true)
-        if (!Object.values(errors).length) {
-            let updatedPhoto = await dispatch(
-                patchPhotoThunk(responses, photoId)
-            );
-            if (updatedPhoto) {
-                history.push(`/photos/${updatedPhoto.id}`);
-            } else {
-                setResponseErrors("Error: there was an issue editing your photo.");
+        try {
+            const thumbnailPhoto = await resizeFile(photo)
+            responses.append("thumbnail_photo", thumbnailPhoto)
+
+            if (!Object.values(errors).length) {
+                let updatedPhoto = await dispatch(
+                    patchPhotoThunk(responses, photoId)
+                );
+                if (updatedPhoto) {
+                    history.push(`/photos/${updatedPhoto.id}`);
+                } else {
+                    setResponseErrors("Error: there was an issue editing your photo.");
+                }
             }
+
+        } catch (error) {
+            console.error("Error:", error)
         }
     };
 
