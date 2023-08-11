@@ -4,6 +4,31 @@ import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom";
 import "./PhotoUpload.css"
 
+import Resizer from "react-image-file-resizer"
+
+const resizeFile = async (file) =>
+    new Promise((resolve) => {
+        Resizer.imageFileResizer(
+            file, //file
+            9000, //maxWidth
+            400, //maxHeight,
+            "JPEG", //compressFormat
+            100, //quality
+            0, //rotation
+            async (uri) => {
+                const binaryData = atob(uri.split(',')[1]);
+                const blob = new Blob([new Uint8Array([...binaryData].map(char => char.charCodeAt(0)))]);
+                const resizedFile = new File([blob], `thumbnail_${file.name}`, {
+                    type: 'image/jpeg', // Adjust the MIME type if needed
+                    lastModified: file.lastModified,
+                });
+
+                resolve(resizedFile);
+            },
+            "base64"
+        );
+    });
+
 function PhotoUpload() {
     const [photo, setPhoto] = useState('')
     const [title, setTitle] = useState('')
@@ -47,21 +72,26 @@ function PhotoUpload() {
         responses.append("description", description);
         responses.append("taken_at", taken_at);
         responses.append("created_at", (new Date().toISOString()))
-        // const responses = {
-        //     photo,
-        //     title,
-        //     description,
-        //     taken_at,
-        //     created_at: new Date().toISOString()
-        // };
-        // setImageLoading(true)
-        if (!Object.values(errors).length) {
-            let createdPhoto = await dispatch(postPhotoThunk(responses, sessionUser));
-            if (!createdPhoto.errors) {
-                history.push(`/photos/${createdPhoto.id}`);
-            } else {
-                setResponseErrors(createdPhoto.errors);
+
+        try {
+            const thumbnailPhoto = await resizeFile(photo);
+            responses.append("thumbnail_photo", thumbnailPhoto);
+
+            if (!Object.values(errors).length) {
+
+                // for (let pair of responses.entries()) {
+                //     console.log(pair[0], pair[1]);
+                // }
+
+                let createdPhoto = await dispatch(postPhotoThunk(responses, sessionUser));
+                if (!createdPhoto.errors) {
+                    history.push(`/photos/${createdPhoto.id}`);
+                } else {
+                    setResponseErrors(createdPhoto.errors);
+                }
             }
+        } catch (error) {
+            console.error("Error:", error)
         }
     };
 

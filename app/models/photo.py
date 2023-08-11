@@ -14,6 +14,7 @@ class Photo(db.Model):
     description = db.Column(db.String(2000), nullable = False)
     taken_at = db.Column(db.Date, nullable = False)
     created_at = db.Column(db.Date, nullable = False)
+    thumbnail_photo = db.Column(db.String, nullable = False)
 
     #relationship attributes
 
@@ -37,5 +38,6 @@ class Photo(db.Model):
             "taken_at": self.taken_at,
             "created_at": self.created_at,
             "favorites_count": len(self.favorites),
-            "comments_count": len(self.comments)
+            "comments_count": len(self.comments),
+            "thumbnail_photo": self.thumbnail_photo
         }
