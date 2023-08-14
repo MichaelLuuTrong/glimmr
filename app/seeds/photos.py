@@ -8,8 +8,8 @@ def seed_photos():
         photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/demo/demo1.jpg',
         title='Emporia',
         description="The amazing architecture of Emporia, one of Scandinavia's largest shopping malls.",
-        taken_at=datetime(2021, 8, 24),
-        created_at=datetime(2021, 8, 15),
+        taken_at=datetime(2021, 8, 15),
+        created_at=datetime(2021, 8, 24),
         thumbnail_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotothumbnails/t+-+demo1.jpg'
     )
     demo2 = Photo(
