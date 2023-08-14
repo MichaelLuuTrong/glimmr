@@ -21,7 +21,6 @@ def seed_photos():
         created_at=datetime(2019, 6, 22),
         thumbnail_photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotothumbnails/t+-+demo2.jpg'
     )
-
     demo3 = Photo(
         user_id=1,
         photo='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmrseederphotos/demo/demo3.jpg',
