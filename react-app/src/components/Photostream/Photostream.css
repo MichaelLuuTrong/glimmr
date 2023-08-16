@@ -147,3 +147,8 @@
 .editImageOnHoverText {
     padding-right: 3px;
 }
+
+.entirePhotostreamPageDiv {
+    height: calc(100vh - 351px);
+    background-color: #f3f5f6
+}

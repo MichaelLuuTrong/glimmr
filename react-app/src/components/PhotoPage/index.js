@@ -93,146 +93,148 @@ function PhotoPage() {
     }, [dispatch, photoId])
 
     return (
-        <div className="wholePhotoDiv">
-            <div className='mainPhotoDiv'>
-                <img className='mainPhoto' src={photoObj.photo} alt='Main' />
-            </div >
-            <div className='photoInfoAndCommentsDiv'>
-                <div className='photoInfoTop'>
-                    <div className="photoMainInfoDiv">
-                        <div className="photoMainInfoDivLeft">
-                            <div className="photographerPhotoProfileImgAndHoverTransparency">
-                                <div className="photographerPhotoProfileHoverTransparency"></div>
-                                <img
-                                    onClick={() => history.push(`/photos/${photoObj.user_id}/photostream`)}
-                                    className="photographerPhotoProfilePhotoImg changeCursor"
-                                    src={getProfilePhotoById(usersArray, photoObj.user_id)}
-                                    alt="Photographer" />
-                            </div>
-                            <div className='photoImportantInfoDiv'>
-                                <NavLink className="photoPhotographerName" exact to={`/photos/${photoObj.user_id}/photostream`}>
-                                    {getFirstNameById(usersArray, photoObj.user_id)} {getLastNameById(usersArray, photoObj.user_id)}
-                                </NavLink>
-                                <div className="photoTitle">
-                                    {photoObj.title}
+        <div className='entirePageDiv'>
+            <div className="wholePhotoDiv">
+                <div className='mainPhotoDiv'>
+                    <img className='mainPhoto' src={photoObj.photo} alt='Main' />
+                </div >
+                <div className='photoInfoAndCommentsDiv'>
+                    <div className='photoInfoTop'>
+                        <div className="photoMainInfoDiv">
+                            <div className="photoMainInfoDivLeft">
+                                <div className="photographerPhotoProfileImgAndHoverTransparency">
+                                    <div className="photographerPhotoProfileHoverTransparency"></div>
+                                    <img
+                                        onClick={() => history.push(`/photos/${photoObj.user_id}/photostream`)}
+                                        className="photographerPhotoProfilePhotoImg changeCursor"
+                                        src={getProfilePhotoById(usersArray, photoObj.user_id)}
+                                        alt="Photographer" />
                                 </div>
-                                <div className="photoDescription">
-                                    {photoObj.description}
+                                <div className='photoImportantInfoDiv'>
+                                    <NavLink className="photoPhotographerName" exact to={`/photos/${photoObj.user_id}/photostream`}>
+                                        {getFirstNameById(usersArray, photoObj.user_id)} {getLastNameById(usersArray, photoObj.user_id)}
+                                    </NavLink>
+                                    <div className="photoTitle">
+                                        {photoObj.title}
+                                    </div>
+                                    <div className="photoDescription">
+                                        {photoObj.description}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="photoMainInfoDivRight">
-                        <div className='mainInfoDivInfo'>
-                            <div className="photoFavorites">
-                                <div className="photoFavoritesCount">{photoObj.favorites_count}</div>
-                                <div className="photoFavoritesText">
-                                    {photoObj.favorites_count === 1 ? 'Favorite' : 'Favorites'}
+                        <div className="photoMainInfoDivRight">
+                            <div className='mainInfoDivInfo'>
+                                <div className="photoFavorites">
+                                    <div className="photoFavoritesCount">{photoObj.favorites_count}</div>
+                                    <div className="photoFavoritesText">
+                                        {photoObj.favorites_count === 1 ? 'Favorite' : 'Favorites'}
+                                    </div>
+                                </div>
+                                <div className="photoComments">
+                                    <div className="photoCommentsCount">{photoObj.comments_count}</div>
+                                    <div className="photoCommentsText">
+                                        {photoObj.comments_count === 1 ? 'Comment' : 'Comments'}
+                                    </div>
+                                </div>
+                                <div className="photoDates">
+                                    <div className="photoUploadDate">Uploaded on {convertDate(photoObj.created_at)}</div>
+                                    <div className="photoTakenDate">Taken on {convertDate(photoObj.taken_at)}</div>
                                 </div>
                             </div>
-                            <div className="photoComments">
-                                <div className="photoCommentsCount">{photoObj.comments_count}</div>
-                                <div className="photoCommentsText">
-                                    {photoObj.comments_count === 1 ? 'Comment' : 'Comments'}
-                                </div>
-                            </div>
-                            <div className="photoDates">
-                                <div className="photoUploadDate">Uploaded on {convertDate(photoObj.created_at)}</div>
-                                <div className="photoTakenDate">Taken on {convertDate(photoObj.taken_at)}</div>
-                            </div>
+                            <div className="grayBorder"></div>
                         </div>
-                        <div className="grayBorder"></div>
                     </div>
-                </div>
-                <div className='commentsSection'>
-                    <div className="allCommentsDiv">
-                        {(Object.values(commentsObj)).map(comment => (
-                            <div className="wholeCommentDiv" key={comment.id}>
-                                <img className="commentUserProfilePhoto changeCursor" src={comment.user.profile_photo} onClick={() => history.push(`/photos/${comment.user.id}/photostream`)}
-                                    alt='Commenter Profile'
-                                />
-                                <div className='commentUserNameandTimeAndComment'>
-                                    <div className="commentUserNameAndTime">
-                                        <NavLink className="commentUserNameDiv" exact to={`/photos/${comment.user.id}/photostream`}>
-                                            {comment.user.first_name} {comment.user.last_name}
-                                        </NavLink>
-                                        <div className="timeSinceComment" >{timeSinceCommentDate(comment.created_at)}</div>
-                                    </div>
-                                    <div className="commentTextDiv">{comment.text}</div>
-                                </div>
-                                {(user) && comment.user_id === user.id && (
-                                    <div className="editAndDeleteButtonsWrapper">
-                                        <div className="editAndDeleteButtons">
-                                            <OpenModalButton
-                                                buttonImage="Delete"
-                                                modalComponent={
-                                                    <DeleteCommentModal
-                                                        comment_id={comment.id}
-                                                        photo_id={photoId}
-
-                                                    />
-                                                }
-                                            />
-                                            <OpenModalButton
-                                                buttonImage="Edit"
-                                                modalComponent={
-                                                    <UpdateCommentModal
-                                                        comment_id={comment.id}
-                                                        comment_text={comment.text}
-                                                        photo_id={photoId}
-                                                    />
-                                                }
-                                            />
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                        {user && <div className="newCommentDiv">
-                            <form onSubmit={handleSubmit}
-                                className="commentForm">
-                                <img className="commentUserProfilePhoto"
-                                    src={getProfilePhotoById(usersArray, user.id)}
-                                    alt="User Profile"
-                                />
-                                <div className="commentFormRightSide">
-                                    {commentText.length > 300 && commentText.length < 500 &&
-                                        <div className="errorContainer">
-                                            <div className="commentTooLongError">
-                                                Characters: {commentText.length}/500
-                                            </div>
-
-                                        </div>
-                                    }
-                                    {commentText.length === 500 &&
-                                        <div className="errorContainer">
-                                            <div className="commentTooLongError">
-                                                You have reached the maximum comment length.
-                                            </div>
-                                        </div>
-                                    }
-                                    <textarea
-                                        maxlength={500}
-                                        className="commentTextInput"
-                                        type="text"
-                                        placeholder="Add a comment"
-                                        value={commentText}
-                                        onChange={(e) => setCommentText(e.target.value)}
+                    <div className='commentsSection'>
+                        <div className="allCommentsDiv">
+                            {(Object.values(commentsObj)).map(comment => (
+                                <div className="wholeCommentDiv" key={comment.id}>
+                                    <img className="commentUserProfilePhoto changeCursor" src={comment.user.profile_photo} onClick={() => history.push(`/photos/${comment.user.id}/photostream`)}
+                                        alt='Commenter Profile'
                                     />
-                                    {/* The trim below makes sure the comment has text in it */}
-                                    {commentText.trim() !== "" && (
-                                        < button className="submitCommentButton" type="submit">
-                                            Comment
-                                        </button>
+                                    <div className='commentUserNameandTimeAndComment'>
+                                        <div className="commentUserNameAndTime">
+                                            <NavLink className="commentUserNameDiv" exact to={`/photos/${comment.user.id}/photostream`}>
+                                                {comment.user.first_name} {comment.user.last_name}
+                                            </NavLink>
+                                            <div className="timeSinceComment" >{timeSinceCommentDate(comment.created_at)}</div>
+                                        </div>
+                                        <div className="commentTextDiv">{comment.text}</div>
+                                    </div>
+                                    {(user) && comment.user_id === user.id && (
+                                        <div className="editAndDeleteButtonsWrapper">
+                                            <div className="editAndDeleteButtons">
+                                                <OpenModalButton
+                                                    buttonImage="Delete"
+                                                    modalComponent={
+                                                        <DeleteCommentModal
+                                                            comment_id={comment.id}
+                                                            photo_id={photoId}
+
+                                                        />
+                                                    }
+                                                />
+                                                <OpenModalButton
+                                                    buttonImage="Edit"
+                                                    modalComponent={
+                                                        <UpdateCommentModal
+                                                            comment_id={comment.id}
+                                                            comment_text={comment.text}
+                                                            photo_id={photoId}
+                                                        />
+                                                    }
+                                                />
+                                            </div>
+                                        </div>
                                     )}
                                 </div>
-                            </form>
+                            ))}
+                            {user && <div className="newCommentDiv">
+                                <form onSubmit={handleSubmit}
+                                    className="commentForm">
+                                    <img className="commentUserProfilePhoto"
+                                        src={getProfilePhotoById(usersArray, user.id)}
+                                        alt="User Profile"
+                                    />
+                                    <div className="commentFormRightSide">
+                                        {commentText.length > 300 && commentText.length < 500 &&
+                                            <div className="errorContainer">
+                                                <div className="commentTooLongError">
+                                                    Characters: {commentText.length}/500
+                                                </div>
+
+                                            </div>
+                                        }
+                                        {commentText.length === 500 &&
+                                            <div className="errorContainer">
+                                                <div className="commentTooLongError">
+                                                    You have reached the maximum comment length.
+                                                </div>
+                                            </div>
+                                        }
+                                        <textarea
+                                            maxlength={500}
+                                            className="commentTextInput"
+                                            type="text"
+                                            placeholder="Add a comment"
+                                            value={commentText}
+                                            onChange={(e) => setCommentText(e.target.value)}
+                                        />
+                                        {/* The trim below makes sure the comment has text in it */}
+                                        {commentText.trim() !== "" && (
+                                            < button className="submitCommentButton" type="submit">
+                                                Comment
+                                            </button>
+                                        )}
+                                    </div>
+                                </form>
+                            </div>
+                            }
                         </div>
-                        }
                     </div>
-                </div>
+                </div >
             </div >
-        </div >
+        </div>
     )
 }
 

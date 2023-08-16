@@ -1,12 +1,11 @@
-.userBioBackground {
+.fillerBackground {
     width: 100%;
     background-color: #F3F5F6;
     position: relative;
     height: calc(100vh - 351px);
-    ;
 }
 
-.userBio {
+.filler {
     margin-top: 22px;
     margin-bottom: 22px;
     border: 1px #E3E3E3 solid;
@@ -19,7 +18,7 @@
     right: 10%;
 }
 
-.userBioText {
+.fillerText {
     margin-top: 39px;
     margin-left: 10%;
     margin-right: 10%;
