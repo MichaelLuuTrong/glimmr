@@ -1,3 +1,8 @@
+.explorePageWrapper {
+    height: 100vh;
+    background-color: #F3F5F6
+}
+
 .masonryDiv {
     margin-right: 5%;
     margin-left: 5%;

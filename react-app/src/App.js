@@ -14,6 +14,8 @@ import Photostream from "./components/Photostream";
 import About from "./components/About"
 import PhotoEdit from "./components/PhotoEdit"
 import LandingPage from "./components/LandingPage";
+import Albums from "./components/Albums"
+import Favorites from "./components/Favorites";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,12 +39,14 @@ function App() {
             {/* User - Albums Page */}
             <Header />
             <UserPageTop />
+            <Albums />
           </Route>
 
           <Route exact path='/photos/:userId/favorites'>
             {/* User - Favorites Page */}
             <Header />
             <UserPageTop />
+            <Favorites />
           </Route>
 
           <Route exact path='/people/:userId/'>
