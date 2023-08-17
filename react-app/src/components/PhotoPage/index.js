@@ -102,9 +102,24 @@ function PhotoPage() {
         setCommentText("")
     }
 
+    function hasPhotoId(favorites, targetPhotoId) {
+        let favoritesValues = Object.values(favorites)
+        if (favoritesValues.length < 1) return false
+        else {
+            let favoritesObjects = favoritesValues[0]
+            for (const favorite of favoritesObjects) {
+                if (favorite.photo_id == targetPhotoId) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
     useEffect(() => {
         dispatch(getPhotoThunk(photoId))
-        dispatch(getUserFavoritesThunk(user.id))
+        if (user)
+            dispatch(getUserFavoritesThunk(user.id))
         dispatch(getPhotoCommentsThunk(photoId))
         dispatch(getAllUsersThunk())
     }, [dispatch, photoId])
@@ -114,16 +129,28 @@ function PhotoPage() {
             <div className="wholePhotoDiv">
                 <div className='mainPhotoDiv'>
                     <img className='mainPhoto' src={photoObj.photo} alt='Main' />
-                    <div
-                        onClick={handleFavorite}
-                        className='favoriteButton'>
-                        Favorite Button
-                    </div>
-                    <div
-                        onClick={handleUnfavorite}
-                        className='unfavoriteButton'>
-                        Unfavorite Button
-                    </div>
+                    {!user && (
+                        <div className='bottomPaddingDiv'></div>
+                    )
+                    }
+                    {user && (
+                        <div className='favoriteButtonWrapper'>
+                            {!hasPhotoId(userFavorites, photoId) && (
+                                <div
+                                    onClick={handleFavorite}
+                                    className='favoriteButton'>
+                                    <i class="fa-regular fa-star fa-2xl"></i>
+                                </div>
+                            )}
+                            {hasPhotoId(userFavorites, photoId) && (
+                                <div
+                                    onClick={handleUnfavorite}
+                                    className='unfavoriteButton'>
+                                    <i class="fa-solid fa-star fa-2xl"></i>
+                                </div>
+                            )}
+                        </div>
+                    )}
                 </div >
                 <div className='photoInfoAndCommentsDiv'>
                     <div className='photoInfoTop'>
@@ -240,7 +267,7 @@ function PhotoPage() {
                                             </div>
                                         }
                                         <textarea
-                                            maxlength={500}
+                                            maxLength={500}
                                             className="commentTextInput"
                                             type="text"
                                             placeholder="Add a comment"

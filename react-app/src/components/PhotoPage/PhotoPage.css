@@ -2,7 +2,6 @@
     margin-top: 100px;
     max-width: 1800px;
     max-height: 900px;
-    margin-bottom: 20px;
 }
 
 .mainPhotoDiv {
@@ -300,11 +299,39 @@
 }
 
 .favoriteButton {
-    border: 2px solid red;
-    width: 130px;
+    display: flex;
+    height: 36px;
+    width: 36px;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    cursor: pointer
 }
 
 .unfavoriteButton {
-    border: 2px solid red;
-    width: 130px;
+    display: flex;
+    height: 36px;
+    width: 36px;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    cursor: pointer
+}
+
+.fa-star {
+    color: white;
+}
+
+.favoriteButtonWrapper {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.bottomPaddingDiv {
+    height: 50px;
+    width: 27%
 }
