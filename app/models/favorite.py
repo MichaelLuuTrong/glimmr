@@ -24,4 +24,5 @@ class Favorite(db.Model):
             "photo_id": self.photo_id,
             "created_at": self.created_at,
             "user": self.user.to_dict(),
+            "photo": self.photo.to_dict(),
         }
