@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { getPhotoThunk } from "../../store/photo"
 import { getPhotoCommentsThunk, postCommentThunk } from "../../store/comment"
 import { getAllUsersThunk } from "../../store/user"
+import { postFavoriteThunk, deleteFavoriteThunk, getUserFavoritesThunk } from "../../store/favorite"
 import "./PhotoPage.css"
 import OpenModalButton from "../OpenModalButton"
 import DeleteCommentModal from "../DeleteCommentModal"
@@ -73,7 +74,22 @@ function PhotoPage() {
     const usersObj = useSelector(state => state.userReducer.allUsers)
     const usersArray = Object.values(usersObj)
     const user = useSelector(state => state.session.user)
+    const userFavorites = useSelector(state => state.favoriteReducer.userFavorites)
     const [commentText, setCommentText] = useState("")
+
+    const handleFavorite = async (e) => {
+        e.preventDefault();
+        await dispatch(postFavoriteThunk(photoId, user.id));
+        await dispatch(getUserFavoritesThunk(user.id))
+        await dispatch(getPhotoThunk(photoId));
+    };
+
+    const handleUnfavorite = async (e) => {
+        e.preventDefault();
+        await dispatch(deleteFavoriteThunk(photoId, user.id));
+        await dispatch(getUserFavoritesThunk(user.id))
+        await dispatch(getPhotoThunk(photoId));
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -88,6 +104,7 @@ function PhotoPage() {
 
     useEffect(() => {
         dispatch(getPhotoThunk(photoId))
+        dispatch(getUserFavoritesThunk(user.id))
         dispatch(getPhotoCommentsThunk(photoId))
         dispatch(getAllUsersThunk())
     }, [dispatch, photoId])
@@ -97,6 +114,16 @@ function PhotoPage() {
             <div className="wholePhotoDiv">
                 <div className='mainPhotoDiv'>
                     <img className='mainPhoto' src={photoObj.photo} alt='Main' />
+                    <div
+                        onClick={handleFavorite}
+                        className='favoriteButton'>
+                        Favorite Button
+                    </div>
+                    <div
+                        onClick={handleUnfavorite}
+                        className='unfavoriteButton'>
+                        Unfavorite Button
+                    </div>
                 </div >
                 <div className='photoInfoAndCommentsDiv'>
                     <div className='photoInfoTop'>

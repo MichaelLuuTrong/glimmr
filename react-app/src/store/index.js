@@ -4,12 +4,14 @@ import session from './session'
 import photoReducer from './photo'
 import commentReducer from './comment'
 import userReducer from './user'
+import favoriteReducer from './favorite'
 
 const rootReducer = combineReducers({
   session,
   photoReducer,
   commentReducer,
-  userReducer
+  userReducer,
+  favoriteReducer,
 });
 
 
