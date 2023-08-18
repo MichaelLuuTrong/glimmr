@@ -26,6 +26,7 @@ function Photostream() {
                 <div className='fullExplorePage'>
                     {(Boolean(userPhotosArray.toString())) && userPhotosArray[0] ? (
                         <div className='masonryDiv'>
+                            {console.log(userPhotosArray[0])}
                             {sortByCreatedAt(userPhotosArray[0]).reverse().map((photo, id) => {
                                 return (
                                     <div onClick={() => history.push(`/photos/${photo.id}`)} key={id}

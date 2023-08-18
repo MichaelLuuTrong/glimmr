@@ -1,27 +1,155 @@
-.fillerBackground {
-    width: 100%;
+.masonryDiv {
+    padding-top: 10px;
+    display: flex;
+    width: 90%;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+}
+
+.fullExplorePage {
+    display: flex;
+    justify-content: center;
     background-color: #F3F5F6;
-    position: relative;
-    height: calc(100vh - 351px);
+    flex-direction: column;
+    align-items: center;
 }
 
-.filler {
-    margin-top: 22px;
-    margin-bottom: 22px;
-    border: 1px #E3E3E3 solid;
-    width: 80%;
-    background-color: white;
-    display: inline-block;
-    border-radius: 4px;
-    position: absolute;
-    left: 10%;
-    right: 10%;
-}
-
-.fillerText {
-    margin-top: 39px;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 39px;
+.exploreHeader {
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    font-weight: lighter;
+    width: 71.4%
+}
+
+.spacerDiv {
+    height: 50px;
+    width: 100%;
+}
+
+.divOverPhotoExplore {
+    background-color: rgba(0, 0, 0, 0.1);
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.photoWithHoverDiv {
+    position: relative;
+    height: 300px
+}
+
+
+.photoWithHoverDiv:hover .divOverPhotoExplore {
+    opacity: 1;
+}
+
+.divOverPhotoExplore::before,
+.divOverPhotoExplore::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 30%;
+    z-index: 0;
+}
+
+.divOverPhotoExplore::before {
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+}
+
+.divOverPhotoExplore::after {
+    bottom: 0;
+    background: none;
+}
+
+.hoverPhotoTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    position: absolute;
+    width: 80%;
+    bottom: 30px;
+    left: 10px;
+}
+
+.hoverPhotoTakerName {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: lightgrey;
+    position: absolute;
+    width: 80%;
+    bottom: 10px;
+    left: 10px;
+}
+
+.hoverFavoriteCount,
+.hoverCommentCount {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 13px;
+    position: absolute;
+}
+
+.hoverFavoriteCount {
+    bottom: 7px;
+    right: 60px;
+}
+
+.hoverCommentCount {
+    bottom: 7px;
+    right: 20px;
+}
+
+.hoverFavoriteCount svg {
+    fill: white;
+    transform: translateY(0.8px) translateX(-3px)
+}
+
+.hoverCommentCount svg {
+    fill: white;
+    transform: translateY(1.5px) translateX(-4px)
+}
+
+.noPhotosDiv {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    padding-top: 50px;
+    padding-bottom: 80px;
+    position: absolute;
+    bottom: 55vh;
+}
+
+.editImageOnHoverDiv {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    right: 3px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5px;
+    margin-top: 5px;
+    position: absolute
+}
+
+.editImageOnHoverIcon svg {
+    fill: white;
+}
+
+.editImageOnHoverIcon:hover svg {
+    fill: lightgray;
+}
+
+.editImageOnHoverText {
+    padding-right: 3px;
+}
+
+.entirePhotostreamPageDiv {
+    height: calc(100vh - 351px);
+    background-color: #f3f5f6
 }
