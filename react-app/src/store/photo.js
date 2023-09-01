@@ -5,6 +5,7 @@ const GET_USER_PHOTOS = "photo/GET_USER_PHOTOS"
 const GET_ALL_PHOTOS = "photo/GET_ALL_PHOTOS"
 const PATCH_PHOTO = "photo/PATCH_PHOTO"
 const DELETE_PHOTO = "photo/DELETE_PHOTO"
+const CLEAR_PHOTO = "photo/CLEAR_PHOTO"
 
 //action creators
 const postPhoto = (photo) => ({
@@ -35,6 +36,10 @@ const patchPhoto = (photo) => ({
 const deletePhoto = (photo_id) => ({
     type: DELETE_PHOTO,
     photo_id
+})
+
+const clearPhoto = () => ({
+    type: CLEAR_PHOTO
 })
 
 //thunks
@@ -139,6 +144,9 @@ export const deletePhotoThunk = (photo_id) => async (dispatch) => {
     }
 }
 
+export const clearPhotoThunk = () => async (dispatch) => {
+    dispatch(clearPhoto())
+}
 //reducer
 const initialState = { allPhotos: {}, singlePhoto: {}, userPhotos: {} }
 
@@ -180,6 +188,10 @@ const photoReducer = (state = initialState, action) => {
             newState = { ...state, userPhotos: { ...state.userPhotos } }
             delete newState.userPhotos[action.photo_id]
             return newState
+        }
+
+        case CLEAR_PHOTO: {
+            return initialState
         }
         default:
             return state
