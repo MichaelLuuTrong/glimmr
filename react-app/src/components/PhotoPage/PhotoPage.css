@@ -1,6 +1,7 @@
 .mainPhoto {
     margin-top: 100px;
     max-width: 1800px;
+    min-height: 500px;
     max-height: 900px;
 }
 

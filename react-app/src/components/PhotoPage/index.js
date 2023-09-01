@@ -1,7 +1,7 @@
 import { useParams, NavLink, useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
-import { getPhotoThunk } from "../../store/photo"
+import { getPhotoThunk, clearPhotoThunk } from "../../store/photo"
 import { getPhotoCommentsThunk, postCommentThunk } from "../../store/comment"
 import { getAllUsersThunk } from "../../store/user"
 import { postFavoriteThunk, deleteFavoriteThunk, getUserFavoritesThunk } from "../../store/favorite"
@@ -117,6 +117,7 @@ function PhotoPage() {
     }
 
     useEffect(() => {
+        dispatch(clearPhotoThunk())
         dispatch(getPhotoThunk(photoId))
         if (user)
             dispatch(getUserFavoritesThunk(user.id))
