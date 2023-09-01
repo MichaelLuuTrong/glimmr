@@ -129,7 +129,15 @@ function PhotoPage() {
         <div className='entirePageDiv'>
             <div className="wholePhotoDiv">
                 <div className='mainPhotoDiv'>
-                    <img className='mainPhoto' src={photoObj.photo} alt='Main' />
+                    {!photoObj.photo && (
+                        <div className='photoFillerDiv'>
+                            <img className='loadingIconPhotoPage' src='https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif' alt="loading icon" />
+                        </div>
+                    )}
+
+                    {photoObj.photo && (
+                        <img className='mainPhoto' src={photoObj.photo} alt='Main' />
+                    )}
                     {!user && (
                         <div className='bottomPaddingDiv'></div>
                     )
