@@ -105,10 +105,10 @@ function SignupFormPage() {
       <div className="signupHeaderDiv">
         <div className="signupLogoAndTextDiv">
           <NavLink className='loginLogoImage' exact to="/">
-            <img className='loginLogoImageImg' src="https://i.imgur.com/CN01U69.png" alt="glimmr icon" />
+            <img className='loginLogoImageImg' src="https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmr+resources/glimmrlogo2.png" alt="glimmr icon" />
           </NavLink>
           <NavLink className='loginLogoLogo' exact to="/">
-            <img className='loginLogoImg' src="https://i.imgur.com/b9YTbxQ.png" alt="glimmr logo" />
+            <img className='loginLogoImg' src="https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmr+resources/glimmrlogowhite.png" alt="glimmr logo" />
           </NavLink>
         </div>
         <div className="signupHeaderBackground"></div>
@@ -118,7 +118,7 @@ function SignupFormPage() {
         <div className="mainSignUpFormDiv">
           <img
             className="signupGlimmrLogo"
-            src="https://i.imgur.com/CN01U69.png"
+            src="https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmr+resources/glimmrlogo2.png"
             alt=""
           />
           <div className="signUpHeader">Sign up for Glimmr</div>

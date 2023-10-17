@@ -102,7 +102,7 @@ function PhotoUpload() {
                 encType="multipart/form-data"
                 onSubmit={formSubmit}>
                 <div className='topMiddleDiv'>
-                    <img className='photoFormGlimmrLogo' src='https://i.imgur.com/CN01U69.png' alt='' />
+                    <img className='photoFormGlimmrLogo' src='https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmr+resources/glimmrlogo2.png' alt='' />
                     <div className='postAPhotoText'>Post a Photo</div>
                 </div>
                 {submitted && (Object.values(responseErrors).length) ? <div>{Object.values(responseErrors)}</div> : null}

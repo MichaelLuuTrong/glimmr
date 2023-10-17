@@ -34,10 +34,11 @@ function LoginFormPage() {
       <div className="loginHeaderDiv">
         <div className="loginLogoAndTextDiv">
           <NavLink className='loginLogoImage' exact to="/">
-            <img className='loginLogoImageImg' src="https://i.imgur.com/CN01U69.png" alt="glimmr icon" />
+            <img className='loginLogoImageImg' src="https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmr+resources/glimmrlogo2.png" alt="glimmr icon" />
           </NavLink>
           <NavLink className='loginLogoLogo' exact to="/">
-            <img className='loginLogoImg' src="https://i.imgur.com/b9YTbxQ.png" alt="glimmr logo" />
+            <img className='loginLogoImg' src="https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmr+resources/glimmrlogowhite.png
+" alt="glimmr logo" />
           </NavLink>
         </div>
         <div className="loginHeaderBackground"></div>
@@ -48,7 +49,7 @@ function LoginFormPage() {
         <div className="centralFormDiv">
           <img
             className="loginGlimmrLogo"
-            src="https://i.imgur.com/CN01U69.png"
+            src="https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmr+resources/glimmrlogo2.png"
             alt=""
           />
           <div className="logInText">Log in to Glimmr</div>
