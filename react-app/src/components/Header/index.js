@@ -13,10 +13,11 @@ function Header({ isLoaded }) {
             <div className='headerBackground'></div>
             <div className='headerLeftSide'>
                 <NavLink className='landingLinkImage' exact to="/">
-                    <img className='landingLinkImageImg' src="https://i.imgur.com/CN01U69.png" alt="glimmr icon" />
+                    <img className='landingLinkImageImg' src="https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmr+resources/glimmrlogo2.png
+" alt="glimmr icon" />
                 </NavLink>
                 <NavLink className='landingLinkLogo' exact to="/">
-                    <img className='landingLinkLogoImg' src="https://i.imgur.com/b9YTbxQ.png" alt="glimmr logo" />
+                    <img className='landingLinkLogoImg' src="https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmr+resources/glimmrlogowhite.png" alt="glimmr logo" />
                 </NavLink>
                 {sessionUser && <NavLink className='headerNavLink' exact to={`/photos/${sessionUser.id}/photostream`}>
                     <div className='headerYouDiv'>You</div>
@@ -27,7 +28,7 @@ function Header({ isLoaded }) {
             </div>
             <div className='headerRightSide'>
                 {sessionUser && <NavLink className='uploadNavLink' exact to={`/photos/upload`}>
-                    <img className='uploadIcon' src="https://i.imgur.com/3Q82U5t.png" alt="upload icon" />
+                    <img className='uploadIcon' src="https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmr+resources/uploadicon.png" alt="upload icon" />
                 </NavLink>}
                 {sessionUser && <ProfileButton />}
                 {!sessionUser && <NavLink className='headerNavLink' exact to={`/log-in`}>

@@ -77,8 +77,8 @@ function LandingPage() {
         <>
             <div className="landingHeaderDiv">
                 <div className="landingLogoAndTextDiv">
-                    <img className='landingLogoImageImg' src="https://i.imgur.com/CN01U69.png" alt="glimmr icon" />
-                    <img className='landingLogoImg' src="https://i.imgur.com/b9YTbxQ.png" alt="glimmr logo" />
+                    <img className='landingLogoImageImg' src="https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmr+resources/glimmrlogo2.png" alt="glimmr icon" />
+                    <img className='landingLogoImg' src="https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmr+resources/glimmrlogowhite.png" alt="glimmr logo" />
                 </div>
                 <div className="landingHeaderLoginAndSignUp">
                     <NavLink className='landingHeaderNavLink' exact to={`/log-in`}>

@@ -151,7 +151,7 @@ function PhotoEdit() {
                     <div className="topMiddleDiv">
                         <img
                             className="photoFormGlimmrLogo"
-                            src="https://i.imgur.com/CN01U69.png"
+                            src="https://glimmr-photographs.s3.us-west-2.amazonaws.com/glimmr+resources/glimmrlogo2.png"
                             alt=""
                         />
                         <div className="editPhotoText">Edit a Photo</div>
